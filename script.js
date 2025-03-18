@@ -96,3 +96,10 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(item);
     });
 }); 
+// show success message when form is subbmitted
+document.querySelector('.contact-form').addEventListener('submit', function(){
+    //preview
+    setTimeout(function(){
+        document.querySelector('.success-message').style.display = 'block';
+    }, 1000);
+});
