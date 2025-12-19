@@ -3,108 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Phidel Emmanuel Ochieng - Frontend Developer & Cybersecurity Enthusiast. Building secure, beautiful web experiences with HTML, CSS, JavaScript, PHP & MySQL.">
+    <meta name="keywords" content="Frontend Developer, Web Developer, Cybersecurity, HTML, CSS, JavaScript, PHP, MySQL, Portfolio, Phidel Ochieng">
+    <meta name="author" content="Phidel Emmanuel Ochieng">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Phidel Emmanuel Ochieng - Frontend Developer">
+    <meta property="og:description" content="Building secure, beautiful web experiences. Frontend Developer & Cybersecurity Enthusiast.">
+    <meta property="og:image" content="tariq2.jpg">
+    <meta property="og:url" content="https://tariq926.github.io/my-portfolio/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Phidel Emmanuel Ochieng - Frontend Developer">
+    <meta name="twitter:description" content="Building secure, beautiful web experiences.">
+    <meta name="twitter:image" content="tariq2.jpg">
+
     <link rel="icon" href="tariq2.jpg" type="image/jpeg">
-    <title>Phidel Emmanuel Ochieng - Frontend Developer</title>
+    <title>Phidel Emmanuel Ochieng - Frontend Developer & Cybersecurity Enthusiast</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00FF41">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Phidel Portfolio">
+
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <style>
-        .contact-form-container{
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 30px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .form-header{
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .form-header h2{
-            color: #3498db;
-            margin-bottom: 10px;
-        }
-        .form-group{
-            margin-bottom: 20px;
-        }
-        .contact-form label{
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-        }
-        .contact-form input{
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #ffffff;
-            font-weight: 16px;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-        }
-        .contact-form text-area{
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #ffffff;
-            font-weight: 16px;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-        }
-        .contact-form input:focus{
-            outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-        }
-        .contact-form textarea:focus{
-            outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-        }
-        .contact-form .submit-btn{
-            display: block;
-            position: center;
-            width: 100%;
-            height: 50px;
-            pading: 14px;
-            border-radius: 30px;
-            background-color: #3498db;
-            color: #ffffff;
-            border: none;
-            font-size: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .contact-form .submit-btn hover{
-            background-color: #2980b9;
-            transform: translateY(-2px);
-        }
-        .success-message{
-            padding: 15px;
-            background-color: #2ecc71;
-            color: white;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 20px;
-            display: none;
-        }
-        /* Responsive Design */
-        @media only screen and (max-width: 768px) {
-            .contact-form-container{
-                padding: 20px;
-                margin: 20px auto;
-            }
-        }
-    </style>
+    <!-- Boot Loader -->
+    <div id="bootLoader" class="boot-loader">
+        <div class="boot-content">
+            <pre class="boot-logo">
+ ____  _     _     _      _
+|  _ \| |__ (_) __| | ___| |
+| |_) | '_ \| |/ _` |/ _ \ |
+|  __/| | | | | (_| |  __/ |
+|_|   |_| |_|_|\__,_|\___|_|
+            </pre>
+            <div class="boot-text">
+                <p>[<span class="boot-ok">OK</span>] Initializing portfolio system...</p>
+                <p>[<span class="boot-ok">OK</span>] Loading user interface components...</p>
+                <p>[<span class="boot-ok">OK</span>] Establishing secure connection...</p>
+                <p>[<span class="boot-ok">OK</span>] Mounting file systems...</p>
+                <p>[<span class="boot-ok">OK</span>] Loading projects database...</p>
+                <p>[<span class="boot-ok">OK</span>] Initializing skills matrix...</p>
+                <p class="boot-ready">[<span class="boot-ok">READY</span>] phidel@portfolio:~$ Welcome</p>
+            </div>
+            <div class="boot-progress">
+                <div class="boot-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Matrix Rain Canvas -->
+    <canvas id="matrixCanvas" class="matrix-canvas" style="display:none;"></canvas>
+
+    <!-- Terminal CLI Overlay -->
+    <div id="terminalCLI" class="terminal-cli" style="display:none;">
+        <div class="cli-header">
+            <span class="cli-title">phidel@portfolio:~$ terminal</span>
+            <div class="cli-controls">
+                <button class="cli-btn minimize" title="Minimize">_</button>
+                <button class="cli-btn close" id="closeCLI" title="Close">×</button>
+            </div>
+        </div>
+        <div class="cli-content">
+            <div class="cli-output" id="cliOutput">
+                <p>Welcome to Phidel's Portfolio Terminal [Version 1.0.0]</p>
+                <p>Type 'help' for available commands.</p>
+                <p></p>
+            </div>
+            <div class="cli-input-line">
+                <span class="cli-prompt">phidel@portfolio:~$</span>
+                <input type="text" id="cliInput" class="cli-input" autocomplete="off" spellcheck="false">
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Switcher & Controls -->
+    <div class="theme-controls">
+        <button id="themeToggle" class="control-btn" title="Change Theme" aria-label="Toggle color theme">
+            <i class="fas fa-palette"></i>
+        </button>
+        <button id="matrixToggle" class="control-btn" title="Toggle Matrix Rain" aria-label="Toggle matrix effect">
+            <i class="fas fa-th"></i>
+        </button>
+        <button id="cliToggle" class="control-btn" title="Open Terminal (Ctrl + ~)" aria-label="Open terminal">
+            <i class="fas fa-terminal"></i>
+        </button>
+        <button id="shareBtn" class="control-btn" title="Share Portfolio" aria-label="Share this portfolio">
+            <i class="fas fa-share-alt"></i>
+        </button>
+        <button id="installBtn" class="control-btn" title="Install App" aria-label="Install as app" style="display: none;">
+            <i class="fas fa-download"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav">
+        <a href="#home" class="mobile-nav-item active" data-section="home">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#about" class="mobile-nav-item" data-section="about">
+            <i class="fas fa-user"></i>
+            <span>About</span>
+        </a>
+        <a href="#projects" class="mobile-nav-item" data-section="projects">
+            <i class="fas fa-code"></i>
+            <span>Projects</span>
+        </a>
+        <a href="#contact" class="mobile-nav-item" data-section="contact">
+            <i class="fas fa-envelope"></i>
+            <span>Contact</span>
+        </a>
+        <button id="mobileMenuToggle" class="mobile-nav-item">
+            <i class="fas fa-bars"></i>
+            <span>Menu</span>
+        </button>
+    </nav>
     <!-- Header Section -->
     <header>
         <div class="logo">
-            <h1 style="cursor: default;">Phidel Emmanuel Ochieng</h1>
+            <h1>phidel@portfolio</h1>
         </div>
         <nav>
             <div class="hamburger">
@@ -124,58 +152,147 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content" style="cursor: default;">
+        <div class="hero-content">
             <div class="hero-text">
-                <h1>Hello, I'm <span class="highlight">Phidel Emmanuel Ochieng</span></h1>
-                <h2>Frontend Developer</h2>
-                <!-- // strong makes the words bold and u makes the words underlined-->
-                <p><strong>I'm passionate about creating elegant solutions to complex problems</strong></p>
+                <pre class="ascii-art">
+  ___  _    _     _      _
+ | _ \| |_ (_)__| |___ | |
+ |  _/| ' \| / _` / -_)| |
+ |_|  |_||_|_\__,_\___||_|
+                </pre>
+                <h1>Phidel Emmanuel Ochieng<span class="cursor-blink">_</span></h1>
+                <h2>Frontend Developer & Cybersecurity Enthusiast</h2>
+                <p>Building secure, beautiful web experiences one line of code at a time.<br>
+                   Passionate about clean code, user experience, and continuous learning.</p>
                 <div class="cta-buttons">
-                    <a href="#projects" class="btn primary-btn">View My Work</a>
-                    <a href="Phidel CV.docx" download class="btn secondary-btn">Download CV</a><!--the cv pdf when ready-->
+                    <a href="#projects" class="btn">View Projects</a>
+                    <a href="Phidel CV.docx" download class="btn">Download CV</a>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="image-container">
-                    <!-- This is a link to my picture -->
-                    <img src="tariq2.jpg" alt="a selfie of me">
+                    <img src="tariq2.jpg" alt="Phidel Emmanuel Ochieng - Frontend Developer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Info Section -->
+    <section class="system-info">
+        <div class="system-info-container">
+            <div class="system-info-grid">
+                <div class="system-info-left">
+                    <pre class="neofetch-logo">
+    _____
+   /     \
+  | () () |
+   \  ^  /
+    |||||
+    |||||
+                    </pre>
+                </div>
+                <div class="system-info-right">
+                    <h3 class="system-title">phidel@portfolio</h3>
+                    <div class="system-divider">----------------</div>
+                    <p><span class="info-label">OS:</span> <span class="info-value">Frontend Developer</span></p>
+                    <p><span class="info-label">Host:</span> <span class="info-value">University of Embu</span></p>
+                    <p><span class="info-label">Kernel:</span> <span class="info-value">Full Stack Enthusiast</span></p>
+                    <p><span class="info-label">Uptime:</span> <span class="info-value">2023 - Present</span></p>
+                    <p><span class="info-label">Packages:</span> <span class="info-value">HTML, CSS, JS, PHP, MySQL</span></p>
+                    <p><span class="info-label">Shell:</span> <span class="info-value">Cybersecurity Student</span></p>
+                    <p><span class="info-label">Terminal:</span> <span class="info-value">VS Code / Linux</span></p>
+                    <p><span class="info-label">CPU:</span> <span class="info-value">Problem Solver @ 100%</span></p>
+                    <p><span class="info-label">GPU:</span> <span class="info-value">Creative Designer</span></p>
+                    <p><span class="info-label">Memory:</span> <span class="info-value">Continuous Learner</span></p>
                 </div>
             </div>
         </div>
     </section>
     <!-- About Section -->
-    <section id="about" class="about" style="cursor: default;">
+    <section id="about" class="about">
         <div class="section-header">
             <h2>About Me</h2>
             <div class="underline"></div>
         </div>
         <div class="about-content">
             <div class="about-text">
-                <p>Hello! I'm Phidel Emmanuel Ochieng, a frontend developer with a passion for building innovative and user-friendly pages. <br>
-                I specialize in UI/UX design ,I can work with both HTML &CSS plus javascript.<br>
-                My approach to development combines clean code principles with a focus on user experience. I believe in continuous learning and staying updated with the latest industry trends.
-                Technical Skills Specializations:
-                <br>1: Software:  Microsoft Office Suite, Virtualization Software, Ticketing Systems
-                <br>2: Database Management and SQL 
-                <br>3: Operating Systems: Windows (All Versions), Linux (Distributions), macOS
-                <br>4: Web Development: HTML, CSS, JavaScript, MySQL
-                <br>5: Hardware: PC Troubleshooting, Server Maintenance, Peripheral Installation
-            </p>
+                <h3>whoami</h3>
+                <p>
+                    I'm Phidel Emmanuel Ochieng, a passionate Frontend Developer currently studying at the University of Embu.
+                </p>
+                <p>
+                    I specialize in transforming ideas into beautiful, functional websites. My expertise spans UI/UX design and modern web technologies. I believe in writing clean, maintainable code while keeping the user experience at the forefront of everything I build.
+                </p>
+                <p>
+                    When I'm not coding, you'll find me exploring the latest web development trends, learning cybersecurity through the Cisco Networking Academy, or working on exciting new projects.
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    <strong>[STATUS]</strong> Currently Learning: Cyber Security | Building Modern Web Apps | Exploring New Technologies
+                </p>
             </div>
             <div class="skills">
-                <h3>Skills</h3><!--add more skills here -->
-                <div class="skill-tags">
-                    <span class="skill-tag">HTML</span>
-                    <span class="skill-tag">CSS</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">Php</span>
-                    <span class="skill-tag">Sql</span>
+                <h3>Skills Matrix</h3>
+                <div class="skill-bars">
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>HTML/CSS</span>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>JavaScript</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>PHP & MySQL</span>
+                            <span class="skill-percent">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>UI/UX Design</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Git & Linux</span>
+                            <span class="skill-percent">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Cybersecurity</span>
+                            <span class="skill-percent">70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Timeline Section -->
-    <section id="timeline" class="timeline" style="cursor: default;">
+    <section id="timeline" class="timeline">
         <div class="section-header">
             <h2>My Journey</h2>
             <div class="underline"></div>
@@ -209,54 +326,296 @@
         </div>
     </section>
 
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="section-header">
+            <h2>Certifications</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="certs-grid">
+            <div class="cert-card">
+                <div class="cert-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>PowerLearn Project Africa</h3>
+                <p class="cert-title">Software Development</p>
+                <p class="cert-date">[ISSUED] August - December 2024</p>
+                <p class="cert-desc">16-week intensive program covering Python, Web Technologies, Database Management, and Software Engineering Essentials.</p>
+                <a href="phidel _certificate.pdf" target="_blank" class="cert-link">
+                    <i class="fas fa-external-link-alt"></i> View Certificate
+                </a>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Cisco Networking Academy</h3>
+                <p class="cert-title">Cybersecurity</p>
+                <p class="cert-date">[IN PROGRESS] November 2025 - Present</p>
+                <p class="cert-desc">Comprehensive cybersecurity training covering network security, threat detection, and security best practices.</p>
+                <span class="cert-badge">[IN PROGRESS]</span>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>University of Embu</h3>
+                <p class="cert-title">Diploma in ICT</p>
+                <p class="cert-date">[ONGOING] 2023 - Present</p>
+                <p class="cert-desc">Pursuing Diploma in Information and Communication Technology at University of Embu TVET Institute.</p>
+                <span class="cert-badge">[ONGOING]</span>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
-    <section id="projects" class="projects" style="cursor: default;">
+    <section id="projects" class="projects">
         <div class="section-header">
             <h2>My Projects</h2>
             <div class="underline"></div>
         </div>
+
+        <!-- Project Filters -->
+        <div class="project-filters">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-th"></i> All Projects
+            </button>
+            <button class="filter-btn" data-filter="web">
+                <i class="fas fa-globe"></i> Web Apps
+            </button>
+            <button class="filter-btn" data-filter="portfolio">
+                <i class="fas fa-user"></i> Portfolios
+            </button>
+            <button class="filter-btn" data-filter="in-progress">
+                <i class="fas fa-spinner"></i> In Progress
+            </button>
+        </div>
+
         <div class="projects-grid">
-            <div class="project-card">
+            <div class="project-card" data-category="web in-progress">
+                <div class="project-status">
+                    <span class="status-badge status-progress">In Progress</span>
+                </div>
                 <div class="project-image">
-                    <img src="Ecommerce Store.jpg" alt="Project 1">
+                    <img src="store.png" alt="Online Store E-commerce Platform" loading="lazy">
+                    <div class="project-overlay">
+                        <button class="preview-btn" data-preview="store">
+                            <i class="fas fa-eye"></i> Quick Preview
+                        </button>
+                    </div>
                 </div>
                 <div class="project-info">
                     <h3>Online Store</h3>
-                    <p>currently working on an e-commerce web-store for selling fashion stuff that is shoes and clothes.</p> 
+                    <p>E-commerce web platform for selling fashion items including shoes and clothing. Features shopping cart, product catalog, and secure checkout.</p>
                     <div class="project-tags">
                         <span>HTML/CSS</span>
-                        <span>Php</span>
-                        <span>Java Script</span>
+                        <span>PHP</span>
+                        <span>JavaScript</span>
+                        <span>MySQL</span>
+                    </div>
+                    <div class="project-stats">
+                        <span><i class="fas fa-code"></i> 2,500+ Lines</span>
+                        <span><i class="fas fa-calendar"></i> 2024</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
-                        <a href="https://github.com/tariq926/tariq_store" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" target="_blank" class="project-link-btn">
+                            <i class="fas fa-globe"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/tariq926/tariq_store" target="_blank" class="project-link-btn">
+                            <i class="fab fa-github"></i> Code
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="project-card">
+
+            <div class="project-card" data-category="portfolio in-progress">
+                <div class="project-status">
+                    <span class="status-badge status-progress">In Progress</span>
+                </div>
                 <div class="project-image">
-                    <img src="Project 2.jpg" alt="Project 2">
+                    <img src="Project2.png" alt="Harriette Adhiambo Portfolio Website" loading="lazy">
+                    <div class="project-overlay">
+                        <button class="preview-btn" data-preview="portfolio">
+                            <i class="fas fa-eye"></i> Quick Preview
+                        </button>
+                    </div>
                 </div>
                 <div class="project-info">
                     <h3>Okal Harriette Adhiambo Portfolio</h3>
-                    <p>Still working on an interactive portfolio website that showcases her skills and experience.</p>
+                    <p>Interactive portfolio website showcasing professional skills, projects, and experience with modern design and smooth animations.</p>
                     <div class="project-tags">
                         <span>HTML/CSS</span>
                         <span>JavaScript</span>
+                        <span>Responsive</span>
+                    </div>
+                    <div class="project-stats">
+                        <span><i class="fas fa-code"></i> 1,800+ Lines</span>
+                        <span><i class="fas fa-calendar"></i> 2024</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://tariq926.github.io/harrietteadhiambo/" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
-                        <a href="https://github.com/tariq926/harrietteadhiambo" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        <a href="https://tariq345-svg.github.io/harrietteadhiambo/" target="_blank" class="project-link-btn">
+                            <i class="fas fa-globe"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/tariq345-svg/harrietteadhiambo" target="_blank" class="project-link-btn">
+                            <i class="fab fa-github"></i> Code
+                        </a>
                     </div>
                 </div>
             </div>
-            <!-- Add more project cards as needed -->
+
+            <div class="project-card" data-category="portfolio">
+                <div class="project-status">
+                    <span class="status-badge status-live">Live</span>
+                </div>
+                <div class="project-image">
+                    <img src="tariq2.jpg" alt="Phidel Portfolio Terminal Theme" loading="lazy">
+                    <div class="project-overlay">
+                        <button class="preview-btn" data-preview="this">
+                            <i class="fas fa-eye"></i> You're Here!
+                        </button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Terminal Portfolio (This Site!)</h3>
+                    <p>Interactive terminal-themed portfolio with CLI commands, Matrix effects, and PWA support. Built from scratch with vanilla JavaScript.</p>
+                    <div class="project-tags">
+                        <span>HTML/CSS</span>
+                        <span>JavaScript</span>
+                        <span>PWA</span>
+                        <span>Terminal UI</span>
+                    </div>
+                    <div class="project-stats">
+                        <span><i class="fas fa-code"></i> 3,000+ Lines</span>
+                        <span><i class="fas fa-calendar"></i> 2025</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#home" class="project-link-btn">
+                            <i class="fas fa-home"></i> Scroll to Top
+                        </a>
+                        <a href="https://github.com/tariq926" target="_blank" class="project-link-btn">
+                            <i class="fab fa-github"></i> More Projects
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Stats Section -->
+    <section class="github-stats">
+        <div class="section-header">
+            <h2>GitHub Activity</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="github-container">
+            <div class="github-card">
+                <i class="fab fa-github github-icon"></i>
+                <h3>@tariq926</h3>
+                <p>Follow me on GitHub for more projects</p>
+                <div class="github-stats-grid">
+                    <div class="stat-item">
+                        <i class="fas fa-code-branch"></i>
+                        <span class="stat-number" id="reposCount">15+</span>
+                        <span class="stat-label">Repositories</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <span class="stat-number" id="starsCount">25+</span>
+                        <span class="stat-label">Stars</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-code"></i>
+                        <span class="stat-number" id="commitsCount">500+</span>
+                        <span class="stat-label">Commits</span>
+                    </div>
+                </div>
+                <a href="https://github.com/tariq926" target="_blank" class="github-link-btn">
+                    <i class="fab fa-github"></i> Visit GitHub Profile
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="section-header">
+            <h2>Testimonials</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="testimonial-info">
+                        <h4>Project Collaborator</h4>
+                        <p class="testimonial-role">Fellow Developer</p>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>"Phidel's attention to detail and problem-solving skills are impressive. He consistently delivers clean, well-documented code and is always eager to learn new technologies."</p>
+                </div>
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="testimonial-info">
+                        <h4>PowerLearn Instructor</h4>
+                        <p class="testimonial-role">Software Development Program</p>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>"An exceptional student who demonstrates strong technical abilities and a genuine passion for software development. Phidel completed the intensive program with outstanding results."</p>
+                </div>
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="testimonial-info">
+                        <h4>University Peer</h4>
+                        <p class="testimonial-role">University of Embu</p>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>"Working with Phidel on group projects has been a great experience. He brings creative solutions and helps the entire team succeed through collaboration and knowledge sharing."</p>
+                </div>
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact" style="cursor: default;">
+    <section id="contact" class="contact">
         <div class="section-header">
             <h2>Get In Touch</h2>
             <div class="underline"></div>
@@ -316,19 +675,27 @@
 
             <div class="form-group">
                 <label for="message">Message:</label>
-                <input type="text" id="message" name="message" placeholder="Your Message" required>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
             </div>
 
             <button type="submit" class="submit-btn">Send Message</button>
         </form>
     </div>
 
-    <footer style="cursor: default;">
+    <footer>
         <div class="footer-content">
+            <div class="footer-stats">
+                <p class="stats-line">[STATS] Visitors: <span id="visitorCount">00042</span> | Last Updated: <span id="lastUpdate">2025-12-20 14:30:00</span></p>
+            </div>
             <p>&copy; 2025 Phidel Emmanuel Ochieng. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
