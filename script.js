@@ -4,14 +4,58 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    const bootLoader = document.getElementById('bootLoader');
+    const bootLoaderDuration = 4500;
+
+    // ==========================================
+    // TYPEWRITER EFFECT
+    // ==========================================
+    function typewriter(element, text, callback) {
+        let i = 0;
+        const speed = 50; // typing speed in ms
+        element.innerHTML = ''; // Clear existing content
+
+        function type() {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else {
+                if (callback) callback();
+            }
+        }
+        type();
+    }
+
+    function startTypewriter() {
+        const heroH1 = document.querySelector('.hero-text h1');
+        const heroH2 = document.querySelector('.hero-text h2');
+        const h1Text = 'Phidel Emmanuel Ochieng';
+        const h2Text = 'Frontend Developer & Cybersecurity Enthusiast';
+
+        heroH1.innerHTML = '';
+        heroH2.innerHTML = '';
+        heroH1.style.opacity = '1';
+        heroH2.style.opacity = '1';
+
+        typewriter(heroH1, h1Text, () => {
+            heroH1.innerHTML += '<span class="cursor-blink">_</span>';
+            setTimeout(() => {
+                heroH1.querySelector('.cursor-blink').remove();
+                typewriter(heroH2, h2Text, () => {
+                    heroH2.innerHTML += '<span class="cursor-blink">_</span>';
+                });
+            }, 500);
+        });
+    }
+
     // ==========================================
     // BOOT SEQUENCE
     // ==========================================
-    const bootLoader = document.getElementById('bootLoader');
-
     setTimeout(() => {
         bootLoader.style.display = 'none';
-    }, 4500);
+        startTypewriter();
+    }, bootLoaderDuration);
 
     // ==========================================
     // VISITOR COUNTER & LAST UPDATE
@@ -58,11 +102,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const columns = matrixCanvas.width / fontSize;
         const drops = Array(Math.floor(columns)).fill(1);
 
+        const color = getComputedStyle(document.body).getPropertyValue('--terminal-text');
+
         function draw() {
             ctx.fillStyle = 'rgba(13, 2, 8, 0.05)';
             ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
 
-            ctx.fillStyle = '#00FF41';
+            ctx.fillStyle = color;
             ctx.font = fontSize + 'px monospace';
 
             for (let i = 0; i < drops.length; i++) {
@@ -150,6 +196,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeCLI = document.getElementById('closeCLI');
     const cliInput = document.getElementById('cliInput');
     const cliOutput = document.getElementById('cliOutput');
+
+    const commandHistory = [];
+    let historyIndex = -1;
 
     const commands = {
         help: {
@@ -326,23 +375,32 @@ Education & Certifications
     // Handle CLI input
     if (cliInput) {
         cliInput.addEventListener('keydown', function(e) {
+            const input = this.value.trim().toLowerCase();
+
             if (e.key === 'Enter') {
-                const input = this.value.trim().toLowerCase();
                 const output = document.createElement('p');
-                output.innerHTML = `<span style="opacity:0.7;">phidel@portfolio:~$</span> ${this.value}`;
+                output.innerHTML = `<span class="cli-prompt">phidel@portfolio:~$</span> ${this.value}`;
+                output.classList.add('cli-command');
                 cliOutput.appendChild(output);
 
-                if (input in commands) {
-                    const result = commands[input].action();
-                    if (result) {
-                        const response = document.createElement('p');
-                        response.innerHTML = result.replace(/\n/g, '<br>');
-                        cliOutput.appendChild(response);
+                if (input) {
+                    commandHistory.push(this.value);
+                    historyIndex = commandHistory.length;
+
+                    if (input in commands) {
+                        const result = commands[input].action();
+                        if (result) {
+                            const response = document.createElement('p');
+                            response.innerHTML = result.replace(/\n/g, '<br>');
+                            response.classList.add('cli-success');
+                            cliOutput.appendChild(response);
+                        }
+                    } else {
+                        const error = document.createElement('p');
+                        error.innerHTML = `Command not found: ${input}<br>Type 'help' for available commands.`;
+                        error.classList.add('cli-error');
+                        cliOutput.appendChild(error);
                     }
-                } else if (input) {
-                    const error = document.createElement('p');
-                    error.innerHTML = `Command not found: ${input}<br>Type 'help' for available commands.`;
-                    cliOutput.appendChild(error);
                 }
 
                 const spacer = document.createElement('p');
@@ -350,6 +408,19 @@ Education & Certifications
 
                 this.value = '';
                 cliOutput.scrollTop = cliOutput.scrollHeight;
+            } else if (e.key === 'ArrowUp') {
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    this.value = commandHistory[historyIndex];
+                }
+            } else if (e.key === 'ArrowDown') {
+                if (historyIndex < commandHistory.length - 1) {
+                    historyIndex++;
+                    this.value = commandHistory[historyIndex];
+                } else {
+                    historyIndex = commandHistory.length;
+                    this.value = '';
+                }
             }
         });
     }
@@ -549,7 +620,40 @@ Education & Certifications
         });
     });
 
-    images.forEach(img => imageObserver.observe(img));
+    // ==========================================
+    // PROJECT PREVIEW MODAL
+    // ==========================================
+    const modal = document.getElementById('projectPreviewModal');
+    const closeBtn = document.querySelector('.close-btn');
+    const previewBtns = document.querySelectorAll('.preview-btn');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+
+    previewBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const card = btn.closest('.project-card');
+            const title = card.dataset.title;
+            const image = card.dataset.image;
+            const description = card.dataset.description;
+
+            modalTitle.textContent = title;
+            modalImage.src = image;
+            modalDescription.textContent = description;
+
+            modal.style.display = 'block';
+        });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target == modal) {
+            modal.style.display = 'none';
+        }
+    });
 
 });
 

@@ -71,11 +71,11 @@
             <span class="cli-title">phidel@portfolio:~$ terminal</span>
             <div class="cli-controls">
                 <button class="cli-btn minimize" title="Minimize">_</button>
-                <button class="cli-btn close" id="closeCLI" title="Close">×</button>
+                <button class="cli-btn close" id="closeCLI" title="Close" aria-label="Close Terminal">×</button>
             </div>
         </div>
         <div class="cli-content">
-            <div class="cli-output" id="cliOutput">
+            <div class="cli-output" id="cliOutput" role="log" aria-live="polite" aria-atomic="false">
                 <p>Welcome to Phidel's Portfolio Terminal [Version 1.0.0]</p>
                 <p>Type 'help' for available commands.</p>
                 <p></p>
@@ -246,8 +246,8 @@
  |  _/| ' \| / _` / -_)| |
  |_|  |_||_|_\__,_\___||_|
                 </pre>
-                <h1>Phidel Emmanuel Ochieng<span class="cursor-blink">_</span></h1>
-                <h2>Frontend Developer & Cybersecurity Enthusiast</h2>
+                <h1></h1>
+                <h2></h2>
                 <p>Building secure, beautiful web experiences one line of code at a time.<br>
                    Passionate about clean code, user experience, and continuous learning.</p>
                 <div class="cta-buttons">
@@ -499,7 +499,7 @@
         </div>
 
         <div class="projects-grid">
-            <div class="project-card" data-category="web in-progress">
+            <div class="project-card" data-category="web in-progress" data-title="Online Store" data-image="store.png" data-description="E-commerce web platform for selling fashion items including shoes and clothing. Features shopping cart, product catalog, and secure checkout.">
                 <div class="project-status">
                     <span class="status-badge status-progress">In Progress</span>
                 </div>
@@ -525,17 +525,48 @@
                         <span><i class="fas fa-calendar"></i> 2024</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" target="_blank" class="project-link-btn">
-                            <i class="fas fa-globe"></i> Live Demo
-                        </a>
                         <a href="https://github.com/tariq926/tariq_store" target="_blank" class="project-link-btn">
                             <i class="fab fa-github"></i> Code
                         </a>
                     </div>
                 </div>
             </div>
+            <div class="project-card" data-category="web in-progress" data-title="Smart Life Manager" data-image="smart-life.png" data-description="Interactive portfolio website showcasing professional skills, projects, and experience with modern design and smooth animations.">
+                <div class="project-status">
+                    <span class="status-badge status-progress">In Progress</span>
+                </div>
+                <div class="project-image">
+                    <img src="smart-life.png" alt="smart-life screenshot" loading="lazy">
+                    <div class="project-overlay">
+                        <button class="preview-btn" data-preview="store">
+                            <i class="fas fa-eye"></i> Quick Preview
+                        </button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Smart-Life Manager</h3>
+                    <p>A system that users can use to manage their finanaces, daily activities and tasks</p>
+                    <div class="project-tags">
+                        <span>JavaScript</span>
+                        <span>MongoDB with Mongoose</span>
+                        <span>Node.js</span>
+                        <span>React with Typescript</span>
+                        <span>Redux</span>
+                        <span>Material UI</span>
+                    </div>
+                    <div class="project-stats">
+                        <span><i class="fas fa-code"></i> 3,500+ Lines</span>
+                        <span><i class="fas fa-calendar"></i> 2025</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/tariq926/smart-life-manager" target="_blank" class="project-link-btn">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-            <div class="project-card" data-category="portfolio in-progress">
+            <div class="project-card" data-category="portfolio in-progress" data-title="Okal Harriette Adhiambo Portfolio" data-image="Project2.png" data-description="Interactive portfolio website showcasing professional skills, projects, and experience with modern design and smooth animations.">
                 <div class="project-status">
                     <span class="status-badge status-progress">In Progress</span>
                 </div>
@@ -570,7 +601,7 @@
                 </div>
             </div>
 
-            <div class="project-card" data-category="portfolio">
+            <div class="project-card" data-category="portfolio" data-title="Terminal Portfolio (This Site!)" data-image="tariq2.jpg" data-description="Interactive terminal-themed portfolio with CLI commands, Matrix effects, and PWA support. Built from scratch with vanilla JavaScript.">
                 <div class="project-status">
                     <span class="status-badge status-live">Live</span>
                 </div>
@@ -802,7 +833,6 @@
     <div class="scroll-to-top" id="scrollToTop">
         <i class="fas fa-arrow-up"></i>
     </div>
-
     <script src="script.js"></script>
 </body>
-</html>
+</html> 
