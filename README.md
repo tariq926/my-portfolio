@@ -275,6 +275,3 @@ Free to use for personal portfolios. Please credit if you use the code structure
 
 ---
 
-**Built with 💚 and ☕ by Phidel Emmanuel Ochieng**
-
-*Generated with Terminal-First Design Principles - 2025*
