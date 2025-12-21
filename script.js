@@ -85,6 +85,50 @@ document.addEventListener('DOMContentLoaded', function() {
     updateVisitorCount();
 
     // ==========================================
+    // REAL GITHUB API INTEGRATION
+    // ==========================================
+    async function fetchGitHubStats() {
+        try {
+            const username = 'tariq926';
+            const response = await fetch(`https://api.github.com/users/${username}`);
+            const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
+
+            if (response.ok && reposResponse.ok) {
+                const userData = await response.json();
+                const reposData = await reposResponse.json();
+
+                // Calculate total stars
+                const totalStars = reposData.reduce((acc, repo) => acc + repo.stargazers_count, 0);
+
+                // Update the stats in the DOM
+                const reposCount = document.getElementById('reposCount');
+                const starsCount = document.getElementById('starsCount');
+                const commitsCount = document.getElementById('commitsCount');
+
+                if (reposCount) {
+                    reposCount.textContent = userData.public_repos + '+';
+                }
+                if (starsCount) {
+                    starsCount.textContent = totalStars + '+';
+                }
+
+                // For commits, we'll estimate based on repos (actual commit count requires more API calls)
+                if (commitsCount) {
+                    const estimatedCommits = reposData.length * 50; // Rough estimate
+                    commitsCount.textContent = estimatedCommits + '+';
+                }
+
+                console.log('[GitHub] Stats updated successfully');
+            }
+        } catch (error) {
+            console.log('[GitHub] Using default stats (API unavailable):', error);
+        }
+    }
+
+    // Fetch GitHub stats on load
+    fetchGitHubStats();
+
+    // ==========================================
     // MATRIX RAIN EFFECT
     // ==========================================
     const matrixCanvas = document.getElementById('matrixCanvas');
@@ -206,20 +250,29 @@ document.addEventListener('DOMContentLoaded', function() {
             action: () => `
 Available Commands:
 ------------------
-help      - Show this help message
-about     - Display information about me
-skills    - List my technical skills
-projects  - Show my projects
-contact   - Display contact information
-education - Show education and certifications
-clear     - Clear the terminal
-date      - Display current date and time
-github    - Open GitHub profile
-linkedin  - Open LinkedIn profile
-matrix    - Toggle Matrix rain effect
-theme     - Change color theme
-ascii     - Display ASCII art
-quote     - Random programming quote`
+help        - Show this help message
+about       - Display information about me
+whoami      - Who is Phidel?
+skills      - List my technical skills
+projects    - Show my projects
+contact     - Display contact information
+education   - Show education and certifications
+experience  - View work experience
+achievements- View achievements & milestones
+resume      - Download my resume
+blog        - View blog posts
+services    - View services offered
+game        - Play a number guessing game
+guess <num> - Guess a number (use with game)
+fun-fact    - Random fun facts about me
+clear       - Clear the terminal
+date        - Display current date and time
+github      - Open GitHub profile
+linkedin    - Open LinkedIn profile
+matrix      - Toggle Matrix rain effect
+theme       - Change color theme
+ascii       - Display ASCII art
+quote       - Random programming quote`
         },
         about: {
             desc: 'About Phidel',
@@ -352,6 +405,151 @@ Education & Certifications
                 ];
                 return quotes[Math.floor(Math.random() * quotes.length)];
             }
+        },
+        resume: {
+            desc: 'Download resume',
+            action: () => {
+                const link = document.createElement('a');
+                link.href = 'Phidel CV.docx';
+                link.download = 'Phidel_Emmanuel_Ochieng_CV.docx';
+                link.click();
+                return 'Downloading resume... Check your downloads folder!';
+            }
+        },
+        achievements: {
+            desc: 'View achievements',
+            action: () => `
+🏆 Achievements & Milestones
+============================
+✅ Completed 16-week Software Development Program (PowerLearn Africa)
+✅ Built 15+ repositories on GitHub
+✅ Certified in Critical Infrastructure Protection (OPSWAT)
+✅ Currently pursuing Cybersecurity certification (Cisco)
+✅ Created terminal-themed interactive portfolio
+✅ Mastered responsive web design & PWA development
+✅ Active contributor to open-source projects
+
+🎯 Current Goals:
+→ Master React.js and Node.js
+→ Complete Cisco Cybersecurity certification
+→ Build 5 full-stack projects
+→ Contribute to major open-source projects`
+        },
+        'fun-fact': {
+            desc: 'Random fun fact',
+            action: () => {
+                const facts = [
+                    '🎮 I debug better with music on - usually lo-fi beats!',
+                    '☕ My code-to-coffee ratio is approximately 100 lines per cup',
+                    '🌙 I\'m most productive coding between 10 PM and 2 AM',
+                    '🐛 My first bug took me 3 hours to fix... it was a missing semicolon',
+                    '📚 I learned to code by building a website for my school project',
+                    '🎯 I can solve a Rubik\'s cube while thinking about code architecture',
+                    '💚 Green is my favorite color - that\'s why this portfolio is green!',
+                    '🔐 I\'m passionate about cybersecurity because I love solving puzzles'
+                ];
+                return facts[Math.floor(Math.random() * facts.length)];
+            }
+        },
+        game: {
+            desc: 'Play a mini game',
+            action: () => {
+                return `
+🎮 GUESS THE NUMBER GAME
+========================
+I'm thinking of a number between 1 and 100.
+Type: guess <number>
+
+Example: guess 50
+
+Good luck! 🍀`;
+            }
+        },
+        guess: {
+            desc: 'Guess a number (1-100)',
+            action: (input) => {
+                if (!window.secretNumber) {
+                    window.secretNumber = Math.floor(Math.random() * 100) + 1;
+                    window.guessCount = 0;
+                }
+
+                const userInput = input.split(' ')[1];
+                const guess = parseInt(userInput);
+
+                if (!guess || guess < 1 || guess > 100) {
+                    return 'Please enter a valid number between 1 and 100. Example: guess 50';
+                }
+
+                window.guessCount++;
+
+                if (guess === window.secretNumber) {
+                    const result = `
+🎉 CONGRATULATIONS! 🎉
+You guessed it right! The number was ${window.secretNumber}
+It took you ${window.guessCount} attempts.
+
+Type 'game' to play again!`;
+                    delete window.secretNumber;
+                    delete window.guessCount;
+                    return result;
+                } else if (guess < window.secretNumber) {
+                    return `📈 Too low! Try a higher number. (Attempt ${window.guessCount})`;
+                } else {
+                    return `📉 Too high! Try a lower number. (Attempt ${window.guessCount})`;
+                }
+            }
+        },
+        whoami: {
+            desc: 'Who is Phidel?',
+            action: () => `
+phidel@portfolio:~$ whoami
+================================
+I'm Phidel Emmanuel Ochieng, a 21-year-old developer from Embu, Kenya.
+I started coding in 2023 and fell in love with creating web experiences.
+
+My journey: Student → Self-taught Developer → Cybersecurity Enthusiast
+
+What drives me? The thrill of solving complex problems and building
+things that make people's lives easier. Every line of code is a step
+toward mastering my craft.
+
+Fun fact: I built this entire portfolio from scratch with vanilla JS! 💚`
+        },
+        blog: {
+            desc: 'View blog posts',
+            action: () => {
+                window.location.hash = '#blog';
+                return 'Navigating to blog section...';
+            }
+        },
+        services: {
+            desc: 'View services offered',
+            action: () => {
+                window.location.hash = '#services';
+                return 'Navigating to services section...';
+            }
+        },
+        experience: {
+            desc: 'View work experience',
+            action: () => `
+💼 Work Experience
+==================
+🔧 Freelance Web Developer (2024 - Present)
+   → Built custom websites for local businesses
+   → Specialized in responsive design & PWAs
+   → Technologies: HTML, CSS, JavaScript, PHP
+
+🎓 Student Developer at University of Embu (2023 - Present)
+   → Pursuing Diploma in ICT
+   → Lead developer for student projects
+   → Mentor for junior students
+
+📚 Software Development Intern - PowerLearn Project (2024)
+   → 16-week intensive program
+   → Built 10+ projects
+   → Specialized in Web Development
+
+Type 'contact' to work with me!`
         }
     };
 
@@ -387,8 +585,12 @@ Education & Certifications
                     commandHistory.push(this.value);
                     historyIndex = commandHistory.length;
 
-                    if (input in commands) {
-                        const result = commands[input].action();
+                    // Extract command and arguments
+                    const parts = input.split(' ');
+                    const command = parts[0];
+
+                    if (command in commands) {
+                        const result = commands[command].action(input);
                         if (result) {
                             const response = document.createElement('p');
                             response.innerHTML = result.replace(/\n/g, '<br>');
@@ -397,7 +599,7 @@ Education & Certifications
                         }
                     } else {
                         const error = document.createElement('p');
-                        error.innerHTML = `Command not found: ${input}<br>Type 'help' for available commands.`;
+                        error.innerHTML = `Command not found: ${command}<br>Type 'help' for available commands.`;
                         error.classList.add('cli-error');
                         cliOutput.appendChild(error);
                     }
@@ -462,6 +664,111 @@ Education & Certifications
                 }
             });
         });
+    }
+
+    // ==========================================
+    // MOBILE MENU OVERLAY (Bottom Nav Menu Button)
+    // ==========================================
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+
+    // Mobile menu buttons that trigger other features
+    const mobileThemeBtn = document.getElementById('mobileThemeBtn');
+    const mobileMatrixBtn = document.getElementById('mobileMatrixBtn');
+    const mobileTerminalBtn = document.getElementById('mobileTerminalBtn');
+    const mobileShareBtn = document.getElementById('mobileShareBtn');
+    const mobileInstallBtn = document.getElementById('mobileInstallBtn');
+
+    if (mobileMenuToggle && mobileMenuOverlay) {
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            mobileMenuOverlay.classList.add('active');
+        });
+    }
+
+    if (closeMobileMenu && mobileMenuOverlay) {
+        closeMobileMenu.addEventListener('click', function() {
+            mobileMenuOverlay.classList.remove('active');
+        });
+    }
+
+    // Close mobile menu when clicking outside
+    if (mobileMenuOverlay) {
+        mobileMenuOverlay.addEventListener('click', function(e) {
+            if (e.target === mobileMenuOverlay) {
+                mobileMenuOverlay.classList.remove('active');
+            }
+        });
+    }
+
+    // Mobile menu action buttons
+    if (mobileThemeBtn) {
+        mobileThemeBtn.addEventListener('click', function() {
+            if (themeToggle) themeToggle.click();
+            mobileMenuOverlay.classList.remove('active');
+        });
+    }
+
+    if (mobileMatrixBtn) {
+        mobileMatrixBtn.addEventListener('click', function() {
+            if (matrixToggle) matrixToggle.click();
+            mobileMenuOverlay.classList.remove('active');
+        });
+    }
+
+    if (mobileTerminalBtn) {
+        mobileTerminalBtn.addEventListener('click', function() {
+            showCLI();
+            mobileMenuOverlay.classList.remove('active');
+        });
+    }
+
+    if (mobileShareBtn) {
+        mobileShareBtn.addEventListener('click', async function() {
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'Phidel Emmanuel Ochieng - Portfolio',
+                        text: 'Check out this amazing terminal-themed developer portfolio!',
+                        url: window.location.href
+                    });
+                } catch (error) {
+                    fallbackShare();
+                }
+            } else {
+                fallbackShare();
+            }
+            mobileMenuOverlay.classList.remove('active');
+        });
+    }
+
+    // Mobile menu links
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenuOverlay.classList.remove('active');
+        });
+    });
+
+    // Swipe down to close mobile menu
+    let menuTouchStartY = 0;
+    let menuTouchEndY = 0;
+
+    if (mobileMenuOverlay) {
+        const menuContent = mobileMenuOverlay.querySelector('.mobile-menu-content');
+        if (menuContent) {
+            menuContent.addEventListener('touchstart', function(e) {
+                menuTouchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+
+            menuContent.addEventListener('touchend', function(e) {
+                menuTouchEndY = e.changedTouches[0].screenY;
+                if (menuTouchEndY - menuTouchStartY > 100) {
+                    mobileMenuOverlay.classList.remove('active');
+                }
+            }, { passive: true });
+        }
     }
 
     // ==========================================
