@@ -128,6 +128,9 @@
 <body>
     <a href="#home" class="skip-link">Skip to main content</a>
 
+    <!-- Reading progress -->
+    <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
     <!-- Header / Navigation -->
     <header class="site-header" id="siteHeader">
         <div class="container nav-container">
@@ -161,7 +164,12 @@
     <main>
         <!-- Hero Section -->
         <section id="home" class="hero">
-            <div class="hero-glow" aria-hidden="true"></div>
+            <div class="hero-glow" aria-hidden="true">
+                <span class="orb orb-1"></span>
+                <span class="orb orb-2"></span>
+                <span class="orb orb-3"></span>
+            </div>
+            <div class="grid-overlay" aria-hidden="true"></div>
             <div class="container hero-content">
                 <div class="hero-text">
                     <span class="hero-badge"><span class="pulse-dot" aria-hidden="true"></span> Available for freelance projects</span>
@@ -192,23 +200,57 @@
             </div>
             <div class="container hero-stats" role="list">
                 <div class="stat-card" role="listitem">
-                    <span class="stat-value" data-count="10">10+</span>
+                    <span class="stat-value" data-count="10" data-suffix="+">10+</span>
                     <span class="stat-caption">Projects Built</span>
                 </div>
                 <div class="stat-card" role="listitem">
-                    <span class="stat-value" data-count="5">5+</span>
+                    <span class="stat-value" data-count="5" data-suffix="+">5+</span>
                     <span class="stat-caption">Happy Clients</span>
                 </div>
                 <div class="stat-card" role="listitem">
-                    <span class="stat-value" data-count="3">3+</span>
+                    <span class="stat-value" data-count="3" data-suffix="+">3+</span>
                     <span class="stat-caption">Years Learning</span>
                 </div>
                 <div class="stat-card" role="listitem">
-                    <span class="stat-value" data-count="5">5</span>
+                    <span class="stat-value" data-count="5" data-suffix="">5</span>
                     <span class="stat-caption">Certifications</span>
                 </div>
             </div>
         </section>
+
+        <!-- Tech stack marquee -->
+        <div class="marquee" aria-label="Technologies I work with">
+            <div class="marquee-track">
+                <ul class="marquee-group">
+                    <li><i class="fab fa-html5" aria-hidden="true"></i> HTML5</li>
+                    <li><i class="fab fa-css3-alt" aria-hidden="true"></i> CSS3</li>
+                    <li><i class="fab fa-js" aria-hidden="true"></i> JavaScript</li>
+                    <li><i class="fab fa-react" aria-hidden="true"></i> React</li>
+                    <li><i class="fas fa-code" aria-hidden="true"></i> TypeScript</li>
+                    <li><i class="fab fa-node-js" aria-hidden="true"></i> Node.js</li>
+                    <li><i class="fab fa-php" aria-hidden="true"></i> PHP</li>
+                    <li><i class="fas fa-database" aria-hidden="true"></i> MySQL</li>
+                    <li><i class="fas fa-leaf" aria-hidden="true"></i> MongoDB</li>
+                    <li><i class="fab fa-python" aria-hidden="true"></i> Python</li>
+                    <li><i class="fab fa-git-alt" aria-hidden="true"></i> Git</li>
+                    <li><i class="fab fa-linux" aria-hidden="true"></i> Linux</li>
+                </ul>
+                <ul class="marquee-group" aria-hidden="true">
+                    <li><i class="fab fa-html5" aria-hidden="true"></i> HTML5</li>
+                    <li><i class="fab fa-css3-alt" aria-hidden="true"></i> CSS3</li>
+                    <li><i class="fab fa-js" aria-hidden="true"></i> JavaScript</li>
+                    <li><i class="fab fa-react" aria-hidden="true"></i> React</li>
+                    <li><i class="fas fa-code" aria-hidden="true"></i> TypeScript</li>
+                    <li><i class="fab fa-node-js" aria-hidden="true"></i> Node.js</li>
+                    <li><i class="fab fa-php" aria-hidden="true"></i> PHP</li>
+                    <li><i class="fas fa-database" aria-hidden="true"></i> MySQL</li>
+                    <li><i class="fas fa-leaf" aria-hidden="true"></i> MongoDB</li>
+                    <li><i class="fab fa-python" aria-hidden="true"></i> Python</li>
+                    <li><i class="fab fa-git-alt" aria-hidden="true"></i> Git</li>
+                    <li><i class="fab fa-linux" aria-hidden="true"></i> Linux</li>
+                </ul>
+            </div>
+        </div>
 
         <!-- About Section -->
         <section id="about" class="section about">
@@ -313,6 +355,7 @@
                     <h2 class="section-title">My Journey</h2>
                 </div>
                 <div class="timeline-container">
+                    <span class="timeline-progress" id="timelineProgress" aria-hidden="true"></span>
                     <div class="timeline-item reveal">
                         <div class="timeline-dot" aria-hidden="true"></div>
                         <div class="timeline-content">
@@ -367,7 +410,7 @@
                     <span class="section-eyebrow">Career</span>
                     <h2 class="section-title">Work Experience</h2>
                 </div>
-                <div class="experience-grid">
+                <div class="experience-grid reveal-stagger">
                     <article class="experience-card reveal">
                         <div class="experience-header">
                             <div class="experience-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
@@ -427,7 +470,7 @@
                     <span class="section-eyebrow">Credentials</span>
                     <h2 class="section-title">Certifications</h2>
                 </div>
-                <div class="certs-grid">
+                <div class="certs-grid reveal-stagger">
                     <article class="cert-card reveal">
                         <div class="cert-icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
                         <h3>PowerLearn Project Africa</h3>
@@ -479,7 +522,7 @@
                     <span class="section-eyebrow">Expertise</span>
                     <h2 class="section-title">Services I Offer</h2>
                 </div>
-                <div class="services-grid">
+                <div class="services-grid reveal-stagger">
                     <article class="service-card reveal">
                         <div class="service-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
                         <h3>Web Development</h3>
@@ -569,7 +612,7 @@
                     <button class="filter-btn" data-filter="in-progress"><i class="fas fa-spinner" aria-hidden="true"></i> In Progress</button>
                 </div>
 
-                <div class="projects-grid">
+                <div class="projects-grid reveal-stagger">
                     <article class="project-card reveal" data-category="web in-progress">
                         <div class="project-image">
                             <img src="store.png" alt="Online Store E-commerce Platform" loading="lazy">
@@ -759,7 +802,7 @@
                     <span class="section-eyebrow">Insights</span>
                     <h2 class="section-title">Latest Articles</h2>
                 </div>
-                <div class="blog-grid">
+                <div class="blog-grid reveal-stagger">
                     <article class="blog-card reveal">
                         <div class="blog-meta">
                             <span><i class="fas fa-calendar" aria-hidden="true"></i> December 15, 2024</span>
@@ -827,7 +870,7 @@
                     <span class="section-eyebrow">From My Editor</span>
                     <h2 class="section-title">Code Showcase</h2>
                 </div>
-                <div class="snippets-grid">
+                <div class="snippets-grid reveal-stagger">
                     <article class="snippet-card reveal">
                         <div class="snippet-header">
                             <h3><i class="fas fa-code" aria-hidden="true"></i> Matrix Rain Effect</h3>
@@ -951,7 +994,7 @@ body.theme-light {
                     <span class="section-eyebrow">Social Proof</span>
                     <h2 class="section-title">Testimonials</h2>
                 </div>
-                <div class="testimonials-grid">
+                <div class="testimonials-grid reveal-stagger">
                     <article class="testimonial-card reveal">
                         <div class="testimonial-rating" aria-label="5 out of 5 stars">
                             <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
