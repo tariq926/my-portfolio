@@ -4,8 +4,8 @@
   "description": "Frontend Developer & Cybersecurity Enthusiast Portfolio",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0D0208",
-  "theme_color": "#00FF41",
+  "background_color": "#0b1120",
+  "theme_color": "#0b1120",
   "orientation": "portrait-primary",
   "icons": [
     {

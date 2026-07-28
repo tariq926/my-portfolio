@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Security -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self' https://api.github.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
     <!-- SEO Meta Tags -->
     <meta name="description" content="Phidel Emmanuel Ochieng - Frontend Developer & Cybersecurity Enthusiast. Building secure, beautiful web experiences with HTML, CSS, JavaScript, PHP & MySQL.">
     <meta name="keywords" content="Frontend Developer, Web Developer, Cybersecurity, HTML, CSS, JavaScript, PHP, MySQL, Portfolio, Phidel Ochieng">
@@ -28,13 +32,18 @@
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#00FF41">
+    <meta name="theme-color" content="#0b1120">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Phidel Portfolio">
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <!-- JSON-LD Structured Data for SEO -->
     <script type="application/ld+json">
@@ -117,996 +126,714 @@
     </script>
 </head>
 <body>
-    <!-- Boot Loader -->
-    <div id="bootLoader" class="boot-loader">
-        <div class="boot-content">
-            <pre class="boot-logo">
- ____  _     _     _      _
-|  _ \| |__ (_) __| | ___| |
-| |_) | '_ \| |/ _` |/ _ \ |
-|  __/| | | | | (_| |  __/ |
-|_|   |_| |_|_|\__,_|\___|_|
-            </pre>
-            <div class="boot-text">
-                <p>[<span class="boot-ok">OK</span>] Initializing portfolio system...</p>
-                <p>[<span class="boot-ok">OK</span>] Loading user interface components...</p>
-                <p>[<span class="boot-ok">OK</span>] Establishing secure connection...</p>
-                <p>[<span class="boot-ok">OK</span>] Mounting file systems...</p>
-                <p>[<span class="boot-ok">OK</span>] Loading projects database...</p>
-                <p>[<span class="boot-ok">OK</span>] Initializing skills matrix...</p>
-                <p class="boot-ready">[<span class="boot-ok">READY</span>] phidel@portfolio:~$ Welcome</p>
-            </div>
-            <div class="boot-progress">
-                <div class="boot-progress-bar"></div>
+    <a href="#home" class="skip-link">Skip to main content</a>
+
+    <!-- Header / Navigation -->
+    <header class="site-header" id="siteHeader">
+        <div class="container nav-container">
+            <a href="#home" class="brand" aria-label="Phidel Ochieng - Home">
+                <span class="brand-mark">PO</span>
+                <span class="brand-text">Phidel<span class="brand-dot">.</span>Ochieng</span>
+            </a>
+            <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#timeline" class="nav-link">Journey</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#blog" class="nav-link">Articles</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <button id="themeToggle" class="icon-btn" title="Toggle light / dark theme" aria-label="Toggle light or dark theme">
+                    <i class="fas fa-sun" aria-hidden="true"></i>
+                </button>
+                <a href="#contact" class="btn btn-primary btn-sm nav-cta">Hire Me</a>
+                <button id="navToggle" class="icon-btn nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="siteNav">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
-    </div>
-
-    <!-- Matrix Rain Canvas -->
-    <canvas id="matrixCanvas" class="matrix-canvas" style="display:none;"></canvas>
-
-    <!-- Terminal CLI Overlay -->
-    <div id="terminalCLI" class="terminal-cli" style="display:none;">
-        <div class="cli-header">
-            <span class="cli-title">phidel@portfolio:~$ terminal</span>
-            <div class="cli-controls">
-                <button class="cli-btn minimize" title="Minimize">_</button>
-                <button class="cli-btn close" id="closeCLI" title="Close" aria-label="Close Terminal">×</button>
-            </div>
-        </div>
-        <div class="cli-content">
-            <div class="cli-output" id="cliOutput" role="log" aria-live="polite" aria-atomic="false">
-                <p>Welcome to Phidel's Portfolio Terminal [Version 1.0.0]</p>
-                <p>Type 'help' for available commands.</p>
-                <p></p>
-            </div>
-            <div class="cli-input-line">
-                <span class="cli-prompt">phidel@portfolio:~$</span>
-                <input type="text" id="cliInput" class="cli-input" autocomplete="off" spellcheck="false">
-            </div>
-        </div>
-    </div>
-
-    <!-- Theme Switcher & Controls -->
-    <div class="theme-controls">
-        <button id="themeToggle" class="control-btn" title="Change Theme" aria-label="Toggle color theme">
-            <i class="fas fa-palette"></i>
-        </button>
-        <button id="matrixToggle" class="control-btn" title="Toggle Matrix Rain" aria-label="Toggle matrix effect">
-            <i class="fas fa-th"></i>
-        </button>
-        <button id="cliToggle" class="control-btn" title="Open Terminal (Ctrl + ~)" aria-label="Open terminal">
-            <i class="fas fa-terminal"></i>
-        </button>
-        <button id="shareBtn" class="control-btn" title="Share Portfolio" aria-label="Share this portfolio">
-            <i class="fas fa-share-alt"></i>
-        </button>
-        <button id="installBtn" class="control-btn" title="Install App" aria-label="Install as app" style="display: none;">
-            <i class="fas fa-download"></i>
-        </button>
-    </div>
-
-    <!-- Mobile Menu Overlay -->
-    <div id="mobileMenuOverlay" class="mobile-menu-overlay">
-        <div class="mobile-menu-content">
-            <div class="mobile-menu-header">
-                <h3>Portfolio Menu</h3>
-                <button id="closeMobileMenu" class="mobile-menu-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-
-            <div class="mobile-menu-items">
-                <h4 class="mobile-menu-section-title">Features</h4>
-
-                <button id="mobileThemeBtn" class="mobile-menu-btn">
-                    <i class="fas fa-palette"></i>
-                    <div class="mobile-menu-btn-text">
-                        <span class="mobile-menu-btn-title">Change Theme</span>
-                        <span class="mobile-menu-btn-desc">Switch color theme</span>
-                    </div>
-                </button>
-
-                <button id="mobileMatrixBtn" class="mobile-menu-btn">
-                    <i class="fas fa-th"></i>
-                    <div class="mobile-menu-btn-text">
-                        <span class="mobile-menu-btn-title">Matrix Rain</span>
-                        <span class="mobile-menu-btn-desc">Toggle falling code effect</span>
-                    </div>
-                </button>
-
-                <button id="mobileTerminalBtn" class="mobile-menu-btn">
-                    <i class="fas fa-terminal"></i>
-                    <div class="mobile-menu-btn-text">
-                        <span class="mobile-menu-btn-title">Open Terminal</span>
-                        <span class="mobile-menu-btn-desc">Interactive command line</span>
-                    </div>
-                </button>
-
-                <button id="mobileShareBtn" class="mobile-menu-btn">
-                    <i class="fas fa-share-alt"></i>
-                    <div class="mobile-menu-btn-text">
-                        <span class="mobile-menu-btn-title">Share Portfolio</span>
-                        <span class="mobile-menu-btn-desc">Share this site</span>
-                    </div>
-                </button>
-
-                <button id="mobileInstallBtn" class="mobile-menu-btn" style="display: none;">
-                    <i class="fas fa-download"></i>
-                    <div class="mobile-menu-btn-text">
-                        <span class="mobile-menu-btn-title">Install App</span>
-                        <span class="mobile-menu-btn-desc">Install as mobile app</span>
-                    </div>
-                </button>
-
-                <h4 class="mobile-menu-section-title">Quick Links</h4>
-
-                <a href="#home" class="mobile-menu-btn mobile-menu-link">
-                    <i class="fas fa-home"></i>
-                    <div class="mobile-menu-btn-text">
-                        <span class="mobile-menu-btn-title">Home</span>
-                    </div>
-                </a>
-
-                <a href="#about" class="mobile-menu-btn mobile-menu-link">
-                    <i class="fas fa-user"></i>
-                    <div class="mobile-menu-btn-text">
-                        <span class="mobile-menu-btn-title">About Me</span>
-                    </div>
-                </a>
-
-                <a href="#projects" class="mobile-menu-btn mobile-menu-link">
-                    <i class="fas fa-code"></i>
-                    <div class="mobile-menu-btn-text">
-                        <span class="mobile-menu-btn-title">Projects</span>
-                    </div>
-                </a>
-
-                <a href="#contact" class="mobile-menu-btn mobile-menu-link">
-                    <i class="fas fa-envelope"></i>
-                    <div class="mobile-menu-btn-text">
-                        <span class="mobile-menu-btn-title">Contact</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mobile Bottom Navigation -->
-    <nav class="mobile-nav">
-        <a href="#home" class="mobile-nav-item active" data-section="home">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="#about" class="mobile-nav-item" data-section="about">
-            <i class="fas fa-user"></i>
-            <span>About</span>
-        </a>
-        <a href="#projects" class="mobile-nav-item" data-section="projects">
-            <i class="fas fa-code"></i>
-            <span>Projects</span>
-        </a>
-        <a href="#contact" class="mobile-nav-item" data-section="contact">
-            <i class="fas fa-envelope"></i>
-            <span>Contact</span>
-        </a>
-        <button id="mobileMenuToggle" class="mobile-nav-item">
-            <i class="fas fa-bars"></i>
-            <span>Menu</span>
-        </button>
-    </nav>
-    <!-- Header Section -->
-    <header>
-        <div class="logo">
-            <h1>phidel@portfolio</h1>
-        </div>
-        <nav>
-            <div class="hamburger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#timeline">Timeline</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <pre class="ascii-art">
-  ___  _    _     _      _
- | _ \| |_ (_)__| |___ | |
- |  _/| ' \| / _` / -_)| |
- |_|  |_||_|_\__,_\___||_|
-                </pre>
-                <h1></h1>
-                <h2></h2>
-                <p>I build fast, secure web applications that users love.<br>
-                   Turning complex problems into elegant solutions, one line of code at a time.</p>
-                <div class="cta-buttons">
-                    <a href="#projects" class="btn">View My Work</a>
-                    <a href="#contact" class="btn btn-primary">Let's Work Together</a>
-                    <a href="Phidel CV.docx" download class="btn">Download Resume</a>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-glow" aria-hidden="true"></div>
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span class="hero-badge"><span class="pulse-dot" aria-hidden="true"></span> Available for freelance projects</span>
+                    <h1 class="hero-title">Phidel Emmanuel <span class="text-gradient">Ochieng</span></h1>
+                    <h2 class="hero-subtitle">Frontend Developer &amp; Cybersecurity Enthusiast</h2>
+                    <p class="hero-description">
+                        I build fast, secure web applications that users love.
+                        Turning complex problems into elegant solutions, one line of code at a time.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#projects" class="btn btn-primary"><i class="fas fa-code" aria-hidden="true"></i> View My Work</a>
+                        <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane" aria-hidden="true"></i> Let's Work Together</a>
+                        <a href="Phidel CV.docx" download class="btn btn-ghost"><i class="fas fa-download" aria-hidden="true"></i> Download Resume</a>
+                    </div>
+                    <div class="hero-social">
+                        <a href="https://github.com/tariq926" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/phidel-ochieng-832593393" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="mailto:ochiengphidel1@gmail.com" aria-label="Send an email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-frame">
+                        <img src="tariq2.jpg" alt="Phidel Emmanuel Ochieng - Frontend Developer" width="420" height="420">
+                    </div>
+                    <div class="floating-chip chip-top"><i class="fas fa-shield-halved" aria-hidden="true"></i> Security-first mindset</div>
+                    <div class="floating-chip chip-bottom"><i class="fas fa-bolt" aria-hidden="true"></i> 95+ PageSpeed scores</div>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="image-container">
-                    <img src="tariq2.jpg" alt="Phidel Emmanuel Ochieng - Frontend Developer">
+            <div class="container hero-stats" role="list">
+                <div class="stat-card" role="listitem">
+                    <span class="stat-value" data-count="10">10+</span>
+                    <span class="stat-caption">Projects Built</span>
+                </div>
+                <div class="stat-card" role="listitem">
+                    <span class="stat-value" data-count="5">5+</span>
+                    <span class="stat-caption">Happy Clients</span>
+                </div>
+                <div class="stat-card" role="listitem">
+                    <span class="stat-value" data-count="3">3+</span>
+                    <span class="stat-caption">Years Learning</span>
+                </div>
+                <div class="stat-card" role="listitem">
+                    <span class="stat-value" data-count="5">5</span>
+                    <span class="stat-caption">Certifications</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- System Info Section -->
-    <section class="system-info">
-        <div class="system-info-container">
-            <div class="system-info-grid">
-                <div class="system-info-left">
-                    <pre class="neofetch-logo">
-    _____
-   /     \
-  | () () |
-   \  ^  /
-    |||||
-    |||||
-                    </pre>
+        <!-- About Section -->
+        <section id="about" class="section about">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-eyebrow">Who I Am</span>
+                    <h2 class="section-title">About Me</h2>
                 </div>
-                <div class="system-info-right">
-                    <h3 class="system-title">phidel@portfolio</h3>
-                    <div class="system-divider">----------------</div>
-                    <p><span class="info-label">OS:</span> <span class="info-value">Frontend Developer</span></p>
-                    <p><span class="info-label">Host:</span> <span class="info-value">University of Embu</span></p>
-                    <p><span class="info-label">Kernel:</span> <span class="info-value">Full Stack Enthusiast</span></p>
-                    <p><span class="info-label">Uptime:</span> <span class="info-value">2023 - Present</span></p>
-                    <p><span class="info-label">Packages:</span> <span class="info-value">HTML, CSS, JS, PHP, MySQL</span></p>
-                    <p><span class="info-label">Shell:</span> <span class="info-value">Cybersecurity Student</span></p>
-                    <p><span class="info-label">Terminal:</span> <span class="info-value">VS Code / Linux</span></p>
-                    <p><span class="info-label">CPU:</span> <span class="info-value">Problem Solver @ 100%</span></p>
-                    <p><span class="info-label">GPU:</span> <span class="info-value">Creative Designer</span></p>
-                    <p><span class="info-label">Memory:</span> <span class="info-value">Continuous Learner</span></p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="section-header">
-            <h2>About Me</h2>
-            <div class="underline"></div>
-        </div>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>whoami</h3>
-                <p>
-                    I'm Phidel Emmanuel Ochieng, a 21-year-old developer from Embu, Kenya, on a mission to create web experiences that make a difference.
-                </p>
-                <p>
-                    <strong>My Journey:</strong> I started coding in 2023 during my ICT diploma at the University of Embu. What began as curiosity turned into passion when I built my first website for a school project. That moment of seeing my code come to life hooked me forever.
-                </p>
-                <p>
-                    <strong>What I Do:</strong> I specialize in building responsive, user-friendly websites and web applications. From e-commerce platforms to interactive portfolios, I transform ideas into pixel-perfect reality. My code is clean, my designs are intuitive, and my commitment to quality is unwavering.
-                </p>
-                <p>
-                    <strong>Beyond Code:</strong> I'm deeply passionate about cybersecurity. Currently pursuing certification through Cisco Networking Academy, I believe in building not just beautiful applications, but secure ones. Every line of code I write considers both user experience and security.
-                </p>
-                <p>
-                    <strong>My Approach:</strong> I don't just write code—I solve problems. I listen to understand, design to delight, and develop to deliver. Whether it's optimizing load times or crafting the perfect user flow, I sweat the details so you don't have to.
-                </p>
-                <p style="margin-top: 1.5rem;">
-                    <strong>[STATUS]</strong> Available for freelance projects | Learning: Advanced Cybersecurity & React.js | Building: Next-gen web applications
-                </p>
-            </div>
-            <div class="skills">
-                <h3>Skills Matrix</h3>
-                <div class="skill-bars">
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>HTML/CSS</span>
-                            <span class="skill-percent">95%</span>
+                <div class="about-grid">
+                    <div class="about-text reveal">
+                        <p class="about-lead">
+                            I'm Phidel Emmanuel Ochieng, a 21-year-old developer from Embu, Kenya, on a mission to create web experiences that make a difference.
+                        </p>
+                        <div class="about-point">
+                            <div class="about-point-icon"><i class="fas fa-route" aria-hidden="true"></i></div>
+                            <div>
+                                <h3>My Journey</h3>
+                                <p>I started coding in 2023 during my ICT diploma at the University of Embu. What began as curiosity turned into passion when I built my first website for a school project. That moment of seeing my code come to life hooked me forever.</p>
+                            </div>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
+                        <div class="about-point">
+                            <div class="about-point-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
+                            <div>
+                                <h3>What I Do</h3>
+                                <p>I specialize in building responsive, user-friendly websites and web applications. From e-commerce platforms to interactive portfolios, I transform ideas into pixel-perfect reality. My code is clean, my designs are intuitive, and my commitment to quality is unwavering.</p>
+                            </div>
+                        </div>
+                        <div class="about-point">
+                            <div class="about-point-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+                            <div>
+                                <h3>Beyond Code</h3>
+                                <p>I'm deeply passionate about cybersecurity. Currently pursuing certification through Cisco Networking Academy, I believe in building not just beautiful applications, but secure ones. Every line of code I write considers both user experience and security.</p>
+                            </div>
+                        </div>
+                        <div class="about-point">
+                            <div class="about-point-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></div>
+                            <div>
+                                <h3>My Approach</h3>
+                                <p>I don't just write code—I solve problems. I listen to understand, design to delight, and develop to deliver. Whether it's optimizing load times or crafting the perfect user flow, I sweat the details so you don't have to.</p>
+                            </div>
+                        </div>
+                        <div class="status-banner">
+                            <i class="fas fa-circle-check" aria-hidden="true"></i>
+                            <p><strong>Status:</strong> Available for freelance projects &middot; Learning: Advanced Cybersecurity &amp; React.js &middot; Building: Next-gen web applications</p>
                         </div>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>JavaScript</span>
-                            <span class="skill-percent">85%</span>
+                    <div class="about-side">
+                        <div class="profile-card reveal">
+                            <h3 class="card-title"><i class="fas fa-id-card" aria-hidden="true"></i> Developer Profile</h3>
+                            <ul class="profile-list">
+                                <li><span class="profile-label">Role</span><span class="profile-value">Frontend Developer</span></li>
+                                <li><span class="profile-label">Education</span><span class="profile-value">University of Embu</span></li>
+                                <li><span class="profile-label">Focus</span><span class="profile-value">Full Stack Enthusiast</span></li>
+                                <li><span class="profile-label">Active Since</span><span class="profile-value">2023 - Present</span></li>
+                                <li><span class="profile-label">Stack</span><span class="profile-value">HTML, CSS, JS, PHP, MySQL</span></li>
+                                <li><span class="profile-label">Currently</span><span class="profile-value">Cybersecurity Student</span></li>
+                                <li><span class="profile-label">Tools</span><span class="profile-value">VS Code / Linux</span></li>
+                                <li><span class="profile-label">Mindset</span><span class="profile-value">Problem Solver @ 100%</span></li>
+                                <li><span class="profile-label">Design</span><span class="profile-value">Creative Designer</span></li>
+                                <li><span class="profile-label">Growth</span><span class="profile-value">Continuous Learner</span></li>
+                            </ul>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>PHP & MySQL</span>
-                            <span class="skill-percent">80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>UI/UX Design</span>
-                            <span class="skill-percent">90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Git & Linux</span>
-                            <span class="skill-percent">75%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 75%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Cybersecurity</span>
-                            <span class="skill-percent">70%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 70%"></div>
+                        <div class="skills-card reveal">
+                            <h3 class="card-title"><i class="fas fa-chart-simple" aria-hidden="true"></i> Skills Matrix</h3>
+                            <div class="skill-bars">
+                                <div class="skill-item">
+                                    <div class="skill-name"><span>HTML/CSS</span><span class="skill-percent">95%</span></div>
+                                    <div class="skill-bar"><div class="skill-progress" data-level="95"></div></div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name"><span>JavaScript</span><span class="skill-percent">85%</span></div>
+                                    <div class="skill-bar"><div class="skill-progress" data-level="85"></div></div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name"><span>PHP &amp; MySQL</span><span class="skill-percent">80%</span></div>
+                                    <div class="skill-bar"><div class="skill-progress" data-level="80"></div></div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name"><span>UI/UX Design</span><span class="skill-percent">90%</span></div>
+                                    <div class="skill-bar"><div class="skill-progress" data-level="90"></div></div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name"><span>Git &amp; Linux</span><span class="skill-percent">75%</span></div>
+                                    <div class="skill-bar"><div class="skill-progress" data-level="75"></div></div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name"><span>Cybersecurity</span><span class="skill-percent">70%</span></div>
+                                    <div class="skill-bar"><div class="skill-progress" data-level="70"></div></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- Timeline Section -->
-    <section id="timeline" class="timeline">
-        <div class="section-header">
-            <h2>My Journey</h2>
-            <div class="underline"></div>
-        </div>
-        <div class="timeline-container">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2023 - Present</div>
-                <div class="timeline-content">
-                    <h3>University of Embu</h3>
-                    <p>Student at the university of Embu tvet institute pursuing diploma in ICT</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2025 November - Present</div>
-                <div class="timeline-content">
-                    <h3>Cisco Networking Academy</h3>
-                    <p>Learning Cyber Security</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2025 December - 2026 January</div>
-                <div class="timeline-content">
-                    <h3>Udemy Academy</h3>
-                    <p>Completed an Ethical Hacking Bootcamp</p>
-                    <a href="udemy.png" target="_blank" class="cert-button">View Certificate</a>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">20 May - 31 May 2025</div>
-                <div class="timeline-content">
-                    <h3>OPSWAT academy</h3>
-                    <p> Completed a module on Introduction to Critical Infrastructure Protection</p>
-                    <a href="opswat.png" target="_blank" class="cert-button">View Certificate</a>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2024 August - 2024 December</div>
-                <div class="timeline-content">
-                    <h3>Powerlern Project Africa - Software Development</h3>
-                    <p>Successfully completed a 16 -week program in Software Development covering Python, Web Technologies, Database Management, Startup Building & Employability and Software Engineering Essentials, with a specialization in Web Development. 
-                    <a href="phidel _certificate.pdf" target="_blank" class="cert-button">View Certificate</a></p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Work Experience Section -->
-    <section id="experience" class="experience">
-        <div class="section-header">
-            <h2>Work Experience</h2>
-            <div class="underline"></div>
-        </div>
-        <div class="experience-container">
-            <div class="experience-card">
-                <div class="experience-header">
-                    <div class="experience-icon">
-                        <i class="fas fa-laptop-code"></i>
+        <!-- Timeline Section -->
+        <section id="timeline" class="section timeline alt-bg">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-eyebrow">Milestones</span>
+                    <h2 class="section-title">My Journey</h2>
+                </div>
+                <div class="timeline-container">
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot" aria-hidden="true"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2023 - Present</span>
+                            <h3>University of Embu</h3>
+                            <p>Student at the University of Embu TVET Institute pursuing a Diploma in ICT.</p>
+                        </div>
                     </div>
-                    <div class="experience-info">
-                        <h3>Freelance Web Developer</h3>
-                        <p class="experience-company">Self-Employed</p>
-                        <p class="experience-date">[2024 - Present]</p>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot" aria-hidden="true"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">November 2025 - Present</span>
+                            <h3>Cisco Networking Academy</h3>
+                            <p>Learning Cyber Security.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="experience-desc">
-                    <ul>
-                        <li>Built custom websites for 5+ local businesses, increasing their online presence by 200%</li>
-                        <li>Specialized in responsive design & Progressive Web Apps (PWAs)</li>
-                        <li>Technologies: HTML5, CSS3, JavaScript, PHP, MySQL</li>
-                        <li>Achieved 95+ PageSpeed scores on all delivered projects</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="experience-card">
-                <div class="experience-header">
-                    <div class="experience-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot" aria-hidden="true"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">December 2025 - January 2026</span>
+                            <h3>Udemy Academy</h3>
+                            <p>Completed an Ethical Hacking Bootcamp.</p>
+                            <a href="udemy.png" target="_blank" rel="noopener noreferrer" class="text-link">View Certificate <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                        </div>
                     </div>
-                    <div class="experience-info">
-                        <h3>Student Developer</h3>
-                        <p class="experience-company">University of Embu</p>
-                        <p class="experience-date">[2023 - Present]</p>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot" aria-hidden="true"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">20 May - 31 May 2025</span>
+                            <h3>OPSWAT Academy</h3>
+                            <p>Completed a module on Introduction to Critical Infrastructure Protection.</p>
+                            <a href="opswat.png" target="_blank" rel="noopener noreferrer" class="text-link">View Certificate <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="experience-desc">
-                    <ul>
-                        <li>Pursuing Diploma in ICT with focus on web development</li>
-                        <li>Lead developer for student group projects</li>
-                        <li>Mentor junior students in HTML, CSS, and JavaScript fundamentals</li>
-                        <li>Maintaining 3.8+ GPA while building real-world projects</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="experience-card">
-                <div class="experience-header">
-                    <div class="experience-icon">
-                        <i class="fas fa-code-branch"></i>
-                    </div>
-                    <div class="experience-info">
-                        <h3>Software Development Trainee</h3>
-                        <p class="experience-company">PowerLearn Project Africa</p>
-                        <p class="experience-date">[August - December 2024]</p>
-                    </div>
-                </div>
-                <div class="experience-desc">
-                    <ul>
-                        <li>Completed intensive 16-week program covering full-stack development</li>
-                        <li>Built 10+ projects including e-commerce platforms and portfolio websites</li>
-                        <li>Mastered Python, Web Technologies, Database Management, and Software Engineering</li>
-                        <li>Graduated with distinction and specialization in Web Development</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications">
-        <div class="section-header">
-            <h2>Certifications</h2>
-            <div class="underline"></div>
-        </div>
-        <div class="certs-grid">
-            <div class="cert-card">
-                <div class="cert-icon">
-                    <i class="fas fa-certificate"></i>
-                </div>
-                <h3>PowerLearn Project Africa</h3>
-                <p class="cert-title">Software Development</p>
-                <p class="cert-date">[ISSUED] August - December 2024</p>
-                <p class="cert-desc">16-week intensive program covering Python, Web Technologies, Database Management, and Software Engineering Essentials.</p>
-                <a href="phidel _certificate.pdf" target="_blank" class="cert-link">
-                    <i class="fas fa-external-link-alt"></i> View Certificate
-                </a>
-            </div>
-            <div class="cert-card">
-                <div class="cert-icon">
-                    <i class="fas fa-certificate"></i>
-                </div>
-                <h3>OPSWAT Academy</h3>
-                <p class="cert-title">Introduction to Critical Infrastructer Protection</p>
-                <p class="cert-date">[ISSUED] May 2025</p>
-                <p class="cert-desc">A week long program on critical infrastructure protection fundamentals</p>
-                <a href="opswat.png" target="_blank" class="cert-link">
-                    <i class="fas fa-external-link-alt"></i> View Certificate
-                </a>
-            </div>
-            <div class="cert-card">
-                <div class="cert-icon">
-                    <i class="fas fa-certificate"></i>
-                </div>
-                <h3>Udemy Academy</h3>
-                <p class="cert-title">Ethical Hacking Bootcamp</p>
-                <p class="cert-date">[ISSUED] 2026 January</p>
-                <p class="cert-desc">A 30 days bootcamp covering Ethical Hacking and Python programming</p>
-                <a href="udemy.png" target="_blank" class="cert-link">
-                    <i class="fas fa-external-link-alt"></i> View Certificate
-                </a>
-            </div>
-            <div class="cert-card">
-                <div class="cert-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Cisco Networking Academy</h3>
-                <p class="cert-title">Cybersecurity</p>
-                <p class="cert-date">[IN PROGRESS] November 2025 - Present</p>
-                <p class="cert-desc">Comprehensive cybersecurity training covering network security, threat detection, and security best practices.</p>
-                <span class="cert-badge">[IN PROGRESS]</span>
-            </div>
-            <div class="cert-card">
-                <div class="cert-icon">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <h3>University of Embu</h3>
-                <p class="cert-title">Diploma in ICT</p>
-                <p class="cert-date">[ONGOING] 2023 - Present</p>
-                <p class="cert-desc">Pursuing Diploma in Information and Communication Technology at University of Embu TVET Institute.</p>
-                <span class="cert-badge">[ONGOING]</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="section-header">
-            <h2>Services I Offer</h2>
-            <div class="underline"></div>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-code"></i>
-                </div>
-                <h3>Web Development</h3>
-                <p class="service-desc">Custom websites and web applications built with modern technologies. Responsive, fast, and optimized for all devices.</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Responsive Design</li>
-                    <li><i class="fas fa-check"></i> Progressive Web Apps</li>
-                    <li><i class="fas fa-check"></i> E-commerce Solutions</li>
-                    <li><i class="fas fa-check"></i> Performance Optimization</li>
-                </ul>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-palette"></i>
-                </div>
-                <h3>UI/UX Design</h3>
-                <p class="service-desc">Beautiful, intuitive interfaces that users love. From wireframes to pixel-perfect designs.</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> User Interface Design</li>
-                    <li><i class="fas fa-check"></i> User Experience Research</li>
-                    <li><i class="fas fa-check"></i> Prototyping & Wireframing</li>
-                    <li><i class="fas fa-check"></i> Design Systems</li>
-                </ul>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Web Security</h3>
-                <p class="service-desc">Security audits and implementation of best practices to keep your web applications secure.</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Security Audits</li>
-                    <li><i class="fas fa-check"></i> SSL Implementation</li>
-                    <li><i class="fas fa-check"></i> Data Protection</li>
-                    <li><i class="fas fa-check"></i> HTTPS Migration</li>
-                </ul>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <h3>Mobile-First Development</h3>
-                <p class="service-desc">Websites that work flawlessly on all devices, from smartphones to large desktop screens.</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Mobile Optimization</li>
-                    <li><i class="fas fa-check"></i> Cross-Browser Testing</li>
-                    <li><i class="fas fa-check"></i> Touch-Optimized Interfaces</li>
-                    <li><i class="fas fa-check"></i> PWA Development</li>
-                </ul>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-database"></i>
-                </div>
-                <h3>Backend Development</h3>
-                <p class="service-desc">Robust server-side solutions with databases, APIs, and seamless integrations.</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> PHP & MySQL</li>
-                    <li><i class="fas fa-check"></i> RESTful APIs</li>
-                    <li><i class="fas fa-check"></i> Database Design</li>
-                    <li><i class="fas fa-check"></i> Server Configuration</li>
-                </ul>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-tools"></i>
-                </div>
-                <h3>Website Maintenance</h3>
-                <p class="service-desc">Ongoing support, updates, and optimization to keep your website running smoothly.</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Regular Updates</li>
-                    <li><i class="fas fa-check"></i> Bug Fixes</li>
-                    <li><i class="fas fa-check"></i> Performance Monitoring</li>
-                    <li><i class="fas fa-check"></i> Content Updates</li>
-                </ul>
-            </div>
-        </div>
-        <div class="services-cta">
-            <p>Ready to start your next project?</p>
-            <a href="#contact" class="btn btn-large">Let's Build Something Amazing</a>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="section-header">
-            <h2>My Projects</h2>
-            <div class="underline"></div>
-        </div>
-
-        <!-- Project Filters -->
-        <div class="project-filters">
-            <button class="filter-btn active" data-filter="all">
-                <i class="fas fa-th"></i> All Projects
-            </button>
-            <button class="filter-btn" data-filter="web">
-                <i class="fas fa-globe"></i> Web Apps
-            </button>
-            <button class="filter-btn" data-filter="portfolio">
-                <i class="fas fa-user"></i> Portfolios
-            </button>
-            <button class="filter-btn" data-filter="in-progress">
-                <i class="fas fa-spinner"></i> In Progress
-            </button>
-        </div>
-
-        <div class="projects-grid">
-            <div class="project-card" data-category="web in-progress" data-title="Online Store" data-image="store.png" data-description="Full-featured e-commerce platform with shopping cart, product catalog, and secure checkout. Optimized for mobile shopping experience.">
-                <div class="project-status">
-                    <span class="status-badge status-progress">In Progress</span>
-                </div>
-                <div class="project-image">
-                    <img src="store.png" alt="Online Store E-commerce Platform" loading="lazy">
-                    <div class="project-overlay">
-                        <button class="preview-btn" data-preview="store">
-                            <i class="fas fa-eye"></i> Quick Preview
-                        </button>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Online Store</h3>
-                    <p><strong>E-commerce platform for fashion retail.</strong> Complete shopping solution with user authentication, product search, shopping cart, and secure payment integration. Mobile-optimized with responsive design.</p>
-                    <ul class="project-features">
-                        <li>✓ 50+ products database with categories</li>
-                        <li>✓ Real-time inventory management</li>
-                        <li>✓ Secure user authentication & sessions</li>
-                        <li>✓ Mobile-first responsive design</li>
-                    </ul>
-                    <div class="project-tags">
-                        <span>HTML/CSS</span>
-                        <span>PHP</span>
-                        <span>JavaScript</span>
-                        <span>MySQL</span>
-                    </div>
-                    <div class="project-stats">
-                        <span><i class="fas fa-code"></i> 2,500+ Lines</span>
-                        <span><i class="fas fa-database"></i> 50+ Products</span>
-                        <span><i class="fas fa-calendar"></i> 2024</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/tariq926/tariq_store" target="_blank" class="project-link-btn">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot" aria-hidden="true"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">August 2024 - December 2024</span>
+                            <h3>PowerLearn Project Africa - Software Development</h3>
+                            <p>Successfully completed a 16-week program in Software Development covering Python, Web Technologies, Database Management, Startup Building &amp; Employability and Software Engineering Essentials, with a specialization in Web Development.</p>
+                            <a href="phidel _certificate.pdf" target="_blank" rel="noopener noreferrer" class="text-link">View Certificate <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="project-card" data-category="web in-progress" data-title="learning Platform" data-image="learning.png" data-description="comprehensive learning platform for ethical hacking">
-                <div class="project-status">
-                    <span class="status-badge status-progress">In Progress</span>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="experience" class="section experience">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-eyebrow">Career</span>
+                    <h2 class="section-title">Work Experience</h2>
                 </div>
-                <div class="project-image">
-                    <img src="learningeth.png" alt="learning platform" loading="lazy">
-                    <div class="project-overlay">
-                        <button class="preview-btn" data-preview="learning">
-                            <i class="fas fa-eye"></i>Quick Preview
-                        </button>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Learning Platform</h3>
-                    <p><strong>A comprehensive Learning platform for ethical hacking. Complete learning solution with note taking, direct youtube links to videos and questions at the end of every topic to ensure user understands the concept. Buit with mordern web technologies.</strong></p>
-                    <ul class="project-features">
-                        <li>✓ Note taking</li>
-                        <li>✓ Direct youtube links to videos</li>
-                        <li>✓ Questions at the end</li>
-                        <li>✓Responsive Design</li>
-                    </ul>
-                    <div class="project-tags">
-                        <span>HTML/CSS</span>
-                        <span>JavaScript</span>
-                        <span>Python</span>
-                        <span>Shell</span>
-                    </div>
-                    <div class="projecvt-stats">
-                        <span><i class="fas fa-code"></i>2,000+ lines</span>
-                        <span><i class="fas fa-layer-group"></i>Full-Stack</span>
-                        <span><i class="fas fa-calender"></i>2025</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/tariq926/flearning" target="_blank" vclass="project-link-btn">
-                            <i class="fab fa-github"></i>View Code 
-                        </a>
-                    </div>
+                <div class="experience-grid">
+                    <article class="experience-card reveal">
+                        <div class="experience-header">
+                            <div class="experience-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
+                            <div>
+                                <h3>Freelance Web Developer</h3>
+                                <p class="experience-company">Self-Employed</p>
+                                <p class="experience-date">2024 - Present</p>
+                            </div>
+                        </div>
+                        <ul class="experience-list">
+                            <li>Built custom websites for 5+ local businesses, increasing their online presence by 200%</li>
+                            <li>Specialized in responsive design &amp; Progressive Web Apps (PWAs)</li>
+                            <li>Technologies: HTML5, CSS3, JavaScript, PHP, MySQL</li>
+                            <li>Achieved 95+ PageSpeed scores on all delivered projects</li>
+                        </ul>
+                    </article>
+                    <article class="experience-card reveal">
+                        <div class="experience-header">
+                            <div class="experience-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+                            <div>
+                                <h3>Student Developer</h3>
+                                <p class="experience-company">University of Embu</p>
+                                <p class="experience-date">2023 - Present</p>
+                            </div>
+                        </div>
+                        <ul class="experience-list">
+                            <li>Pursuing Diploma in ICT with focus on web development</li>
+                            <li>Lead developer for student group projects</li>
+                            <li>Mentor junior students in HTML, CSS, and JavaScript fundamentals</li>
+                            <li>Maintaining 3.8+ GPA while building real-world projects</li>
+                        </ul>
+                    </article>
+                    <article class="experience-card reveal">
+                        <div class="experience-header">
+                            <div class="experience-icon"><i class="fas fa-code-branch" aria-hidden="true"></i></div>
+                            <div>
+                                <h3>Software Development Trainee</h3>
+                                <p class="experience-company">PowerLearn Project Africa</p>
+                                <p class="experience-date">August - December 2024</p>
+                            </div>
+                        </div>
+                        <ul class="experience-list">
+                            <li>Completed intensive 16-week program covering full-stack development</li>
+                            <li>Built 10+ projects including e-commerce platforms and portfolio websites</li>
+                            <li>Mastered Python, Web Technologies, Database Management, and Software Engineering</li>
+                            <li>Graduated with distinction and specialization in Web Development</li>
+                        </ul>
+                    </article>
                 </div>
             </div>
-            <div class="project-card" data-category="web in-progress" data-title="Smart Life Manager" data-image="smart-life.png" data-description="Full-stack life management app with finance tracking, task management, and daily activity planning.">
-                <div class="project-status">
-                    <span class="status-badge status-progress">In Progress</span>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="section certifications alt-bg">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-eyebrow">Credentials</span>
+                    <h2 class="section-title">Certifications</h2>
                 </div>
-                <div class="project-image">
-                    <img src="smart-life.png" alt="smart-life screenshot" loading="lazy">
-                    <div class="project-overlay">
-                        <button class="preview-btn" data-preview="store">
-                            <i class="fas fa-eye"></i> Quick Preview
-                        </button>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Smart-Life Manager</h3>
-                    <p><strong>Modern full-stack productivity app.</strong> Comprehensive life management system with financial tracking, task scheduling, and daily activity planning. Built with modern React + TypeScript architecture.</p>
-                    <ul class="project-features">
-                        <li>✓ Real-time expense tracking & budgeting</li>
-                        <li>✓ Task management with priorities & deadlines</li>
-                        <li>✓ MongoDB database with RESTful API</li>
-                        <li>✓ Redux state management</li>
-                    </ul>
-                    <div class="project-tags">
-                        <span>React + TypeScript</span>
-                        <span>Node.js</span>
-                        <span>MongoDB</span>
-                        <span>Redux</span>
-                        <span>Material UI</span>
-                    </div>
-                    <div class="project-stats">
-                        <span><i class="fas fa-code"></i> 3,500+ Lines</span>
-                        <span><i class="fas fa-layer-group"></i> Full-Stack</span>
-                        <span><i class="fas fa-calendar"></i> 2025</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/tariq926/smart-life-manager" target="_blank" class="project-link-btn">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
+                <div class="certs-grid">
+                    <article class="cert-card reveal">
+                        <div class="cert-icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
+                        <h3>PowerLearn Project Africa</h3>
+                        <p class="cert-title">Software Development</p>
+                        <p class="cert-date"><i class="fas fa-calendar-check" aria-hidden="true"></i> Issued August - December 2024</p>
+                        <p class="cert-desc">16-week intensive program covering Python, Web Technologies, Database Management, and Software Engineering Essentials.</p>
+                        <a href="phidel _certificate.pdf" target="_blank" rel="noopener noreferrer" class="text-link">View Certificate <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                    </article>
+                    <article class="cert-card reveal">
+                        <div class="cert-icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
+                        <h3>OPSWAT Academy</h3>
+                        <p class="cert-title">Introduction to Critical Infrastructure Protection</p>
+                        <p class="cert-date"><i class="fas fa-calendar-check" aria-hidden="true"></i> Issued May 2025</p>
+                        <p class="cert-desc">A week-long program on critical infrastructure protection fundamentals.</p>
+                        <a href="opswat.png" target="_blank" rel="noopener noreferrer" class="text-link">View Certificate <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                    </article>
+                    <article class="cert-card reveal">
+                        <div class="cert-icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
+                        <h3>Udemy Academy</h3>
+                        <p class="cert-title">Ethical Hacking Bootcamp</p>
+                        <p class="cert-date"><i class="fas fa-calendar-check" aria-hidden="true"></i> Issued January 2026</p>
+                        <p class="cert-desc">A 30-day bootcamp covering Ethical Hacking and Python programming.</p>
+                        <a href="udemy.png" target="_blank" rel="noopener noreferrer" class="text-link">View Certificate <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                    </article>
+                    <article class="cert-card reveal">
+                        <div class="cert-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+                        <h3>Cisco Networking Academy</h3>
+                        <p class="cert-title">Cybersecurity</p>
+                        <p class="cert-date"><i class="fas fa-spinner" aria-hidden="true"></i> November 2025 - Present</p>
+                        <p class="cert-desc">Comprehensive cybersecurity training covering network security, threat detection, and security best practices.</p>
+                        <span class="cert-badge">In Progress</span>
+                    </article>
+                    <article class="cert-card reveal">
+                        <div class="cert-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+                        <h3>University of Embu</h3>
+                        <p class="cert-title">Diploma in ICT</p>
+                        <p class="cert-date"><i class="fas fa-spinner" aria-hidden="true"></i> 2023 - Present</p>
+                        <p class="cert-desc">Pursuing Diploma in Information and Communication Technology at University of Embu TVET Institute.</p>
+                        <span class="cert-badge">Ongoing</span>
+                    </article>
                 </div>
             </div>
+        </section>
 
-            <div class="project-card" data-category="portfolio in-progress" data-title="Okal Harriette Adhiambo Portfolio" data-image="Project2.png" data-description="Professional portfolio website with modern design, smooth animations, and interactive sections showcasing skills and projects.">
-                <div class="project-status">
-                    <span class="status-badge status-progress">In Progress</span>
+        <!-- Services Section -->
+        <section id="services" class="section services">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-eyebrow">Expertise</span>
+                    <h2 class="section-title">Services I Offer</h2>
                 </div>
-                <div class="project-image">
-                    <img src="Project2.png" alt="Harriette Adhiambo Portfolio Website" loading="lazy">
-                    <div class="project-overlay">
-                        <button class="preview-btn" data-preview="portfolio">
-                            <i class="fas fa-eye"></i> Quick Preview
-                        </button>
-                    </div>
+                <div class="services-grid">
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
+                        <h3>Web Development</h3>
+                        <p class="service-desc">Custom websites and web applications built with modern technologies. Responsive, fast, and optimized for all devices.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Responsive Design</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Progressive Web Apps</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> E-commerce Solutions</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Performance Optimization</li>
+                        </ul>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fas fa-palette" aria-hidden="true"></i></div>
+                        <h3>UI/UX Design</h3>
+                        <p class="service-desc">Beautiful, intuitive interfaces that users love. From wireframes to pixel-perfect designs.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> User Interface Design</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> User Experience Research</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Prototyping &amp; Wireframing</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Design Systems</li>
+                        </ul>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+                        <h3>Web Security</h3>
+                        <p class="service-desc">Security audits and implementation of best practices to keep your web applications secure.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Security Audits</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> SSL Implementation</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Data Protection</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> HTTPS Migration</li>
+                        </ul>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fas fa-mobile-screen" aria-hidden="true"></i></div>
+                        <h3>Mobile-First Development</h3>
+                        <p class="service-desc">Websites that work flawlessly on all devices, from smartphones to large desktop screens.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Mobile Optimization</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Cross-Browser Testing</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Touch-Optimized Interfaces</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> PWA Development</li>
+                        </ul>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fas fa-database" aria-hidden="true"></i></div>
+                        <h3>Backend Development</h3>
+                        <p class="service-desc">Robust server-side solutions with databases, APIs, and seamless integrations.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> PHP &amp; MySQL</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> RESTful APIs</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Database Design</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Server Configuration</li>
+                        </ul>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i></div>
+                        <h3>Website Maintenance</h3>
+                        <p class="service-desc">Ongoing support, updates, and optimization to keep your website running smoothly.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Regular Updates</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Bug Fixes</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Performance Monitoring</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Content Updates</li>
+                        </ul>
+                    </article>
                 </div>
-                <div class="project-info">
-                    <h3>Okal Harriette Adhiambo Portfolio</h3>
-                    <p><strong>Client portfolio website.</strong> Clean, professional portfolio showcasing work experience and skills. Features smooth animations, responsive design, and optimized performance.</p>
-                    <ul class="project-features">
-                        <li>✓ 95+ PageSpeed performance score</li>
-                        <li>✓ Smooth scroll animations & transitions</li>
-                        <li>✓ Fully responsive across all devices</li>
-                        <li>✓ SEO optimized with meta tags</li>
-                    </ul>
-                    <div class="project-tags">
-                        <span>HTML/CSS</span>
-                        <span>JavaScript</span>
-                        <span>Responsive</span>
-                    </div>
-                    <div class="project-stats">
-                        <span><i class="fas fa-code"></i> 1,800+ Lines</span>
-                        <span><i class="fas fa-tachometer-alt"></i> 95+ PageSpeed</span>
-                        <span><i class="fas fa-calendar"></i> 2024</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://tariq345-svg.github.io/harrietteadhiambo/" target="_blank" class="project-link-btn">
-                            <i class="fas fa-globe"></i> Live Demo
-                        </a>
-                        <a href="https://github.com/tariq345-svg/harrietteadhiambo" target="_blank" class="project-link-btn">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
+                <div class="services-cta reveal">
+                    <p>Ready to start your next project?</p>
+                    <a href="#contact" class="btn btn-primary btn-lg">Let's Build Something Amazing</a>
                 </div>
             </div>
+        </section>
 
-            <div class="project-card" data-category="portfolio" data-title="Terminal Portfolio (This Site!)" data-image="tariq2.jpg" data-description="Advanced terminal-themed portfolio with interactive CLI, Matrix effects, PWA support, and 20+ terminal commands. Built from scratch.">
-                <div class="project-status">
-                    <span class="status-badge status-live">Live</span>
+        <!-- Projects Section -->
+        <section id="projects" class="section projects alt-bg">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-eyebrow">Portfolio</span>
+                    <h2 class="section-title">My Projects</h2>
                 </div>
-                <div class="project-image">
-                    <img src="tariq2.jpg" alt="Phidel Portfolio Terminal Theme" loading="lazy">
-                    <div class="project-overlay">
-                        <button class="preview-btn" data-preview="this">
-                            <i class="fas fa-eye"></i> You're Here!
-                        </button>
-                    </div>
+
+                <div class="project-filters reveal" role="group" aria-label="Filter projects">
+                    <button class="filter-btn active" data-filter="all"><i class="fas fa-border-all" aria-hidden="true"></i> All Projects</button>
+                    <button class="filter-btn" data-filter="web"><i class="fas fa-globe" aria-hidden="true"></i> Web Apps</button>
+                    <button class="filter-btn" data-filter="portfolio"><i class="fas fa-user" aria-hidden="true"></i> Portfolios</button>
+                    <button class="filter-btn" data-filter="in-progress"><i class="fas fa-spinner" aria-hidden="true"></i> In Progress</button>
                 </div>
-                <div class="project-info">
-                    <h3>Terminal Portfolio (This Site!)</h3>
-                    <p><strong>Award-worthy terminal UI portfolio.</strong> Features interactive CLI with 20+ commands, Matrix rain effect, 5 color themes, and full PWA support. Built entirely from scratch with vanilla JavaScript.</p>
-                    <ul class="project-features">
-                        <li>✓ 20+ interactive terminal commands</li>
-                        <li>✓ Mini game built-in (try "game" command!)</li>
-                        <li>✓ Real GitHub API integration</li>
-                        <li>✓ 5 color themes, PWA installable</li>
-                    </ul>
-                    <div class="project-tags">
-                        <span>Vanilla JavaScript</span>
-                        <span>CSS3</span>
-                        <span>PWA</span>
-                        <span>Terminal UI</span>
-                    </div>
-                    <div class="project-stats">
-                        <span><i class="fas fa-code"></i> 3,000+ Lines</span>
-                        <span><i class="fas fa-terminal"></i> 20+ Commands</span>
-                        <span><i class="fas fa-calendar"></i> 2025</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#home" class="project-link-btn">
-                            <i class="fas fa-home"></i> Scroll to Top
-                        </a>
-                        <a href="https://github.com/tariq926/my-portfolio" target="_blank" class="project-link-btn">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
+
+                <div class="projects-grid">
+                    <article class="project-card reveal" data-category="web in-progress">
+                        <div class="project-image">
+                            <img src="store.png" alt="Online Store E-commerce Platform" loading="lazy">
+                            <span class="status-badge status-progress">In Progress</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>Online Store</h3>
+                            <p><strong>E-commerce platform for fashion retail.</strong> Complete shopping solution with user authentication, product search, shopping cart, and secure payment integration. Mobile-optimized with responsive design.</p>
+                            <ul class="project-features">
+                                <li>50+ products database with categories</li>
+                                <li>Real-time inventory management</li>
+                                <li>Secure user authentication &amp; sessions</li>
+                                <li>Mobile-first responsive design</li>
+                            </ul>
+                            <div class="project-tags">
+                                <span>HTML/CSS</span><span>PHP</span><span>JavaScript</span><span>MySQL</span>
+                            </div>
+                            <div class="project-stats">
+                                <span><i class="fas fa-code" aria-hidden="true"></i> 2,500+ Lines</span>
+                                <span><i class="fas fa-database" aria-hidden="true"></i> 50+ Products</span>
+                                <span><i class="fas fa-calendar" aria-hidden="true"></i> 2024</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/tariq926/tariq_store" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm"><i class="fab fa-github" aria-hidden="true"></i> View Code</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-category="web in-progress">
+                        <div class="project-image project-image-placeholder">
+                            <div class="placeholder-cover" aria-hidden="true"><i class="fas fa-user-secret"></i></div>
+                            <span class="status-badge status-progress">In Progress</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>Learning Platform</h3>
+                            <p><strong>A comprehensive learning platform for ethical hacking.</strong> Complete learning solution with note taking, direct YouTube links to videos and questions at the end of every topic to ensure the user understands the concept. Built with modern web technologies.</p>
+                            <ul class="project-features">
+                                <li>Note taking</li>
+                                <li>Direct YouTube links to videos</li>
+                                <li>Questions at the end of every topic</li>
+                                <li>Responsive design</li>
+                            </ul>
+                            <div class="project-tags">
+                                <span>HTML/CSS</span><span>JavaScript</span><span>Python</span><span>Shell</span>
+                            </div>
+                            <div class="project-stats">
+                                <span><i class="fas fa-code" aria-hidden="true"></i> 2,000+ Lines</span>
+                                <span><i class="fas fa-layer-group" aria-hidden="true"></i> Full-Stack</span>
+                                <span><i class="fas fa-calendar" aria-hidden="true"></i> 2025</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/tariq926/flearning" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm"><i class="fab fa-github" aria-hidden="true"></i> View Code</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-category="web in-progress">
+                        <div class="project-image">
+                            <img src="smart-life.png" alt="Smart Life Manager application screenshot" loading="lazy">
+                            <span class="status-badge status-progress">In Progress</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>Smart-Life Manager</h3>
+                            <p><strong>Modern full-stack productivity app.</strong> Comprehensive life management system with financial tracking, task scheduling, and daily activity planning. Built with modern React + TypeScript architecture.</p>
+                            <ul class="project-features">
+                                <li>Real-time expense tracking &amp; budgeting</li>
+                                <li>Task management with priorities &amp; deadlines</li>
+                                <li>MongoDB database with RESTful API</li>
+                                <li>Redux state management</li>
+                            </ul>
+                            <div class="project-tags">
+                                <span>React + TypeScript</span><span>Node.js</span><span>MongoDB</span><span>Redux</span><span>Material UI</span>
+                            </div>
+                            <div class="project-stats">
+                                <span><i class="fas fa-code" aria-hidden="true"></i> 3,500+ Lines</span>
+                                <span><i class="fas fa-layer-group" aria-hidden="true"></i> Full-Stack</span>
+                                <span><i class="fas fa-calendar" aria-hidden="true"></i> 2025</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/tariq926/smart-life-manager" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm"><i class="fab fa-github" aria-hidden="true"></i> View Code</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-category="portfolio in-progress">
+                        <div class="project-image">
+                            <img src="Project2.png" alt="Harriette Adhiambo Portfolio Website" loading="lazy">
+                            <span class="status-badge status-progress">In Progress</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>Okal Harriette Adhiambo Portfolio</h3>
+                            <p><strong>Client portfolio website.</strong> Clean, professional portfolio showcasing work experience and skills. Features smooth animations, responsive design, and optimized performance.</p>
+                            <ul class="project-features">
+                                <li>95+ PageSpeed performance score</li>
+                                <li>Smooth scroll animations &amp; transitions</li>
+                                <li>Fully responsive across all devices</li>
+                                <li>SEO optimized with meta tags</li>
+                            </ul>
+                            <div class="project-tags">
+                                <span>HTML/CSS</span><span>JavaScript</span><span>Responsive</span>
+                            </div>
+                            <div class="project-stats">
+                                <span><i class="fas fa-code" aria-hidden="true"></i> 1,800+ Lines</span>
+                                <span><i class="fas fa-gauge-high" aria-hidden="true"></i> 95+ PageSpeed</span>
+                                <span><i class="fas fa-calendar" aria-hidden="true"></i> 2024</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://tariq345-svg.github.io/harrietteadhiambo/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fas fa-globe" aria-hidden="true"></i> Live Demo</a>
+                                <a href="https://github.com/tariq345-svg/harrietteadhiambo" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm"><i class="fab fa-github" aria-hidden="true"></i> View Code</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-category="portfolio">
+                        <div class="project-image">
+                            <img src="tariq2.jpg" alt="Phidel Portfolio Website" loading="lazy">
+                            <span class="status-badge status-live">Live</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>Personal Portfolio (This Site!)</h3>
+                            <p><strong>Modern, professional portfolio.</strong> Fully responsive portfolio with light/dark themes, real GitHub API integration, and full PWA support. Built entirely from scratch with vanilla JavaScript.</p>
+                            <ul class="project-features">
+                                <li>Modern, recruiter-ready design</li>
+                                <li>Light &amp; dark themes</li>
+                                <li>Real GitHub API integration</li>
+                                <li>PWA installable, security hardened</li>
+                            </ul>
+                            <div class="project-tags">
+                                <span>Vanilla JavaScript</span><span>CSS3</span><span>PWA</span><span>Responsive</span>
+                            </div>
+                            <div class="project-stats">
+                                <span><i class="fas fa-code" aria-hidden="true"></i> 3,000+ Lines</span>
+                                <span><i class="fas fa-shield-halved" aria-hidden="true"></i> Security Hardened</span>
+                                <span><i class="fas fa-calendar" aria-hidden="true"></i> 2025</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#home" class="btn btn-outline btn-sm"><i class="fas fa-home" aria-hidden="true"></i> Scroll to Top</a>
+                                <a href="https://github.com/tariq926/my-portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm"><i class="fab fa-github" aria-hidden="true"></i> View Code</a>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- GitHub Stats Section -->
-    <section class="github-stats">
-        <div class="section-header">
-            <h2>GitHub Activity</h2>
-            <div class="underline"></div>
-        </div>
-        <div class="github-container">
-            <div class="github-card">
-                <i class="fab fa-github github-icon"></i>
-                <h3>@tariq926</h3>
-                <p>Follow me on GitHub for more projects</p>
-                <div class="github-stats-grid">
-                    <div class="stat-item">
-                        <i class="fas fa-code-branch"></i>
-                        <span class="stat-number" id="reposCount">15+</span>
-                        <span class="stat-label">Repositories</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-star"></i>
-                        <span class="stat-number" id="starsCount">25+</span>
-                        <span class="stat-label">Stars</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-code"></i>
-                        <span class="stat-number" id="commitsCount">500+</span>
-                        <span class="stat-label">Commits</span>
-                    </div>
+        <!-- GitHub Stats Section -->
+        <section class="section github-stats">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-eyebrow">Open Source</span>
+                    <h2 class="section-title">GitHub Activity</h2>
                 </div>
-                <a href="https://github.com/tariq926" target="_blank" class="github-link-btn">
-                    <i class="fab fa-github"></i> Visit GitHub Profile
-                </a>
+                <div class="github-card reveal">
+                    <div class="github-identity">
+                        <i class="fab fa-github github-icon" aria-hidden="true"></i>
+                        <div>
+                            <h3>@tariq926</h3>
+                            <p>Follow me on GitHub for more projects</p>
+                        </div>
+                    </div>
+                    <div class="github-stats-grid">
+                        <div class="stat-item">
+                            <i class="fas fa-code-branch" aria-hidden="true"></i>
+                            <span class="stat-number" id="reposCount">15+</span>
+                            <span class="stat-label">Repositories</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <span class="stat-number" id="starsCount">25+</span>
+                            <span class="stat-label">Stars</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-code" aria-hidden="true"></i>
+                            <span class="stat-number" id="commitsCount">500+</span>
+                            <span class="stat-label">Commits</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/tariq926" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fab fa-github" aria-hidden="true"></i> Visit GitHub Profile</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Blog/Articles Section -->
-    <section id="blog" class="blog">
-        <div class="section-header">
-            <h2>Latest Articles</h2>
-            <div class="underline"></div>
-        </div>
-        <div class="blog-grid">
-            <article class="blog-card">
-                <div class="blog-meta">
-                    <span class="blog-date"><i class="fas fa-calendar"></i> December 15, 2024</span>
-                    <span class="blog-read-time"><i class="fas fa-clock"></i> 5 min read</span>
+        <!-- Blog/Articles Section -->
+        <section id="blog" class="section blog alt-bg">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-eyebrow">Insights</span>
+                    <h2 class="section-title">Latest Articles</h2>
                 </div>
-                <h3>Building a Terminal-Themed Portfolio with Vanilla JavaScript</h3>
-                <p class="blog-excerpt">
-                    Learn how I built this interactive terminal-themed portfolio from scratch using vanilla JavaScript, CSS3, and modern web APIs. No frameworks needed!
-                </p>
-                <div class="blog-tags">
-                    <span class="blog-tag">JavaScript</span>
-                    <span class="blog-tag">CSS</span>
-                    <span class="blog-tag">Web Design</span>
+                <div class="blog-grid">
+                    <article class="blog-card reveal">
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar" aria-hidden="true"></i> December 15, 2024</span>
+                            <span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span>
+                        </div>
+                        <h3>Building a Terminal-Themed Portfolio with Vanilla JavaScript</h3>
+                        <p class="blog-excerpt">
+                            Learn how I built an interactive terminal-themed portfolio from scratch using vanilla JavaScript, CSS3, and modern web APIs. No frameworks needed!
+                        </p>
+                        <div class="blog-tags">
+                            <span>JavaScript</span><span>CSS</span><span>Web Design</span>
+                        </div>
+                        <a href="#blog" class="text-link">Read More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+                    <article class="blog-card reveal">
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar" aria-hidden="true"></i> December 10, 2024</span>
+                            <span><i class="fas fa-clock" aria-hidden="true"></i> 8 min read</span>
+                        </div>
+                        <h3>Web Security Basics Every Developer Should Know</h3>
+                        <p class="blog-excerpt">
+                            An introduction to essential web security practices including HTTPS, input validation, SQL injection prevention, and XSS protection.
+                        </p>
+                        <div class="blog-tags">
+                            <span>Security</span><span>Best Practices</span><span>PHP</span>
+                        </div>
+                        <a href="#blog" class="text-link">Read More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+                    <article class="blog-card reveal">
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar" aria-hidden="true"></i> November 28, 2024</span>
+                            <span><i class="fas fa-clock" aria-hidden="true"></i> 6 min read</span>
+                        </div>
+                        <h3>My Journey into Web Development: From Zero to Freelancer</h3>
+                        <p class="blog-excerpt">
+                            The story of how I went from knowing nothing about code to building websites professionally in just one year. Tips and lessons learned along the way.
+                        </p>
+                        <div class="blog-tags">
+                            <span>Career</span><span>Learning</span><span>Motivation</span>
+                        </div>
+                        <a href="#blog" class="text-link">Read More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+                    <article class="blog-card reveal">
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar" aria-hidden="true"></i> November 20, 2024</span>
+                            <span><i class="fas fa-clock" aria-hidden="true"></i> 10 min read</span>
+                        </div>
+                        <h3>Mastering CSS Grid and Flexbox for Responsive Layouts</h3>
+                        <p class="blog-excerpt">
+                            A comprehensive guide to modern CSS layout techniques. Learn when to use Grid vs Flexbox and create responsive designs that work on any screen size.
+                        </p>
+                        <div class="blog-tags">
+                            <span>CSS</span><span>Responsive Design</span><span>Tutorial</span>
+                        </div>
+                        <a href="#blog" class="text-link">Read More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
                 </div>
-                <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-            </article>
+            </div>
+        </section>
 
-            <article class="blog-card">
-                <div class="blog-meta">
-                    <span class="blog-date"><i class="fas fa-calendar"></i> December 10, 2024</span>
-                    <span class="blog-read-time"><i class="fas fa-clock"></i> 8 min read</span>
+        <!-- Code Snippets Section -->
+        <section id="code-snippets" class="section code-snippets">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-eyebrow">From My Editor</span>
+                    <h2 class="section-title">Code Showcase</h2>
                 </div>
-                <h3>Web Security Basics Every Developer Should Know</h3>
-                <p class="blog-excerpt">
-                    An introduction to essential web security practices including HTTPS, input validation, SQL injection prevention, and XSS protection.
-                </p>
-                <div class="blog-tags">
-                    <span class="blog-tag">Security</span>
-                    <span class="blog-tag">Best Practices</span>
-                    <span class="blog-tag">PHP</span>
-                </div>
-                <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-meta">
-                    <span class="blog-date"><i class="fas fa-calendar"></i> November 28, 2024</span>
-                    <span class="blog-read-time"><i class="fas fa-clock"></i> 6 min read</span>
-                </div>
-                <h3>My Journey into Web Development: From Zero to Freelancer</h3>
-                <p class="blog-excerpt">
-                    The story of how I went from knowing nothing about code to building websites professionally in just one year. Tips and lessons learned along the way.
-                </p>
-                <div class="blog-tags">
-                    <span class="blog-tag">Career</span>
-                    <span class="blog-tag">Learning</span>
-                    <span class="blog-tag">Motivation</span>
-                </div>
-                <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-meta">
-                    <span class="blog-date"><i class="fas fa-calendar"></i> November 20, 2024</span>
-                    <span class="blog-read-time"><i class="fas fa-clock"></i> 10 min read</span>
-                </div>
-                <h3>Mastering CSS Grid and Flexbox for Responsive Layouts</h3>
-                <p class="blog-excerpt">
-                    A comprehensive guide to modern CSS layout techniques. Learn when to use Grid vs Flexbox and create responsive designs that work on any screen size.
-                </p>
-                <div class="blog-tags">
-                    <span class="blog-tag">CSS</span>
-                    <span class="blog-tag">Responsive Design</span>
-                    <span class="blog-tag">Tutorial</span>
-                </div>
-                <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-            </article>
-        </div>
-    </section>
-
-    <!-- Code Snippets Section -->
-    <section id="code-snippets" class="code-snippets">
-        <div class="section-header">
-            <h2>Code Showcase</h2>
-            <div class="underline"></div>
-        </div>
-        <div class="snippets-container">
-            <div class="snippet-card">
-                <div class="snippet-header">
-                    <h3><i class="fas fa-code"></i> Matrix Rain Effect</h3>
-                    <span class="snippet-lang">JavaScript</span>
-                </div>
-                <pre class="snippet-code"><code>function initMatrix() {
+                <div class="snippets-grid">
+                    <article class="snippet-card reveal">
+                        <div class="snippet-header">
+                            <h3><i class="fas fa-code" aria-hidden="true"></i> Matrix Rain Effect</h3>
+                            <span class="snippet-lang">JavaScript</span>
+                        </div>
+                        <pre class="snippet-code"><code>function initMatrix() {
   const canvas = document.getElementById('matrix');
   const ctx = canvas.getContext('2d');
 
@@ -1138,15 +865,14 @@
   }
   draw();
 }</code></pre>
-                <p class="snippet-desc">Canvas-based Matrix rain animation used in this portfolio. Pure vanilla JavaScript with no dependencies.</p>
-            </div>
-
-            <div class="snippet-card">
-                <div class="snippet-header">
-                    <h3><i class="fas fa-code"></i> Smooth Scroll with Offset</h3>
-                    <span class="snippet-lang">JavaScript</span>
-                </div>
-                <pre class="snippet-code"><code>document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                        <p class="snippet-desc">Canvas-based Matrix rain animation. Pure vanilla JavaScript with no dependencies.</p>
+                    </article>
+                    <article class="snippet-card reveal">
+                        <div class="snippet-header">
+                            <h3><i class="fas fa-code" aria-hidden="true"></i> Smooth Scroll with Offset</h3>
+                            <span class="snippet-lang">JavaScript</span>
+                        </div>
+                        <pre class="snippet-code"><code>document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
     const targetId = this.getAttribute('href');
@@ -1166,15 +892,14 @@
     }
   });
 });</code></pre>
-                <p class="snippet-desc">Smooth scrolling implementation that accounts for fixed header height. Works with any navigation structure.</p>
-            </div>
-
-            <div class="snippet-card">
-                <div class="snippet-header">
-                    <h3><i class="fas fa-code"></i> Responsive Image Lazy Loading</h3>
-                    <span class="snippet-lang">JavaScript</span>
-                </div>
-                <pre class="snippet-code"><code>const imageObserver = new IntersectionObserver(
+                        <p class="snippet-desc">Smooth scrolling implementation that accounts for fixed header height. Works with any navigation structure.</p>
+                    </article>
+                    <article class="snippet-card reveal">
+                        <div class="snippet-header">
+                            <h3><i class="fas fa-code" aria-hidden="true"></i> Responsive Image Lazy Loading</h3>
+                            <span class="snippet-lang">JavaScript</span>
+                        </div>
+                        <pre class="snippet-code"><code>const imageObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1191,241 +916,201 @@
 document.querySelectorAll('img[data-src]').forEach(img => {
   imageObserver.observe(img);
 });</code></pre>
-                <p class="snippet-desc">Performance-optimized lazy loading using Intersection Observer API. Improves page load speed significantly.</p>
-            </div>
-
-            <div class="snippet-card">
-                <div class="snippet-header">
-                    <h3><i class="fas fa-code"></i> CSS Terminal Theme Variables</h3>
-                    <span class="snippet-lang">CSS</span>
-                </div>
-                <pre class="snippet-code"><code>:root {
-  --terminal-bg: #0D0208;
-  --terminal-text: #00FF41;
-  --terminal-secondary: #0A0A0A;
-  --terminal-border: #00FF41;
-  --terminal-shadow: rgba(0, 255, 65, 0.3);
-  --terminal-hover: rgba(0, 255, 65, 0.1);
+                        <p class="snippet-desc">Performance-optimized lazy loading using Intersection Observer API. Improves page load speed significantly.</p>
+                    </article>
+                    <article class="snippet-card reveal">
+                        <div class="snippet-header">
+                            <h3><i class="fas fa-code" aria-hidden="true"></i> CSS Theme Variables</h3>
+                            <span class="snippet-lang">CSS</span>
+                        </div>
+                        <pre class="snippet-code"><code>:root {
+  --bg: #0b1120;
+  --surface: #111a2e;
+  --text: #e2e8f0;
+  --accent: #38bdf8;
+  --border: rgba(148, 163, 184, 0.15);
 }
 
 /* Theme Variations */
-body.theme-amber {
-  --terminal-text: #FFB000;
-  --terminal-shadow: rgba(255, 176, 0, 0.3);
-}
-
-body.theme-blue {
-  --terminal-text: #00D9FF;
-  --terminal-shadow: rgba(0, 217, 255, 0.3);
+body.theme-light {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --border: rgba(15, 23, 42, 0.08);
 }</code></pre>
-                <p class="snippet-desc">CSS custom properties for easy theme switching. Change one variable to transform the entire color scheme.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="section-header">
-            <h2>Testimonials</h2>
-            <div class="underline"></div>
-        </div>
-        <div class="testimonials-container">
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    <div class="testimonial-info">
-                        <h4>Sarah M.</h4>
-                        <p class="testimonial-role">Local Business Owner</p>
-                        <p class="testimonial-project">E-commerce Website Project</p>
-                    </div>
-                </div>
-                <div class="testimonial-content">
-                    <i class="fas fa-quote-left quote-icon"></i>
-                    <p>"Phidel transformed my online store vision into reality. The website is beautiful, fast, and easy to manage. Sales increased by 150% within the first month! His attention to detail and willingness to explain everything made the process smooth and enjoyable."</p>
-                </div>
-                <div class="testimonial-rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                        <p class="snippet-desc">CSS custom properties for easy theme switching. Change one variable to transform the entire color scheme.</p>
+                    </article>
                 </div>
             </div>
+        </section>
 
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <div class="testimonial-info">
-                        <h4>James K.</h4>
-                        <p class="testimonial-role">PowerLearn Project Instructor</p>
-                        <p class="testimonial-project">Software Development Program</p>
-                    </div>
+        <!-- Testimonials Section -->
+        <section class="section testimonials alt-bg">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-eyebrow">Social Proof</span>
+                    <h2 class="section-title">Testimonials</h2>
                 </div>
-                <div class="testimonial-content">
-                    <i class="fas fa-quote-left quote-icon"></i>
-                    <p>"An exceptional student who demonstrates strong technical abilities and genuine passion for software development. Phidel completed our intensive 16-week program with distinction, consistently submitting high-quality projects ahead of deadlines. His problem-solving approach and code quality exceeded expectations."</p>
-                </div>
-                <div class="testimonial-rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                <div class="testimonials-grid">
+                    <article class="testimonial-card reveal">
+                        <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p class="testimonial-quote">"Phidel transformed my online store vision into reality. The website is beautiful, fast, and easy to manage. Sales increased by 150% within the first month! His attention to detail and willingness to explain everything made the process smooth and enjoyable."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar"><i class="fas fa-user" aria-hidden="true"></i></div>
+                            <div>
+                                <h4>Sarah M.</h4>
+                                <p>Local Business Owner &middot; E-commerce Website Project</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="testimonial-card reveal">
+                        <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p class="testimonial-quote">"An exceptional student who demonstrates strong technical abilities and genuine passion for software development. Phidel completed our intensive 16-week program with distinction, consistently submitting high-quality projects ahead of deadlines. His problem-solving approach and code quality exceeded expectations."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
+                            <div>
+                                <h4>James K.</h4>
+                                <p>PowerLearn Project Instructor &middot; Software Development Program</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="testimonial-card reveal">
+                        <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p class="testimonial-quote">"Working with Phidel on group projects has been eye-opening. He doesn't just write code—he explains the 'why' behind every decision. His mentoring helped me understand complex concepts, and his collaborative approach makes teamwork enjoyable. He's the go-to person when we're stuck!"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+                            <div>
+                                <h4>David O.</h4>
+                                <p>Study Group Partner &middot; University of Embu ICT Program</p>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
+        </section>
 
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">
-                        <i class="fas fa-graduation-cap"></i>
+        <!-- Call-to-Action Section -->
+        <section class="section cta-section">
+            <div class="container">
+                <div class="cta-panel reveal">
+                    <h2 class="cta-title">Ready to Build Something Amazing?</h2>
+                    <p class="cta-description">
+                        I'm currently available for freelance projects and collaborations. Whether you need a new website, want to revamp an existing one, or have an exciting project idea, let's make it happen together.
+                    </p>
+                    <div class="cta-features">
+                        <span><i class="fas fa-circle-check" aria-hidden="true"></i> Fast Response Time</span>
+                        <span><i class="fas fa-circle-check" aria-hidden="true"></i> Quality Guaranteed</span>
+                        <span><i class="fas fa-circle-check" aria-hidden="true"></i> Fair Pricing</span>
+                        <span><i class="fas fa-circle-check" aria-hidden="true"></i> Ongoing Support</span>
                     </div>
-                    <div class="testimonial-info">
-                        <h4>David O.</h4>
-                        <p class="testimonial-role">Study Group Partner</p>
-                        <p class="testimonial-project">University of Embu ICT Program</p>
-                    </div>
-                </div>
-                <div class="testimonial-content">
-                    <i class="fas fa-quote-left quote-icon"></i>
-                    <p>"Working with Phidel on group projects has been eye-opening. He doesn't just write code—he explains the 'why' behind every decision. His mentoring helped me understand complex concepts, and his collaborative approach makes teamwork enjoyable. He's the go-to person when we're stuck!"</p>
-                </div>
-                <div class="testimonial-rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call-to-Action Section -->
-    <section class="cta-section">
-        <div class="cta-container">
-            <div class="cta-content">
-                <h2 class="cta-title">Ready to Build Something Amazing?</h2>
-                <p class="cta-description">
-                    I'm currently available for freelance projects and collaborations. Whether you need a new website, want to revamp an existing one, or have an exciting project idea, let's make it happen together.
-                </p>
-                <div class="cta-features">
-                    <div class="cta-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Fast Response Time</span>
-                    </div>
-                    <div class="cta-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Quality Guaranteed</span>
-                    </div>
-                    <div class="cta-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Fair Pricing</span>
-                    </div>
-                    <div class="cta-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Ongoing Support</span>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn btn-light btn-lg"><i class="fas fa-envelope" aria-hidden="true"></i> Get In Touch</a>
+                        <a href="Phidel CV.docx" download class="btn btn-ghost-light btn-lg"><i class="fas fa-download" aria-hidden="true"></i> Download Resume</a>
+                        <a href="https://github.com/tariq926" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-light btn-lg"><i class="fab fa-github" aria-hidden="true"></i> View GitHub</a>
                     </div>
                 </div>
-                <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-large btn-primary">
-                        <i class="fas fa-envelope"></i> Get In Touch
-                    </a>
-                    <a href="Phidel CV.docx" download class="btn btn-large">
-                        <i class="fas fa-download"></i> Download Resume
-                    </a>
-                    <a href="https://github.com/tariq926" target="_blank" class="btn btn-large">
-                        <i class="fab fa-github"></i> View GitHub
-                    </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-eyebrow">Contact</span>
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">Have a question or want to work together? Send me a message! I'll get back to you as soon as possible.</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-side reveal">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:ochiengphidel1@gmail.com">ochiengphidel1@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
+                            <div>
+                                <h4>Phone</h4>
+                                <a href="tel:+254711524148">0711 524 148</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-location-dot" aria-hidden="true"></i></div>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Embu, Kenya</p>
+                            </div>
+                        </div>
+                        <div class="contact-socials">
+                            <a href="https://github.com/tariq926" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
+                            <a href="https://www.linkedin.com/in/phidel-ochieng-832593393" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                            <a href="mailto:ochiengphidel1@gmail.com" aria-label="Send an email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form-panel reveal">
+                        <div class="success-message" id="successMessage" role="status">
+                            Your message has been successfully sent! I'll get back to you soon.
+                        </div>
+                        <form action="https://formsubmit.co/ochiengphidel1@gmail.com" method="POST" class="contact-form">
+                            <!-- Spam protection: honeypot field -->
+                            <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://tariq926.github.io/my-portfolio/?sent=true#contact">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" placeholder="Your Name" autocomplete="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" placeholder="Your Email" autocomplete="email" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="6" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fas fa-paper-plane" aria-hidden="true"></i> Send Message</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="section-header">
-            <h2>Get In Touch</h2>
-            <div class="underline"></div>
-        </div>
-        <div class="contact-content">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <p><a href="mailto:ochiengphidel1@gmail.com">ochiengphidel1@gmail.com</a></p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <p><a href="tel:0711524148">0711524148</a></p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>EMBU,KENYA</p>
-                </div>
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <a href="#home" class="brand" aria-label="Phidel Ochieng - Back to top">
+                <span class="brand-mark">PO</span>
+                <span class="brand-text">Phidel<span class="brand-dot">.</span>Ochieng</span>
+            </a>
+            <p class="footer-tagline">Building secure, beautiful web experiences from Embu, Kenya.</p>
+            <div class="footer-socials">
+                <a href="https://github.com/tariq926" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com/in/phidel-ochieng-832593393" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                <a href="mailto:ochiengphidel1@gmail.com" aria-label="Send an email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
             </div>
-            <div class="social-links">
-                <a href="https://github.com/tariq926" rel="noopener" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/phidel-ochieng-832593393?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </section>
-    <!--contact form section-->
-    <div class="contact-form-container">
-        <div class="form-header">
-            <h2>Get in Touch</h2>
-            <p>Have a question or want to work together? Send me a message! I'll get back to you as soon as possible.</p>
-        </div>
-
-        <div class="success-message" id="successMessage">
-            Your message has been successfully sent! I'll get back to you soon.
-        </div>
-
-        <form action="https://formsubmit.co/ochiengphidel1@gmail.com" method="POST" class="contact-form">
-            <!--prevent spam-->
-            <input type="text" name="_honey" style="display:none;">
-            <input type="hidden" name="_captcha" value="false">
-
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Your Name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Your Email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="subject">Subject:</label>
-                <input type="text" id="subject" name="subject" placeholder="Subject" required>
-            </div>
-
-            <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">Send Message</button>
-        </form>
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-stats">
-                <p class="stats-line">[STATS] Visitors: <span id="visitorCount">00042</span> | Last Updated: <span id="lastUpdate">2025-12-20 14:30:00</span></p>
-            </div>
-            <p>&copy; 2025 Phidel Emmanuel Ochieng. All Rights Reserved.</p>
+            <p class="footer-copy">&copy; <span id="currentYear">2025</span> Phidel Emmanuel Ochieng. All Rights Reserved.</p>
         </div>
     </footer>
 
     <!-- Scroll to Top Button -->
-    <div class="scroll-to-top" id="scrollToTop">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-    <script src="script.js"></script>
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <script src="script.js" defer></script>
 </body>
-</html> 
+</html>
