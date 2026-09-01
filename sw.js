@@ -1,15 +1,17 @@
 // Service Worker for Phidel's Portfolio
-const CACHE_NAME = 'phidel-portfolio-v2';
+const CACHE_NAME = 'phidel-portfolio-v3';
 const urlsToCache = [
   './',
   './index.html',
   './styles.css',
   './script.js',
-  './tariq2.jpg',
-  './manifest.json'
+  './manifest.json',
+  './favicon-192.png',
+  './tariq2.webp',
+  './robots.txt',
+  './sitemap.xml'
 ];
 
-// Install event — pre-cache core assets
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
@@ -17,7 +19,6 @@ self.addEventListener('install', event => {
   self.skipWaiting();
 });
 
-// Fetch event — network first, falling back to cache (keeps content fresh)
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
 
@@ -34,7 +35,6 @@ self.addEventListener('fetch', event => {
   );
 });
 
-// Activate event — clean up old caches
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames =>
