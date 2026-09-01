@@ -25,10 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    let savedTheme = 'dark';
+    let savedTheme = null;
     try {
-        savedTheme = localStorage.getItem('theme') || 'dark';
-    } catch (e) { /* storage unavailable — keep default */ }
+        savedTheme = localStorage.getItem('theme');
+    } catch (e) { /* storage unavailable */ }
+    if (!savedTheme) {
+        savedTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
     applyTheme(savedTheme);
 
     if (themeToggle) {
@@ -71,6 +74,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && siteNav.classList.contains('open')) closeNav();
+        });
+    }
+
+    // ------------------------------------------------------
+    // "More" navigation dropdown
+    // ------------------------------------------------------
+    const navDropdownBtn = document.getElementById('navDropdownBtn');
+    const navDropdownMenu = document.getElementById('navDropdownMenu');
+
+    function closeNavDropdown() {
+        if (!navDropdownBtn || !navDropdownMenu) return;
+        navDropdownBtn.setAttribute('aria-expanded', 'false');
+        navDropdownMenu.classList.remove('open');
+    }
+
+    if (navDropdownBtn && navDropdownMenu) {
+        navDropdownBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = navDropdownMenu.classList.toggle('open');
+            navDropdownBtn.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        navDropdownMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                closeNavDropdown();
+                closeNav();
+            });
+        });
+
+        document.addEventListener('click', closeNavDropdown);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeNavDropdown();
         });
     }
 
@@ -136,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ------------------------------------------------------
     // Scrollspy — highlight the active nav link
     // ------------------------------------------------------
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('a.nav-link[href^="#"]');
     const spiedSections = [...navLinks]
         .map(link => document.querySelector(link.getAttribute('href')))
         .filter(Boolean);
@@ -167,21 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    // ------------------------------------------------------
-    // Skill bars — animate to their data-level when visible
-    // ------------------------------------------------------
-    const skillObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const bar = entry.target;
-                bar.style.width = `${bar.dataset.level}%`;
-                skillObserver.unobserve(bar);
-            }
-        });
-    }, { threshold: 0.4 });
-
-    document.querySelectorAll('.skill-progress[data-level]').forEach(bar => skillObserver.observe(bar));
 
     // ------------------------------------------------------
     // Count-up animation for the hero stats
@@ -342,13 +362,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const reposData = await reposRes.json();
             const totalStars = reposData.reduce((acc, repo) => acc + repo.stargazers_count, 0);
 
+            const totalForks = reposData.reduce((acc, repo) => acc + repo.forks_count, 0);
+
             const reposCount = document.getElementById('reposCount');
             const starsCount = document.getElementById('starsCount');
-            const commitsCount = document.getElementById('commitsCount');
+            const forksCount = document.getElementById('forksCount');
 
             if (reposCount) countUp(reposCount, userData.public_repos, '+');
             if (starsCount) countUp(starsCount, totalStars, '+');
-            if (commitsCount) countUp(commitsCount, reposData.length * 50, '+');
+            if (forksCount) countUp(forksCount, totalForks, '+');
         } catch (e) {
             // Network/rate-limit issues — keep the static fallback numbers.
         }

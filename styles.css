@@ -358,6 +358,7 @@ ul {
     justify-content: space-between;
     gap: 24px;
     height: 100%;
+    overflow: visible;
 }
 
 .brand {
@@ -443,6 +444,69 @@ ul {
     display: none;
 }
 
+/* "More" navigation dropdown */
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.nav-dropdown-btn i {
+    font-size: 0.7rem;
+    transition: transform var(--transition);
+}
+
+.nav-dropdown:has(.nav-dropdown-menu.open) .nav-dropdown-btn i {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 210px;
+    padding: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all var(--transition);
+    z-index: 100;
+    list-style: none;
+}
+
+.nav-dropdown-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-dropdown-menu li a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: background var(--transition), color var(--transition);
+}
+
+.nav-dropdown-menu li a:hover {
+    background: var(--gradient-soft);
+    color: var(--accent);
+}
+
 /* Mobile navigation */
 @media (max-width: 960px) {
     .nav-toggle {
@@ -451,6 +515,24 @@ ul {
 
     .nav-cta {
         display: none;
+    }
+
+    .nav-dropdown-menu {
+        position: static;
+        min-width: 0;
+        margin-top: 4px;
+        box-shadow: none;
+        border: none;
+        padding: 0 0 0 12px;
+        background: transparent;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        display: none;
+    }
+
+    .nav-dropdown-menu.open {
+        display: block;
     }
 
     .site-nav {
@@ -1114,7 +1196,53 @@ body.theme-light .orb {
     text-align: right;
 }
 
-/* Skill bars */
+/* Skill chips (replaces self-rated progress bars) */
+.skill-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.skill-group-title {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 10px;
+}
+
+.skill-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-chip {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--gradient-soft);
+    border: 1px solid var(--border);
+    transition: transform var(--transition), border-color var(--transition);
+}
+
+.skill-chip:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
+
+.skill-chip-learning {
+    color: var(--warning);
+    background: rgba(251, 191, 36, 0.1);
+    border-color: rgba(251, 191, 36, 0.25);
+}
+
+/* Legacy skill bars — kept for compatibility if reintroduced */
 .skill-item {
     margin-bottom: 18px;
 }
@@ -1540,7 +1668,8 @@ body.theme-light .orb {
     box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
-    transition: transform 0.45s var(--ease-out-soft), border-color 0.45s var(--ease-out-soft), box-shadow 0.45s var(--ease-out-soft);
+    transition: opacity 0.35s var(--ease-out-soft), transform 0.45s var(--ease-out-soft),
+                border-color 0.45s var(--ease-out-soft), box-shadow 0.45s var(--ease-out-soft);
 }
 
 .project-card:hover {
@@ -1553,11 +1682,48 @@ body.theme-light .orb {
     display: none;
 }
 
+.recommendations-cta {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px dashed var(--border);
+}
+
+.recommendations-cta p {
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 22px;
+}
+
+.footer-nav a {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color var(--transition);
+}
+
+.footer-nav a:hover {
+    color: var(--accent);
+}
+
 .project-image {
     position: relative;
     aspect-ratio: 16 / 9;
     overflow: hidden;
     background: var(--surface-2);
+}
+
+.project-image picture,
+.project-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .project-image img {
