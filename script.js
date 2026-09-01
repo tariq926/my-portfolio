@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ------------------------------------------------------
     const spotlightCards = document.querySelectorAll(
         '.experience-card, .cert-card, .service-card, .project-card, .blog-card, ' +
-        '.testimonial-card, .profile-card, .skills-card, .snippet-card, .stat-card, .contact-item'
+        '.testimonial-card, .profile-card, .skills-card, .stat-card, .contact-item'
     );
 
     spotlightCards.forEach(card => {
@@ -269,41 +269,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = card.getBoundingClientRect();
             card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
             card.style.setProperty('--my', `${e.clientY - rect.top}px`);
-        });
-    });
-
-    // ------------------------------------------------------
-    // Copy-to-clipboard buttons on the code snippets
-    // ------------------------------------------------------
-    document.querySelectorAll('.snippet-card').forEach(card => {
-        const header = card.querySelector('.snippet-header');
-        const lang = card.querySelector('.snippet-lang');
-        const code = card.querySelector('.snippet-code code');
-        if (!header || !lang || !code || !navigator.clipboard) return;
-
-        const meta = document.createElement('div');
-        meta.className = 'snippet-meta';
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'copy-btn';
-        button.setAttribute('aria-label', 'Copy code snippet');
-        button.innerHTML = '<i class="fas fa-copy" aria-hidden="true"></i> Copy';
-
-        lang.replaceWith(meta);
-        meta.append(lang, button);
-
-        button.addEventListener('click', async () => {
-            try {
-                await navigator.clipboard.writeText(code.textContent);
-                button.classList.add('copied');
-                button.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i> Copied';
-                setTimeout(() => {
-                    button.classList.remove('copied');
-                    button.innerHTML = '<i class="fas fa-copy" aria-hidden="true"></i> Copy';
-                }, 2000);
-            } catch (e) {
-                // Clipboard permission denied — leave the button unchanged.
-            }
         });
     });
 

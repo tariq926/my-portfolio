@@ -26,7 +26,6 @@
 - **Projects** — filterable project showcase (All / Web Apps / Portfolios / In Progress)
 - **GitHub Activity** — live stats from the GitHub API
 - **Articles** — latest blog posts
-- **Code Showcase** — real code snippets
 - **Testimonials** — client and instructor feedback
 - **Contact** — details plus a working contact form (FormSubmit)
 

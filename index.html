@@ -157,7 +157,6 @@
                             <li><a href="#services">Services</a></li>
                             <li><a href="#github">GitHub Activity</a></li>
                             <li><a href="#notes">Notes</a></li>
-                            <li><a href="#code-snippets">Code Showcase</a></li>
                             <li><a href="#recommendations">Recommendations</a></li>
                         </ul>
                     </li>
@@ -881,108 +880,6 @@
                         <div class="blog-tags">
                             <span>CSS</span><span>Responsive Design</span><span>Tutorial</span>
                         </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Code Snippets Section -->
-        <section id="code-snippets" class="section code-snippets">
-            <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-eyebrow">From My Editor</span>
-                    <h2 class="section-title">Code Showcase</h2>
-                </div>
-                <div class="snippets-grid reveal-stagger">
-                    <article class="snippet-card reveal">
-                        <div class="snippet-header">
-                            <h3><i class="fas fa-code" aria-hidden="true"></i> Scroll-Reveal Animation</h3>
-                            <span class="snippet-lang">JavaScript</span>
-                        </div>
-                        <pre class="snippet-code"><code>const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-);
-
-document.querySelectorAll('.reveal').forEach(el => {
-  revealObserver.observe(el);
-});</code></pre>
-                        <p class="snippet-desc">Intersection Observer powered scroll reveals used throughout this portfolio for smooth, performant entrance animations.</p>
-                    </article>
-                    <article class="snippet-card reveal">
-                        <div class="snippet-header">
-                            <h3><i class="fas fa-code" aria-hidden="true"></i> Eased Anchor Scrolling</h3>
-                            <span class="snippet-lang">JavaScript</span>
-                        </div>
-                        <pre class="snippet-code"><code>const easeInOutCubic = t =>
-  t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-function scrollToY(targetY, duration = 750) {
-  const startY = window.scrollY;
-  const distance = targetY - startY;
-  const startTime = performance.now();
-
-  function step(now) {
-    const p = Math.min((now - startTime) / duration, 1);
-    window.scrollTo(0, startY + distance * easeInOutCubic(p));
-    if (p < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}</code></pre>
-                        <p class="snippet-desc">Custom eased scrolling with a cubic timing curve and fixed-header offset — used for every in-page navigation link.</p>
-                    </article>
-                    <article class="snippet-card reveal">
-                        <div class="snippet-header">
-                            <h3><i class="fas fa-code" aria-hidden="true"></i> Responsive Image Lazy Loading</h3>
-                            <span class="snippet-lang">JavaScript</span>
-                        </div>
-                        <pre class="snippet-code"><code>const imageObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.dataset.src;
-        img.classList.add('loaded');
-        imageObserver.unobserve(img);
-      }
-    });
-  },
-  { rootMargin: '50px' }
-);
-
-document.querySelectorAll('img[data-src]').forEach(img => {
-  imageObserver.observe(img);
-});</code></pre>
-                        <p class="snippet-desc">Performance-optimized lazy loading using Intersection Observer API. Improves page load speed significantly.</p>
-                    </article>
-                    <article class="snippet-card reveal">
-                        <div class="snippet-header">
-                            <h3><i class="fas fa-code" aria-hidden="true"></i> CSS Theme Variables</h3>
-                            <span class="snippet-lang">CSS</span>
-                        </div>
-                        <pre class="snippet-code"><code>:root {
-  --bg: #0b1120;
-  --surface: #111a2e;
-  --text: #e2e8f0;
-  --accent: #38bdf8;
-  --border: rgba(148, 163, 184, 0.15);
-}
-
-/* Theme Variations */
-body.theme-light {
-  --bg: #f8fafc;
-  --surface: #ffffff;
-  --text: #0f172a;
-  --border: rgba(15, 23, 42, 0.08);
-}</code></pre>
-                        <p class="snippet-desc">CSS custom properties for easy theme switching. Change one variable to transform the entire color scheme.</p>
                     </article>
                 </div>
             </div>

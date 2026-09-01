@@ -1,5 +1,5 @@
 // Service Worker for Phidel's Portfolio
-const CACHE_NAME = 'phidel-portfolio-v3';
+const CACHE_NAME = 'phidel-portfolio-v4';
 const urlsToCache = [
   './',
   './index.html',
