@@ -9,7 +9,9 @@
 ### Design
 
 - Modern, professional design with a polished dark theme (default) and a light theme
-- Modern typography: **Sora** (headings), **Inter** (body), **JetBrains Mono** (code & accents)
+- Modern typography: **Sora** (headings), **Inter** (body)
+- Recruiter-first page structure: featured work → about → experience → contact
+- Bento-grid featured projects with case-study format (problem → solution → result)
 - Smooth scroll-reveal animations powered by the Intersection Observer API
 - Glassmorphism sticky navigation with scrollspy (active section highlighting)
 - Fully responsive — mobile, tablet and desktop
@@ -17,17 +19,18 @@
 
 ### Content Sections
 
-- **Hero** — introduction, call-to-action buttons, social links and key stats
-- **About** — story, developer profile card and animated skills matrix
-- **Journey** — education & learning timeline with certificate links
-- **Experience** — freelance, university and training experience
+- **Hero** — outcome-focused intro, open-to-work badge, PageSpeed link
+- **Featured Projects** — bento grid with case studies for top work
+- **All Projects** — filterable showcase (All / Live / Web Apps / Portfolios / In Progress)
+- **About** — condensed bio, profile card, and skill chips
+- **Experience** — freelance, university, and training roles
+- **Journey** — education timeline with certificate links
 - **Certifications** — completed and in-progress credentials
-- **Services** — six service offerings
-- **Projects** — filterable project showcase (All / Web Apps / Portfolios / In Progress)
-- **GitHub Activity** — live stats from the GitHub API
-- **Articles** — latest blog posts
-- **Testimonials** — client and instructor feedback
-- **Contact** — details plus a working contact form (FormSubmit)
+- **Services** — compact three-column offerings
+- **GitHub** — live stats + curated pinned repositories
+- **Recommendations** — LinkedIn-verified social proof
+- **Contact** — form with loading state, resume links, 24h response note
+- **Resume page** — [`resume.html`](resume.html) + PDF download
 
 ### Security
 
@@ -48,13 +51,23 @@
 ### SEO
 
 - Semantic HTML5 landmarks and heading hierarchy
-- Meta description, keywords, Open Graph and Twitter Card tags
+- Meta description, keywords, Open Graph and Twitter Card tags (custom OG image)
 - JSON-LD structured data (Person + WebSite schemas)
+- `robots.txt`, `sitemap.xml`, canonical URLs
+
+## Custom Domain (optional)
+
+To use a professional domain (e.g. `phidelochieng.dev`):
+
+1. Purchase a domain from any registrar
+2. Add a `CNAME` record pointing to `tariq926.github.io`
+3. Configure the custom domain in GitHub Pages settings
+4. Update the `canonical` link and OG URLs in `index.html`
 
 ## Technologies
 
 - **Frontend:** HTML5, CSS3 (custom properties, Grid, Flexbox), Vanilla JavaScript
-- **Fonts:** Sora, Inter, JetBrains Mono (Google Fonts)
+- **Fonts:** Sora, Inter (Google Fonts, reduced weights)
 - **Icons:** Font Awesome 6.4.0 (with SRI)
 - **PWA:** Service Worker + Web App Manifest
 - **Form:** FormSubmit.co
@@ -63,9 +76,12 @@
 
 ```
 my-portfolio/
-├── index.html          # Main HTML file
+├── index.html          # Main portfolio page
+├── resume.html         # Online resume
 ├── styles.css          # All styles
 ├── script.js           # All functionality
+├── og-image.png        # Social sharing card (1200×630)
+├── portfolio-preview.png  # Project thumbnail mockup
 ├── manifest.json       # PWA manifest
 ├── sw.js               # Service worker
 ├── README.md           # This file

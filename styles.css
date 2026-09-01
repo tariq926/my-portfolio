@@ -21,12 +21,12 @@
     --text-faint: #64748b;
     --heading: #f8fafc;
 
-    --accent: #38bdf8;
-    --accent-2: #818cf8;
-    --accent-strong: #0ea5e9;
+    --accent: #4a9fd4;
+    --accent-2: #6b7fd4;
+    --accent-strong: #3d8bc4;
     --accent-contrast: #06121f;
-    --gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-    --gradient-soft: linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(129, 140, 248, 0.12) 100%);
+    --gradient: linear-gradient(135deg, #4a9fd4 0%, #6b7fd4 100%);
+    --gradient-soft: linear-gradient(135deg, rgba(74, 159, 212, 0.1) 0%, rgba(107, 127, 212, 0.1) 100%);
 
     --success: #34d399;
     --warning: #fbbf24;
@@ -66,9 +66,9 @@ body.theme-light {
     --text-faint: #64748b;
     --heading: #0f172a;
 
-    --accent: #0284c7;
-    --accent-2: #6366f1;
-    --accent-strong: #0369a1;
+    --accent: #2563eb;
+    --accent-2: #4f46e5;
+    --accent-strong: #1d4ed8;
     --accent-contrast: #ffffff;
     --gradient: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
     --gradient-soft: linear-gradient(135deg, rgba(14, 165, 233, 0.08) 0%, rgba(99, 102, 241, 0.08) 100%);
@@ -2452,5 +2452,340 @@ body::-webkit-scrollbar-thumb:hover {
 
     .cta-panel {
         padding: 52px 24px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Professional upgrade — nav badge, hero, bento, case studies, GitHub pins
+   -------------------------------------------------------------------------- */
+.nav-availability {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    background: rgba(52, 211, 153, 0.08);
+    color: var(--success);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all var(--transition);
+}
+
+.nav-availability:hover {
+    background: rgba(52, 211, 153, 0.14);
+    color: var(--success);
+}
+
+@media (min-width: 900px) {
+    .nav-availability {
+        display: inline-flex;
+    }
+}
+
+.hero-intent {
+    font-size: 0.88rem;
+    color: var(--text-faint);
+    margin-bottom: 28px;
+}
+
+.stat-value.stat-text {
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+}
+
+.floating-chip-link {
+    text-decoration: none;
+    color: inherit;
+    transition: border-color var(--transition), color var(--transition);
+}
+
+.floating-chip-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.section-header-spaced {
+    margin-top: 72px;
+}
+
+/* Bento featured grid */
+.bento-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 24px;
+    margin-bottom: 16px;
+}
+
+.featured-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.45s var(--ease-out-soft), border-color 0.45s var(--ease-out-soft), box-shadow 0.45s var(--ease-out-soft);
+}
+
+.featured-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+}
+
+.featured-large {
+    grid-row: span 2;
+}
+
+.featured-medium {
+    grid-column: 2;
+}
+
+.featured-small {
+    grid-column: 2;
+}
+
+.featured-media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--surface-2);
+}
+
+.featured-large .featured-media {
+    aspect-ratio: auto;
+    flex: 1;
+    min-height: 220px;
+}
+
+.featured-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease-out-soft);
+}
+
+.featured-card:hover .featured-media img {
+    transform: scale(1.03);
+}
+
+.featured-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+.featured-body h3 {
+    font-size: 1.1rem;
+}
+
+/* Case study blocks */
+.case-study {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.case-study-compact .case-block p {
+    font-size: 0.84rem;
+}
+
+.case-block {
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+}
+
+.case-block.case-result {
+    border-color: rgba(52, 211, 153, 0.25);
+    background: rgba(52, 211, 153, 0.06);
+}
+
+.case-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 4px;
+}
+
+.case-block p {
+    font-size: 0.87rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Compact services */
+.services-compact {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.services-compact .service-card {
+    padding: 28px;
+}
+
+.services-compact .service-desc {
+    margin-bottom: 0;
+}
+
+/* GitHub pinned repos */
+.pinned-repos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    width: 100%;
+    margin: 24px 0;
+}
+
+.pinned-loading {
+    color: var(--text-faint);
+    font-size: 0.88rem;
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 16px;
+}
+
+.pinned-repo-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px 20px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color var(--transition), transform var(--transition);
+}
+
+.pinned-repo-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    color: inherit;
+}
+
+.pinned-repo-card h4 {
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--heading);
+}
+
+.pinned-repo-card h4 i {
+    color: var(--text-faint);
+    font-size: 0.85rem;
+}
+
+.pinned-repo-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.pinned-repo-meta {
+    display: flex;
+    gap: 14px;
+    font-size: 0.75rem;
+    color: var(--text-faint);
+}
+
+.pinned-repo-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Contact UX */
+.contact-cta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.form-note {
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-faint);
+    margin-top: 14px;
+}
+
+.form-note i {
+    color: var(--accent);
+    margin-right: 6px;
+}
+
+.error-message {
+    display: none;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    border-radius: var(--radius-md);
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #f87171;
+    font-size: 0.9rem;
+}
+
+.error-message.show {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.success-message {
+    display: none;
+    align-items: center;
+    gap: 10px;
+}
+
+.success-message.show {
+    display: flex;
+}
+
+.btn-loading {
+    pointer-events: none;
+    opacity: 0.75;
+}
+
+.btn-loading .btn-label::after {
+    content: '…';
+    animation: pulse 1s infinite;
+}
+
+@media (max-width: 960px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-large,
+    .featured-medium,
+    .featured-small {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .services-compact {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-availability {
+        display: none;
     }
 }

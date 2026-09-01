@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Pointer-following spotlight on cards
     // ------------------------------------------------------
     const spotlightCards = document.querySelectorAll(
-        '.experience-card, .cert-card, .service-card, .project-card, .blog-card, ' +
+        '.experience-card, .cert-card, .service-card, .project-card, .featured-card, .pinned-repo-card, ' +
         '.testimonial-card, .profile-card, .skills-card, .stat-card, .contact-item'
     );
 
@@ -311,14 +311,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ------------------------------------------------------
-    // GitHub stats (live from the public API)
+    // GitHub stats + curated pinned repositories
     // ------------------------------------------------------
+    const PROFESSIONAL_REPOS = [
+        'my-portfolio',
+        'smart-life-manager',
+        'tariq_store',
+        'harrietteadhiambo',
+        'online_store'
+    ];
+
+    function renderPinnedRepos(repos) {
+        const container = document.getElementById('pinnedRepos');
+        if (!container) return;
+
+        const curated = PROFESSIONAL_REPOS
+            .map(name => repos.find(r => r.name === name))
+            .filter(Boolean);
+
+        if (!curated.length) {
+            container.innerHTML = '<p class="pinned-loading">No repositories to display.</p>';
+            return;
+        }
+
+        container.innerHTML = curated.map(repo => {
+            const desc = repo.description || 'Professional web development project.';
+            const lang = repo.language || '—';
+            const stars = repo.stargazers_count || 0;
+            return `<a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="pinned-repo-card reveal visible">
+                <h4><i class="fas fa-book-bookmark" aria-hidden="true"></i> ${repo.name}</h4>
+                <p class="pinned-repo-desc">${desc}</p>
+                <div class="pinned-repo-meta">
+                    <span><i class="fas fa-circle" aria-hidden="true"></i> ${lang}</span>
+                    <span><i class="fas fa-star" aria-hidden="true"></i> ${stars}</span>
+                </div>
+            </a>`;
+        }).join('');
+    }
+
     async function fetchGitHubStats() {
         try {
             const username = 'tariq926';
             const [userRes, reposRes] = await Promise.all([
                 fetch(`https://api.github.com/users/${username}`),
-                fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
+                fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`)
             ]);
 
             if (!userRes.ok || !reposRes.ok) return;
@@ -326,7 +362,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const userData = await userRes.json();
             const reposData = await reposRes.json();
             const totalStars = reposData.reduce((acc, repo) => acc + repo.stargazers_count, 0);
-
             const totalForks = reposData.reduce((acc, repo) => acc + repo.forks_count, 0);
 
             const reposCount = document.getElementById('reposCount');
@@ -336,20 +371,46 @@ document.addEventListener('DOMContentLoaded', () => {
             if (reposCount) countUp(reposCount, userData.public_repos, '+');
             if (starsCount) countUp(starsCount, totalStars, '+');
             if (forksCount) countUp(forksCount, totalForks, '+');
+
+            renderPinnedRepos(reposData);
         } catch (e) {
-            // Network/rate-limit issues — keep the static fallback numbers.
+            const container = document.getElementById('pinnedRepos');
+            if (container) {
+                container.innerHTML = '<p class="pinned-loading">Unable to load repositories. <a href="https://github.com/tariq926">View on GitHub</a>.</p>';
+            }
         }
     }
     fetchGitHubStats();
 
     // ------------------------------------------------------
-    // Contact form — show success note after redirect back
+    // Contact form — loading state & success redirect
     // ------------------------------------------------------
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const errorMessage = document.getElementById('errorMessage');
+
+    if (contactForm && submitBtn) {
+        contactForm.addEventListener('submit', () => {
+            submitBtn.classList.add('btn-loading');
+            submitBtn.disabled = true;
+            if (errorMessage) errorMessage.hidden = true;
+        });
+    }
+
     const successMessage = document.getElementById('successMessage');
     if (successMessage && new URLSearchParams(window.location.search).get('sent') === 'true') {
         successMessage.classList.add('show');
         const contact = document.getElementById('contact');
-        if (contact) contact.scrollIntoView();
+        if (contact) {
+            if (window.portfolioScrollTo) {
+                const headerOffset = header ? header.offsetHeight + 16 : 0;
+                const targetY = contact.getBoundingClientRect().top + window.scrollY - headerOffset;
+                window.portfolioScrollTo(Math.max(targetY, 0));
+            } else {
+                contact.scrollIntoView();
+            }
+        }
+        history.replaceState(null, '', `${window.location.pathname}#contact`);
     }
 
     // ------------------------------------------------------
