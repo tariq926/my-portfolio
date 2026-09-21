@@ -43,6 +43,6 @@ Open `http://127.0.0.1:8080/`.
 
 - Email: ochiengphidel1@gmail.com
 - Phone: 0711524148
-- Location: Embu, Kenya
+- Location: Nairobi, Kenya
 - LinkedIn: [phidel-ochieng](https://www.linkedin.com/in/phidel-ochieng-832593393)
 - GitHub: [@tariq926](https://github.com/tariq926)
