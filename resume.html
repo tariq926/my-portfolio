@@ -3,42 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Resume — Phidel Emmanuel Ochieng, Frontend Developer">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="description" content="Resume for Phidel Emmanuel Ochieng, frontend developer in Embu, Kenya. Skills, experience, and selected projects.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://tariq926.github.io/my-portfolio/resume.html">
-    <title>Resume — Phidel Emmanuel Ochieng</title>
+    <link rel="canonical" href="https://phidelemmanuelochieng.vercel.app/resume.html">
+    <title>Resume | Phidel Emmanuel Ochieng</title>
+    <meta property="og:title" content="Resume | Phidel Emmanuel Ochieng">
+    <meta property="og:description" content="Frontend developer resume: experience, skills, and selected projects.">
+    <meta property="og:url" content="https://phidelemmanuelochieng.vercel.app/resume.html">
+    <meta property="og:image" content="https://phidelemmanuelochieng.vercel.app/og-image.png">
+    <meta property="og:type" content="website">
     <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        .resume-page { padding: calc(var(--header-height) + 48px) 0 80px; }
-        .resume-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px; }
-        .resume-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px; max-width: 820px; margin: 0 auto; box-shadow: var(--shadow-md); }
-        .resume-card h1 { font-size: 1.8rem; margin-bottom: 6px; }
-        .resume-card .resume-title { color: var(--accent); font-family: var(--font-mono); font-size: 0.95rem; margin-bottom: 20px; }
-        .resume-card h2 { font-size: 1.05rem; margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
-        .resume-card p, .resume-card li { color: var(--text-muted); font-size: 0.92rem; }
-        .resume-card ul { padding-left: 20px; }
-        .resume-card li { margin-bottom: 6px; }
-        .resume-contact { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.85rem; color: var(--text-faint); margin-bottom: 8px; }
-        .resume-contact a { color: var(--accent); }
+        .resume-page { padding: calc(var(--header-h) + 2rem) 0 4rem; }
+        .resume-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .resume-doc {
+            border: 1px solid var(--line);
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: clamp(1.25rem, 3vw, 2.25rem);
+            max-width: 48rem;
+        }
+        .resume-doc h1 { font-size: 1.8rem; margin-bottom: 0.25rem; }
+        .resume-role { color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
+        .resume-contact { display: flex; flex-wrap: wrap; gap: 0.75rem 1.1rem; margin-bottom: 1.25rem; font-size: 0.92rem; }
+        .resume-doc h2 {
+            font-size: 1.05rem;
+            margin: 1.6rem 0 0.7rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--line);
+        }
+        .resume-doc ul { padding-left: 1.1rem; display: grid; gap: 0.45rem; }
+        .resume-doc li { list-style: disc; color: var(--muted); }
+        .resume-doc li strong { color: var(--ink); }
     </style>
 </head>
 <body>
     <main class="resume-page">
-        <div class="container">
+        <div class="shell">
             <div class="resume-actions">
-                <a href="index.html" class="btn btn-outline btn-sm">&larr; Back to Portfolio</a>
-                <a href="phidel-cv.pdf" download class="btn btn-primary btn-sm">Download PDF</a>
+                <a class="btn btn-line" href="index.html">Back to portfolio</a>
+                <a class="btn btn-solid" href="phidel-cv.pdf" download>Download PDF</a>
             </div>
-            <article class="resume-card">
+            <article class="resume-doc">
                 <h1>Phidel Emmanuel Ochieng</h1>
-                <p class="resume-title">Frontend Developer · Embu, Kenya</p>
+                <p class="resume-role">Frontend developer · Embu, Kenya</p>
                 <div class="resume-contact">
                     <a href="mailto:ochiengphidel1@gmail.com">ochiengphidel1@gmail.com</a>
-                    <span>0711 524 148</span>
+                    <a href="tel:+254711524148">0711 524 148</a>
                     <a href="https://github.com/tariq926" target="_blank" rel="noopener noreferrer">github.com/tariq926</a>
                     <a href="https://www.linkedin.com/in/phidel-ochieng-832593393" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 </div>
@@ -46,32 +63,32 @@
 
                 <h2>Experience</h2>
                 <ul>
-                    <li><strong>Freelance Web Developer</strong> (2024–Present) — Built responsive sites for 5+ clients with 95+ PageSpeed scores.</li>
-                    <li><strong>Student Developer</strong>, University of Embu (2023–Present) — Lead on group projects; mentor peers in web fundamentals.</li>
-                    <li><strong>Software Development Trainee</strong>, PowerLearn Project Africa (2024) — 16-week full-stack program, graduated with distinction.</li>
+                    <li><strong>Freelance web developer</strong> (2024 to present). Built responsive sites for clients with strong PageSpeed scores.</li>
+                    <li><strong>Student developer</strong>, University of Embu (2023 to present). Lead on group projects; mentors peers in web fundamentals.</li>
+                    <li><strong>Software development trainee</strong>, PowerLearn Project Africa (2024). 16-week full-stack program, graduated with distinction.</li>
                 </ul>
 
                 <h2>Skills</h2>
                 <ul>
-                    <li><strong>Proficient:</strong> HTML5, CSS3, JavaScript, Responsive Design, UI/UX, PHP, MySQL</li>
+                    <li><strong>Proficient:</strong> HTML5, CSS3, JavaScript, responsive design, UI design, PHP, MySQL</li>
                     <li><strong>Working knowledge:</strong> React, TypeScript, Node.js, Git, Linux, Python</li>
-                    <li><strong>Learning:</strong> Cybersecurity, Network Security</li>
+                    <li><strong>Learning:</strong> Cybersecurity, network security</li>
                 </ul>
 
-                <h2>Selected Projects</h2>
+                <h2>Selected projects</h2>
                 <ul>
-                    <li><strong>Client Portfolio</strong> — Responsive portfolio with 95+ PageSpeed, live deployment.</li>
-                    <li><strong>Personal Portfolio</strong> — PWA with CSP security, theme toggle, GitHub API integration.</li>
-                    <li><strong>Smart-Life Manager</strong> — React + TypeScript productivity app with MongoDB API.</li>
+                    <li><strong>Client portfolio.</strong> Responsive site with 95+ PageSpeed, live deployment.</li>
+                    <li><strong>Personal portfolio.</strong> PWA with CSP security, theme support, GitHub API integration.</li>
+                    <li><strong>Smart-Life Manager.</strong> React and TypeScript productivity app with MongoDB API.</li>
                 </ul>
 
-                <h2>Education &amp; Certifications</h2>
+                <h2>Education and certifications</h2>
                 <ul>
-                    <li>Diploma in ICT — University of Embu (2023–Present)</li>
-                    <li>Software Development — PowerLearn Project Africa (2024)</li>
-                    <li>Critical Infrastructure Protection — OPSWAT Academy (2025)</li>
-                    <li>Ethical Hacking Bootcamp — Udemy (2026)</li>
-                    <li>Cybersecurity — Cisco Networking Academy (In Progress)</li>
+                    <li>Diploma in ICT, University of Embu (2023 to present)</li>
+                    <li>Software Development, PowerLearn Project Africa (2024)</li>
+                    <li>Critical Infrastructure Protection, OPSWAT Academy (2025)</li>
+                    <li>Ethical Hacking Bootcamp, Udemy (2026)</li>
+                    <li>Cybersecurity, Cisco Networking Academy (in progress)</li>
                 </ul>
             </article>
         </div>

@@ -1,11 +1,11 @@
 {
   "name": "Phidel Emmanuel Ochieng - Portfolio",
-  "short_name": "Phidel Portfolio",
-  "description": "Frontend Developer & Cybersecurity Enthusiast Portfolio",
-  "start_url": "/my-portfolio/",
+  "short_name": "Phidel",
+  "description": "Frontend developer portfolio for Phidel Emmanuel Ochieng",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#0b1120",
-  "theme_color": "#0b1120",
+  "background_color": "#E7E5E1",
+  "theme_color": "#E7E5E1",
   "orientation": "portrait-primary",
   "icons": [
     {

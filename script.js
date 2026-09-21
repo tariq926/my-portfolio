@@ -1,27 +1,20 @@
-// ==========================================================
-// PHIDEL OCHIENG — PORTFOLIO
-// Modern redesign: navigation, theming, reveal animations,
-// project filters, GitHub stats & PWA registration.
-// ==========================================================
+// Phidel Ochieng portfolio
 
 document.addEventListener('DOMContentLoaded', () => {
-
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // ------------------------------------------------------
-    // Theme toggle (dark by default, persisted)
-    // ------------------------------------------------------
+    const header = document.getElementById('siteHeader');
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
     const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
 
     function applyTheme(theme) {
-        document.body.classList.toggle('theme-light', theme === 'light');
-        if (themeIcon) {
-            themeIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
-        }
+        document.body.classList.toggle('theme-dark', theme === 'dark');
         const metaTheme = document.querySelector('meta[name="theme-color"]');
         if (metaTheme) {
-            metaTheme.setAttribute('content', theme === 'light' ? '#f8fafc' : '#0b1120');
+            metaTheme.setAttribute('content', theme === 'dark' ? '#1A1917' : '#E7E5E1');
+        }
+        if (themeToggle) {
+            themeToggle.textContent = theme === 'dark' ? 'Light' : 'Theme';
         }
     }
 
@@ -29,290 +22,118 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
         savedTheme = localStorage.getItem('theme');
     } catch (e) { /* storage unavailable */ }
+
     if (!savedTheme) {
-        savedTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        savedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
-    applyTheme(savedTheme);
+    applyTheme(savedTheme === 'dark' ? 'dark' : 'light');
 
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
-            const next = document.body.classList.contains('theme-light') ? 'dark' : 'light';
+            const next = document.body.classList.contains('theme-dark') ? 'light' : 'dark';
             applyTheme(next);
             try { localStorage.setItem('theme', next); } catch (e) { /* ignore */ }
         });
     }
 
-    // ------------------------------------------------------
-    // Header state & mobile navigation
-    // ------------------------------------------------------
-    const header = document.getElementById('siteHeader');
-    const navToggle = document.getElementById('navToggle');
-    const siteNav = document.getElementById('siteNav');
-
     function onScrollHeader() {
-        header.classList.toggle('scrolled', window.scrollY > 8);
+        if (!header) return;
+        header.classList.toggle('is-scrolled', window.scrollY > 6);
     }
     onScrollHeader();
     window.addEventListener('scroll', onScrollHeader, { passive: true });
 
     function closeNav() {
-        siteNav.classList.remove('open');
+        if (!siteNav || !navToggle) return;
+        siteNav.classList.remove('is-open');
         navToggle.setAttribute('aria-expanded', 'false');
-        navToggle.querySelector('i').className = 'fas fa-bars';
+        navToggle.textContent = 'Menu';
     }
 
     if (navToggle && siteNav) {
         navToggle.addEventListener('click', () => {
-            const isOpen = siteNav.classList.toggle('open');
-            navToggle.setAttribute('aria-expanded', String(isOpen));
-            navToggle.querySelector('i').className = isOpen ? 'fas fa-xmark' : 'fas fa-bars';
+            const open = siteNav.classList.toggle('is-open');
+            navToggle.setAttribute('aria-expanded', String(open));
+            navToggle.textContent = open ? 'Close' : 'Menu';
         });
 
-        siteNav.querySelectorAll('a').forEach(link => {
+        siteNav.querySelectorAll('a').forEach((link) => {
             link.addEventListener('click', closeNav);
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && siteNav.classList.contains('open')) closeNav();
+            if (e.key === 'Escape') closeNav();
         });
     }
 
-    // ------------------------------------------------------
-    // "More" navigation dropdown
-    // ------------------------------------------------------
-    const navDropdownBtn = document.getElementById('navDropdownBtn');
-    const navDropdownMenu = document.getElementById('navDropdownMenu');
-
-    function closeNavDropdown() {
-        if (!navDropdownBtn || !navDropdownMenu) return;
-        navDropdownBtn.setAttribute('aria-expanded', 'false');
-        navDropdownMenu.classList.remove('open');
-    }
-
-    if (navDropdownBtn && navDropdownMenu) {
-        navDropdownBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isOpen = navDropdownMenu.classList.toggle('open');
-            navDropdownBtn.setAttribute('aria-expanded', String(isOpen));
-        });
-
-        navDropdownMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                closeNavDropdown();
-                closeNav();
-            });
-        });
-
-        document.addEventListener('click', closeNavDropdown);
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeNavDropdown();
-        });
-    }
-
-    // ------------------------------------------------------
-    // Eased anchor scrolling
-    // Takes over from CSS smooth scrolling for a longer,
-    // softer glide between sections.
-    // ------------------------------------------------------
-    if (!prefersReducedMotion) {
-        document.documentElement.classList.add('js-smooth');
-
-        const easeInOutCubic = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-
-        function scrollToY(targetY, duration = 750) {
-            const startY = window.scrollY;
-            const distance = targetY - startY;
-            if (Math.abs(distance) < 2) return;
-            const startTime = performance.now();
-
-            function step(now) {
-                const progress = Math.min((now - startTime) / duration, 1);
-                window.scrollTo(0, startY + distance * easeInOutCubic(progress));
-                if (progress < 1) requestAnimationFrame(step);
-            }
-            requestAnimationFrame(step);
-        }
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', (e) => {
-                const hash = anchor.getAttribute('href');
-                if (hash === '#' || hash.length < 2) return;
-                const target = document.querySelector(hash);
-                if (!target) return;
-
-                e.preventDefault();
-                const headerOffset = header ? header.offsetHeight + 16 : 0;
-                const targetY = target.getBoundingClientRect().top + window.scrollY - headerOffset;
-                scrollToY(Math.max(targetY, 0));
-                history.replaceState(null, '', hash);
-            });
-        });
-
-        window.portfolioScrollTo = scrollToY;
-    }
-
-    // ------------------------------------------------------
-    // Reading progress bar
-    // ------------------------------------------------------
-    const progressBar = document.getElementById('scrollProgress');
-
-    function updateProgressBar() {
-        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-        const percent = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
-        progressBar.style.width = `${Math.min(percent, 100)}%`;
-    }
-
-    if (progressBar) {
-        updateProgressBar();
-        window.addEventListener('scroll', updateProgressBar, { passive: true });
-        window.addEventListener('resize', updateProgressBar);
-    }
-
-    // ------------------------------------------------------
-    // Scrollspy — highlight the active nav link
-    // ------------------------------------------------------
-    const navLinks = document.querySelectorAll('a.nav-link[href^="#"]');
-    const spiedSections = [...navLinks]
-        .map(link => document.querySelector(link.getAttribute('href')))
+    // Scrollspy
+    const navLinks = [...document.querySelectorAll('.site-nav a[href^="#"]')];
+    const sections = navLinks
+        .map((link) => document.querySelector(link.getAttribute('href')))
         .filter(Boolean);
 
     function updateActiveLink() {
-        const fromTop = window.scrollY + 120;
-        let currentId = spiedSections[0] ? spiedSections[0].id : null;
-        spiedSections.forEach(section => {
+        const fromTop = window.scrollY + 110;
+        let currentId = null;
+        sections.forEach((section) => {
             if (section.offsetTop <= fromTop) currentId = section.id;
         });
-        navLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+        navLinks.forEach((link) => {
+            const match = link.getAttribute('href') === `#${currentId}`;
+            if (match) link.setAttribute('aria-current', 'true');
+            else link.removeAttribute('aria-current');
         });
     }
     updateActiveLink();
     window.addEventListener('scroll', updateActiveLink, { passive: true });
 
-    // ------------------------------------------------------
-    // Scroll-reveal animations
-    // ------------------------------------------------------
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    // Soft reveal for presence (disabled when reduced motion)
+    if (!prefersReducedMotion) {
+        const revealEls = document.querySelectorAll(
+            '.feature, .project-row, .timeline-list > li, .section-intro, .contact-form-wrap, .facts, .skill-columns'
+        );
+        revealEls.forEach((el) => el.classList.add('reveal'));
 
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    // ------------------------------------------------------
-    // Count-up animation for the hero stats
-    // ------------------------------------------------------
-    function countUp(el, target, suffix, duration = 1500) {
-        if (prefersReducedMotion) {
-            el.textContent = `${target}${suffix}`;
-            return;
-        }
-        const start = performance.now();
-
-        function step(now) {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            el.textContent = `${Math.round(target * eased)}${suffix}`;
-            if (progress < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-    }
-
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                countUp(el, Number(el.dataset.count), el.dataset.suffix || '');
-                counterObserver.unobserve(el);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('.stat-value[data-count]').forEach(el => counterObserver.observe(el));
-
-    // ------------------------------------------------------
-    // Timeline progress line — fills as the section scrolls by
-    // ------------------------------------------------------
-    const timelineProgress = document.getElementById('timelineProgress');
-    const timelineContainer = document.querySelector('.timeline-container');
-
-    function updateTimelineProgress() {
-        const rect = timelineContainer.getBoundingClientRect();
-        const midpoint = window.innerHeight * 0.62;
-        const filled = Math.min(Math.max(midpoint - rect.top, 0), rect.height);
-        timelineProgress.style.height = `${filled}px`;
-    }
-
-    if (timelineProgress && timelineContainer) {
-        updateTimelineProgress();
-        window.addEventListener('scroll', updateTimelineProgress, { passive: true });
-        window.addEventListener('resize', updateTimelineProgress);
-    }
-
-    // ------------------------------------------------------
-    // Pointer-following spotlight on cards
-    // ------------------------------------------------------
-    const spotlightCards = document.querySelectorAll(
-        '.experience-card, .cert-card, .service-card, .project-card, .featured-card, .pinned-repo-card, ' +
-        '.testimonial-card, .profile-card, .skills-card, .stat-card, .contact-item'
-    );
-
-    spotlightCards.forEach(card => {
-        card.classList.add('spotlight');
-
-        card.addEventListener('pointermove', (e) => {
-            if (e.pointerType === 'touch') return;
-            const rect = card.getBoundingClientRect();
-            card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
-            card.style.setProperty('--my', `${e.clientY - rect.top}px`);
-        });
-    });
-
-    // ------------------------------------------------------
-    // Pause decorative animations while they are off-screen
-    // ------------------------------------------------------
-    const loopingElements = [
-        document.querySelector('.hero-glow'),
-        document.querySelector('.marquee-track')
-    ].filter(Boolean);
-
-    if (loopingElements.length) {
-        const pauseObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                entry.target.classList.toggle('paused', !entry.isIntersecting);
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
+                }
             });
-        }, { threshold: 0 });
+        }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
 
-        loopingElements.forEach(el => pauseObserver.observe(el));
+        revealEls.forEach((el) => revealObserver.observe(el));
     }
 
-    // ------------------------------------------------------
     // Project filters
-    // ------------------------------------------------------
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
+    const filterButtons = document.querySelectorAll('.filter');
+    const projectRows = document.querySelectorAll('.project-row');
 
-    filterButtons.forEach(button => {
+    filterButtons.forEach((button) => {
         button.addEventListener('click', () => {
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-
+            filterButtons.forEach((btn) => btn.classList.remove('is-active'));
+            button.classList.add('is-active');
             const filter = button.dataset.filter;
-            projectCards.forEach(card => {
-                const categories = (card.dataset.category || '').split(' ');
+            projectRows.forEach((row) => {
+                const categories = (row.dataset.category || '').split(/\s+/);
                 const show = filter === 'all' || categories.includes(filter);
-                card.classList.toggle('hidden', !show);
+                row.classList.toggle('is-hidden', !show);
             });
         });
     });
 
-    // ------------------------------------------------------
-    // GitHub stats + curated pinned repositories
-    // ------------------------------------------------------
+    // XSS-safe helpers for GitHub API content
+    function sanitizeUrl(url) {
+        try {
+            const parsed = new URL(url, window.location.origin);
+            if (parsed.protocol === 'https:' || parsed.protocol === 'http:') {
+                return parsed.href;
+            }
+        } catch (e) { /* invalid */ }
+        return '#';
+    }
+
     const PROFESSIONAL_REPOS = [
         'my-portfolio',
         'smart-life-manager',
@@ -326,30 +147,44 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!container) return;
 
         const curated = PROFESSIONAL_REPOS
-            .map(name => repos.find(r => r.name === name))
+            .map((name) => repos.find((r) => r.name === name))
             .filter(Boolean);
 
         if (!curated.length) {
-            container.innerHTML = '<p class="pinned-loading">No repositories to display.</p>';
+            container.innerHTML = '<p class="repo-empty">No repositories to display yet.</p>';
             return;
         }
 
-        container.innerHTML = curated.map(repo => {
-            const desc = repo.description || 'Professional web development project.';
-            const lang = repo.language || '—';
-            const stars = repo.stargazers_count || 0;
-            return `<a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="pinned-repo-card reveal visible">
-                <h4><i class="fas fa-book-bookmark" aria-hidden="true"></i> ${repo.name}</h4>
-                <p class="pinned-repo-desc">${desc}</p>
-                <div class="pinned-repo-meta">
-                    <span><i class="fas fa-circle" aria-hidden="true"></i> ${lang}</span>
-                    <span><i class="fas fa-star" aria-hidden="true"></i> ${stars}</span>
-                </div>
-            </a>`;
-        }).join('');
+        container.replaceChildren();
+        curated.forEach((repo) => {
+            const link = document.createElement('a');
+            link.className = 'repo-card';
+            link.href = sanitizeUrl(repo.html_url);
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+
+            const title = document.createElement('h3');
+            title.textContent = repo.name || 'Repository';
+
+            const desc = document.createElement('p');
+            desc.textContent = repo.description || 'Professional web development project.';
+
+            const meta = document.createElement('p');
+            meta.className = 'repo-meta';
+            meta.textContent = `${repo.language || 'Code'} · ${repo.stargazers_count || 0} stars`;
+
+            link.append(title, desc, meta);
+            container.append(link);
+        });
+    }
+
+    function setStat(id, value) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = String(value);
     }
 
     async function fetchGitHubStats() {
+        const container = document.getElementById('pinnedRepos');
         try {
             const username = 'tariq926';
             const [userRes, reposRes] = await Promise.all([
@@ -357,94 +192,75 @@ document.addEventListener('DOMContentLoaded', () => {
                 fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`)
             ]);
 
-            if (!userRes.ok || !reposRes.ok) return;
+            if (!userRes.ok || !reposRes.ok) throw new Error('GitHub API unavailable');
 
             const userData = await userRes.json();
             const reposData = await reposRes.json();
-            const totalStars = reposData.reduce((acc, repo) => acc + repo.stargazers_count, 0);
-            const totalForks = reposData.reduce((acc, repo) => acc + repo.forks_count, 0);
+            if (!Array.isArray(reposData)) throw new Error('Unexpected repos payload');
 
-            const reposCount = document.getElementById('reposCount');
-            const starsCount = document.getElementById('starsCount');
-            const forksCount = document.getElementById('forksCount');
+            const totalStars = reposData.reduce((acc, repo) => acc + (repo.stargazers_count || 0), 0);
+            const totalForks = reposData.reduce((acc, repo) => acc + (repo.forks_count || 0), 0);
 
-            if (reposCount) countUp(reposCount, userData.public_repos, '+');
-            if (starsCount) countUp(starsCount, totalStars, '+');
-            if (forksCount) countUp(forksCount, totalForks, '+');
-
+            setStat('reposCount', userData.public_repos ?? '-');
+            setStat('starsCount', totalStars);
+            setStat('forksCount', totalForks);
             renderPinnedRepos(reposData);
         } catch (e) {
-            const container = document.getElementById('pinnedRepos');
+            setStat('reposCount', '-');
+            setStat('starsCount', '-');
+            setStat('forksCount', '-');
             if (container) {
-                container.innerHTML = '<p class="pinned-loading">Unable to load repositories. <a href="https://github.com/tariq926">View on GitHub</a>.</p>';
+                container.innerHTML = '<p class="repo-empty">Unable to load repositories. <a href="https://github.com/tariq926" target="_blank" rel="noopener noreferrer">View on GitHub</a>.</p>';
             }
         }
     }
+
     fetchGitHubStats();
 
-    // ------------------------------------------------------
-    // Contact form — loading state & success redirect
-    // ------------------------------------------------------
+    // Contact form UX
     const contactForm = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
     const errorMessage = document.getElementById('errorMessage');
+    const successMessage = document.getElementById('successMessage');
 
     if (contactForm && submitBtn) {
-        contactForm.addEventListener('submit', () => {
-            submitBtn.classList.add('btn-loading');
+        contactForm.addEventListener('submit', (e) => {
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const subject = document.getElementById('subject');
+            const message = document.getElementById('message');
+            const fields = [name, email, subject, message];
+            const invalid = fields.some((field) => !field || !String(field.value).trim());
+
+            if (invalid) {
+                e.preventDefault();
+                if (errorMessage) {
+                    errorMessage.hidden = false;
+                    errorMessage.textContent = 'Please fill in all fields before sending.';
+                }
+                return;
+            }
+
             submitBtn.disabled = true;
+            const label = submitBtn.querySelector('.btn-label');
+            if (label) label.textContent = 'Sending...';
             if (errorMessage) errorMessage.hidden = true;
         });
     }
 
-    const successMessage = document.getElementById('successMessage');
     if (successMessage && new URLSearchParams(window.location.search).get('sent') === 'true') {
-        successMessage.classList.add('show');
+        successMessage.hidden = false;
         const contact = document.getElementById('contact');
-        if (contact) {
-            if (window.portfolioScrollTo) {
-                const headerOffset = header ? header.offsetHeight + 16 : 0;
-                const targetY = contact.getBoundingClientRect().top + window.scrollY - headerOffset;
-                window.portfolioScrollTo(Math.max(targetY, 0));
-            } else {
-                contact.scrollIntoView();
-            }
-        }
+        if (contact) contact.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
         history.replaceState(null, '', `${window.location.pathname}#contact`);
     }
 
-    // ------------------------------------------------------
-    // Scroll to top
-    // ------------------------------------------------------
-    const scrollToTopBtn = document.getElementById('scrollToTop');
-    if (scrollToTopBtn) {
-        window.addEventListener('scroll', () => {
-            scrollToTopBtn.classList.toggle('show', window.scrollY > 500);
-        }, { passive: true });
-
-        scrollToTopBtn.addEventListener('click', () => {
-            if (window.portfolioScrollTo) {
-                window.portfolioScrollTo(0, 850);
-            } else {
-                window.scrollTo({ top: 0 });
-            }
-        });
-    }
-
-    // ------------------------------------------------------
-    // Footer year
-    // ------------------------------------------------------
     const yearEl = document.getElementById('currentYear');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
+    if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 });
 
-// ==========================================================
-// PWA — service worker registration
-// ==========================================================
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').catch(() => {
-            // Registration failed (e.g. unsupported context) — site still works.
-        });
+        navigator.serviceWorker.register('sw.js').catch(() => {});
     });
 }
