@@ -5,974 +5,628 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Security -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self' https://api.github.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.github.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Phidel Emmanuel Ochieng — Frontend developer building accessible, performance-focused web applications. HTML, CSS, JavaScript, PHP. Open to junior frontend roles. Embu, Kenya.">
-    <meta name="keywords" content="Frontend Developer, Web Developer, Cybersecurity, HTML, CSS, JavaScript, PHP, MySQL, Portfolio, Phidel Ochieng">
+    <!-- SEO -->
+    <title>Phidel Emmanuel Ochieng | Frontend Developer in Embu, Kenya</title>
+    <meta name="description" content="Frontend developer in Embu, Kenya building accessible, performance-focused websites with HTML, CSS, JavaScript, and PHP. Open to junior frontend roles and freelance work.">
+    <meta name="keywords" content="Phidel Ochieng, Frontend Developer, Embu Kenya, HTML, CSS, JavaScript, PHP, MySQL, Web Developer Portfolio">
     <meta name="author" content="Phidel Emmanuel Ochieng">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://phidelemmanuelochieng.vercel.app/">
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Phidel Emmanuel Ochieng - Frontend Developer">
-    <meta property="og:description" content="Frontend developer building accessible, performance-focused web apps. Security-aware · Responsive UI · Open to junior frontend roles.">
-    <meta property="og:image" content="https://tariq926.github.io/my-portfolio/og-image.png">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Phidel Emmanuel Ochieng">
+    <meta property="og:title" content="Phidel Emmanuel Ochieng | Frontend Developer">
+    <meta property="og:description" content="Accessible, performance-focused websites and web apps. Based in Embu, Kenya. Open to junior frontend roles.">
+    <meta property="og:url" content="https://phidelemmanuelochieng.vercel.app/">
+    <meta property="og:image" content="https://phidelemmanuelochieng.vercel.app/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://tariq926.github.io/my-portfolio/">
-    <meta property="og:type" content="website">
+    <meta property="og:image:alt" content="Phidel Emmanuel Ochieng portfolio preview">
+    <meta property="og:locale" content="en_US">
 
-    <!-- Twitter Card Meta Tags -->
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Phidel Emmanuel Ochieng - Frontend Developer">
-    <meta name="twitter:description" content="Frontend developer building accessible, performance-focused web apps. Open to junior frontend roles.">
-    <meta name="twitter:image" content="https://tariq926.github.io/my-portfolio/og-image.png">
+    <meta name="twitter:title" content="Phidel Emmanuel Ochieng | Frontend Developer">
+    <meta name="twitter:description" content="Accessible, performance-focused websites and web apps. Open to junior frontend roles.">
+    <meta name="twitter:image" content="https://phidelemmanuelochieng.vercel.app/og-image.png">
+    <meta name="twitter:image:alt" content="Phidel Emmanuel Ochieng portfolio preview">
+
+    <!-- Search Console: replace content with your verification token when ready -->
+    <meta name="google-site-verification" content="REPLACE_WITH_SEARCH_CONSOLE_TOKEN">
 
     <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
     <link rel="apple-touch-icon" href="favicon-192.png">
-    <link rel="canonical" href="https://tariq926.github.io/my-portfolio/">
-    <title>Phidel Emmanuel Ochieng - Frontend Developer & Cybersecurity Enthusiast</title>
-
-    <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0b1120">
+    <meta name="theme-color" content="#E7E5E1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Phidel Portfolio">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 
+    <link rel="preload" as="image" href="tariq2.webp" type="image/webp">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    <!-- JSON-LD Structured Data for SEO -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Phidel Emmanuel Ochieng",
-        "jobTitle": "Frontend Developer & Cybersecurity Enthusiast",
-        "url": "https://tariq926.github.io/my-portfolio/",
+        "jobTitle": "Frontend Developer",
+        "url": "https://phidelemmanuelochieng.vercel.app/",
         "sameAs": [
             "https://github.com/tariq926",
             "https://www.linkedin.com/in/phidel-ochieng-832593393"
         ],
-        "image": "https://tariq926.github.io/my-portfolio/tariq2.jpg",
+        "image": "https://phidelemmanuelochieng.vercel.app/tariq2.jpg",
         "email": "ochiengphidel1@gmail.com",
         "telephone": "+254711524148",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Embu",
-            "addressCountry": "Kenya"
+            "addressCountry": "KE"
         },
         "alumniOf": {
             "@type": "EducationalOrganization",
             "name": "University of Embu"
         },
         "knowsAbout": [
-            "Web Development",
             "Frontend Development",
             "HTML5",
             "CSS3",
             "JavaScript",
             "PHP",
             "MySQL",
-            "UI/UX Design",
-            "Cybersecurity",
-            "Progressive Web Apps",
-            "Responsive Design"
+            "Responsive Design",
+            "Web Security"
         ],
-        "hasCredential": [
-            {
-                "@type": "EducationalOccupationalCredential",
-                "name": "Software Development Certificate",
-                "credentialCategory": "certificate",
-                "recognizedBy": {
-                    "@type": "Organization",
-                    "name": "PowerLearn Project Africa"
-                },
-                "dateCreated": "2024"
-            },
-            {
-                "@type": "EducationalOccupationalCredential",
-                "name": "Introduction to Critical Infrastructure Protection",
-                "credentialCategory": "certificate",
-                "recognizedBy": {
-                    "@type": "Organization",
-                    "name": "OPSWAT Academy"
-                },
-                "dateCreated": "2025"
-            }
-        ],
-        "description": "Frontend developer building accessible, performance-focused web applications with a security-aware mindset. Based in Embu, Kenya.",
-        "skills": "HTML, CSS, JavaScript, PHP, MySQL, UI/UX Design, Web Security, PWA Development, Responsive Design"
+        "description": "Frontend developer in Embu, Kenya building accessible, performance-focused websites with a security-aware approach."
     }
     </script>
-
-    <!-- Additional JSON-LD for Website -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "Phidel Emmanuel Ochieng - Portfolio",
-        "url": "https://tariq926.github.io/my-portfolio/",
-        "description": "Professional portfolio showcasing web development projects, skills, and experience. Frontend Developer specializing in responsive design and secure web applications.",
+        "name": "Phidel Emmanuel Ochieng Portfolio",
+        "url": "https://phidelemmanuelochieng.vercel.app/",
+        "inLanguage": "en",
         "author": {
             "@type": "Person",
             "name": "Phidel Emmanuel Ochieng"
-        },
-        "inLanguage": "en-US"
+        }
     }
     </script>
 </head>
 <body>
-    <a href="#home" class="skip-link">Skip to main content</a>
+    <a class="skip-link" href="#main">Skip to main content</a>
 
-    <!-- Reading progress -->
-    <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
-
-    <!-- Header / Navigation -->
     <header class="site-header" id="siteHeader">
-        <div class="container nav-container">
-            <a href="#home" class="brand" aria-label="Phidel Ochieng - Home">
-                <span class="brand-mark">PO</span>
-                <span class="brand-text">Phidel<span class="brand-dot">.</span>Ochieng</span>
+        <div class="shell header-inner">
+            <a class="brand" href="#top" aria-label="Phidel Ochieng home">
+                <span class="brand-mark" aria-hidden="true">PO</span>
+                <span class="brand-name">Phidel Ochieng</span>
             </a>
-            <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
-                <ul class="nav-links">
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#projects" class="nav-link">Work</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#experience" class="nav-link">Experience</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                    <li class="nav-dropdown">
-                        <button type="button" class="nav-link nav-dropdown-btn" id="navDropdownBtn" aria-expanded="false" aria-haspopup="true">More <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
-                        <ul class="nav-dropdown-menu" id="navDropdownMenu">
-                            <li><a href="#timeline">Journey</a></li>
-                            <li><a href="#certifications">Certifications</a></li>
-                            <li><a href="#services">Services</a></li>
-                            <li><a href="#github">GitHub</a></li>
-                            <li><a href="#recommendations">Recommendations</a></li>
-                        </ul>
-                    </li>
+
+            <nav class="site-nav" id="siteNav" aria-label="Primary">
+                <ul>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="resume.html">Resume</a></li>
                 </ul>
             </nav>
-            <div class="nav-actions">
-                <a href="https://www.linkedin.com/in/phidel-ochieng-832593393" target="_blank" rel="noopener noreferrer" class="nav-availability" title="Open to junior frontend roles">
-                    <span class="pulse-dot" aria-hidden="true"></span> Open to work
-                </a>
-                <button id="themeToggle" class="icon-btn" title="Toggle light / dark theme" aria-label="Toggle light or dark theme">
-                    <i class="fas fa-sun" aria-hidden="true"></i>
-                </button>
-                <a href="#contact" class="btn btn-primary btn-sm nav-cta">Contact Me</a>
-                <button id="navToggle" class="icon-btn nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="siteNav">
-                    <i class="fas fa-bars" aria-hidden="true"></i>
-                </button>
+
+            <div class="header-actions">
+                <span class="availability">Open to work</span>
+                <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch color theme">Theme</button>
+                <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">Menu</button>
             </div>
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-glow" aria-hidden="true">
-                <span class="orb orb-1"></span>
-                <span class="orb orb-2"></span>
-                <span class="orb orb-3"></span>
+    <main id="main">
+        <section class="hero" id="top" aria-labelledby="hero-heading">
+            <div class="hero-media" aria-hidden="false">
+                <picture>
+                    <source srcset="tariq2.webp" type="image/webp">
+                    <img
+                        src="tariq2.jpg"
+                        alt="Portrait of Phidel Emmanuel Ochieng, frontend developer based in Embu, Kenya"
+                        width="960"
+                        height="1200"
+                        fetchpriority="high"
+                        decoding="async">
+                </picture>
             </div>
-            <div class="grid-overlay" aria-hidden="true"></div>
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <span class="hero-badge"><span class="pulse-dot" aria-hidden="true"></span> Open to junior frontend roles &amp; freelance projects</span>
-                    <h1 class="hero-title">Phidel Emmanuel <span class="text-gradient">Ochieng</span></h1>
-                    <h2 class="hero-subtitle">Frontend Developer · Security-Aware Web Apps</h2>
-                    <p class="hero-description">
-                        I build accessible, performance-focused websites and web applications for clients and teams.
-                        Focus: HTML, CSS, JavaScript, responsive UI, and secure development practices.
-                    </p>
-                    <p class="hero-intent">Based in Embu, Kenya · Open to remote junior frontend roles · EAT timezone</p>
-                    <div class="cta-buttons">
-                        <a href="#projects" class="btn btn-primary"><i class="fas fa-briefcase" aria-hidden="true"></i> View Selected Work</a>
-                        <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane" aria-hidden="true"></i> Get In Touch</a>
-                        <a href="phidel-cv.pdf" download class="btn btn-ghost"><i class="fas fa-file-pdf" aria-hidden="true"></i> Download Resume</a>
-                        <a href="resume.html" class="btn btn-ghost"><i class="fas fa-file-lines" aria-hidden="true"></i> View Resume Online</a>
-                    </div>
-                    <div class="hero-social">
-                        <a href="https://github.com/tariq926" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
-                        <a href="https://www.linkedin.com/in/phidel-ochieng-832593393" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
-                        <a href="mailto:ochiengphidel1@gmail.com" aria-label="Send an email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
-                    </div>
+            <div class="shell hero-copy">
+                <p class="brand-signal">Phidel Emmanuel Ochieng</p>
+                <h1 id="hero-heading">Frontend developer building clear, fast websites.</h1>
+                <p class="hero-lede">
+                    I design and ship accessible interfaces with HTML, CSS, and JavaScript,
+                    with practical security habits on every project. Based in Embu, Kenya.
+                    Open to remote junior frontend roles.
+                </p>
+                <div class="hero-actions">
+                    <a class="btn btn-solid" href="#work">View selected work</a>
+                    <a class="btn btn-line" href="#contact">Get in touch</a>
                 </div>
-                <div class="hero-image">
-                    <div class="image-frame">
+            </div>
+        </section>
+
+        <section class="strip" aria-label="Focus areas">
+            <div class="shell strip-inner">
+                <p>HTML5</p>
+                <p>CSS3</p>
+                <p>JavaScript</p>
+                <p>PHP</p>
+                <p>MySQL</p>
+                <p>Responsive UI</p>
+                <p>Web security basics</p>
+            </div>
+        </section>
+
+        <section class="section" id="work" aria-labelledby="work-heading">
+            <div class="shell">
+                <header class="section-intro">
+                    <p class="eyebrow">Selected work</p>
+                    <h2 id="work-heading">Projects with a clear problem, solution, and result.</h2>
+                </header>
+
+                <article class="feature">
+                    <div class="feature-media">
                         <picture>
-                            <source srcset="tariq2.webp" type="image/webp">
-                            <img src="tariq2.jpg" alt="Phidel Emmanuel Ochieng - Frontend Developer" width="420" height="420" fetchpriority="high">
+                            <source srcset="Project2.webp" type="image/webp">
+                            <img src="Project2.png" alt="Screenshot of the Okal Harriette Adhiambo portfolio website homepage" width="960" height="600" loading="lazy" decoding="async">
                         </picture>
                     </div>
-                    <div class="floating-chip chip-top"><i class="fas fa-shield-halved" aria-hidden="true"></i> Security-first mindset</div>
-                    <a href="https://pagespeed.web.dev/analysis?url=https://tariq926.github.io/my-portfolio/" target="_blank" rel="noopener noreferrer" class="floating-chip chip-bottom floating-chip-link"><i class="fas fa-bolt" aria-hidden="true"></i> View PageSpeed report <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                </div>
-            </div>
-            <div class="container hero-stats" role="list">
-                <div class="stat-card" role="listitem">
-                    <span class="stat-value" data-count="10" data-suffix="+">10+</span>
-                    <span class="stat-caption">Projects Built</span>
-                </div>
-                <div class="stat-card" role="listitem">
-                    <span class="stat-value" data-count="5" data-suffix="+">5+</span>
-                    <span class="stat-caption">Happy Clients</span>
-                </div>
-                <div class="stat-card" role="listitem">
-                    <span class="stat-value stat-text">Since 2023</span>
-                    <span class="stat-caption">Building Professionally</span>
-                </div>
-                <div class="stat-card" role="listitem">
-                    <span class="stat-value" data-count="5" data-suffix="">5</span>
-                    <span class="stat-caption">Certifications</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tech stack marquee -->
-        <div class="marquee" aria-label="Technologies I work with">
-            <div class="marquee-track">
-                <ul class="marquee-group">
-                    <li><i class="fab fa-html5" aria-hidden="true"></i> HTML5</li>
-                    <li><i class="fab fa-css3-alt" aria-hidden="true"></i> CSS3</li>
-                    <li><i class="fab fa-js" aria-hidden="true"></i> JavaScript</li>
-                    <li><i class="fas fa-mobile-screen" aria-hidden="true"></i> Responsive Design</li>
-                    <li><i class="fas fa-palette" aria-hidden="true"></i> UI/UX Design</li>
-                    <li><i class="fab fa-php" aria-hidden="true"></i> PHP</li>
-                    <li><i class="fas fa-database" aria-hidden="true"></i> MySQL</li>
-                </ul>
-                <ul class="marquee-group" aria-hidden="true">
-                    <li><i class="fab fa-html5" aria-hidden="true"></i> HTML5</li>
-                    <li><i class="fab fa-css3-alt" aria-hidden="true"></i> CSS3</li>
-                    <li><i class="fab fa-js" aria-hidden="true"></i> JavaScript</li>
-                    <li><i class="fas fa-mobile-screen" aria-hidden="true"></i> Responsive Design</li>
-                    <li><i class="fas fa-palette" aria-hidden="true"></i> UI/UX Design</li>
-                    <li><i class="fab fa-php" aria-hidden="true"></i> PHP</li>
-                    <li><i class="fas fa-database" aria-hidden="true"></i> MySQL</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Projects Section -->
-        <section id="projects" class="section projects">
-            <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-eyebrow">Selected Work</span>
-                    <h2 class="section-title">Featured Projects</h2>
-                    <p class="section-subtitle">Problem → solution → measurable outcome. A snapshot of my best client and personal work.</p>
-                </div>
-
-                <div class="bento-grid reveal-stagger" id="featured">
-                    <article class="featured-card featured-large reveal">
-                        <div class="featured-media">
-                            <picture>
-                                <source srcset="Project2.webp" type="image/webp">
-                                <img src="Project2.png" alt="Harriette Adhiambo portfolio website screenshot" width="640" height="360" loading="lazy">
-                            </picture>
-                            <span class="status-badge status-live">Live Client Project</span>
-                        </div>
-                        <div class="featured-body">
-                            <h3>Okal Harriette Adhiambo Portfolio</h3>
-                            <div class="case-study">
-                                <div class="case-block"><span class="case-label">Problem</span><p>A professional needed a credible online presence to showcase experience and skills to employers.</p></div>
-                                <div class="case-block"><span class="case-label">Solution</span><p>Designed and built a responsive portfolio with smooth animations, SEO meta tags, and performance optimization.</p></div>
-                                <div class="case-block case-result"><span class="case-label">Result</span><p>95+ PageSpeed score, fully responsive, deployed live with improved discoverability.</p></div>
+                    <div class="feature-body">
+                        <p class="meta">Live client project · 2024</p>
+                        <h3>Okal Harriette Adhiambo Portfolio</h3>
+                        <dl class="case">
+                            <div>
+                                <dt>Problem</dt>
+                                <dd>A professional needed a credible online presence to present experience to employers.</dd>
                             </div>
-                            <div class="project-tags"><span>HTML/CSS</span><span>JavaScript</span><span>SEO</span></div>
-                            <div class="project-links">
-                                <a href="https://tariq345-svg.github.io/harrietteadhiambo/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fas fa-globe" aria-hidden="true"></i> Live Demo</a>
-                                <a href="https://github.com/tariq345-svg/harrietteadhiambo" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
+                            <div>
+                                <dt>Solution</dt>
+                                <dd>Built a responsive portfolio with SEO meta tags and performance-minded markup.</dd>
                             </div>
+                            <div>
+                                <dt>Result</dt>
+                                <dd>95+ PageSpeed score, live deployment, clearer discoverability.</dd>
+                            </div>
+                        </dl>
+                        <p class="tags">HTML/CSS · JavaScript · SEO</p>
+                        <div class="inline-links">
+                            <a href="https://tariq345-svg.github.io/harrietteadhiambo/" target="_blank" rel="noopener noreferrer">Live site</a>
+                            <a href="https://github.com/tariq345-svg/harrietteadhiambo" target="_blank" rel="noopener noreferrer">Source</a>
                         </div>
-                    </article>
+                    </div>
+                </article>
 
-                    <article class="featured-card featured-medium reveal">
-                        <div class="featured-media">
+                <article class="feature feature-flip">
+                    <div class="feature-media">
+                        <picture>
+                            <source srcset="portfolio-preview.webp" type="image/webp">
+                            <img src="portfolio-preview.png" alt="Screenshot of Phidel Ochieng personal portfolio website" width="960" height="600" loading="lazy" decoding="async">
+                        </picture>
+                    </div>
+                    <div class="feature-body">
+                        <p class="meta">Live · 2025</p>
+                        <h3>Personal portfolio</h3>
+                        <dl class="case">
+                            <div>
+                                <dt>Problem</dt>
+                                <dd>Needed a recruiter-ready site that shows craft, security care, and performance.</dd>
+                            </div>
+                            <div>
+                                <dt>Result</dt>
+                                <dd>CSP-hardened PWA with theme support, GitHub integration, and optimized assets.</dd>
+                            </div>
+                        </dl>
+                        <p class="tags">Vanilla JS · CSS · PWA · Security</p>
+                        <div class="inline-links">
+                            <a href="https://phidelemmanuelochieng.vercel.app/" target="_blank" rel="noopener noreferrer">Live site</a>
+                            <a href="https://github.com/tariq926/my-portfolio" target="_blank" rel="noopener noreferrer">Source</a>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="project-toolbar" role="group" aria-label="Filter projects">
+                    <button type="button" class="filter is-active" data-filter="all">All</button>
+                    <button type="button" class="filter" data-filter="live">Live</button>
+                    <button type="button" class="filter" data-filter="web">Web apps</button>
+                    <button type="button" class="filter" data-filter="portfolio">Portfolios</button>
+                    <button type="button" class="filter" data-filter="in-progress">In progress</button>
+                </div>
+
+                <ul class="project-list">
+                    <li class="project-row" data-category="portfolio live">
+                        <div class="project-thumb">
                             <picture>
                                 <source srcset="portfolio-preview.webp" type="image/webp">
-                                <img src="portfolio-preview.png" alt="Personal portfolio website preview" width="480" height="300" loading="lazy">
+                                <img src="portfolio-preview.png" alt="Thumbnail of personal portfolio site" width="320" height="200" loading="lazy" decoding="async">
                             </picture>
-                            <span class="status-badge status-live">Live</span>
                         </div>
-                        <div class="featured-body">
-                            <h3>Personal Portfolio (This Site)</h3>
-                            <div class="case-study case-study-compact">
-                                <div class="case-block"><span class="case-label">Problem</span><p>Needed a recruiter-ready portfolio demonstrating craft, security, and performance.</p></div>
-                                <div class="case-block case-result"><span class="case-label">Result</span><p>CSP-hardened PWA with GitHub API integration, theme support, and optimized delivery.</p></div>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/tariq926/my-portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
-                            </div>
+                        <div class="project-copy">
+                            <p class="meta">Live · Portfolio · 2025</p>
+                            <h3>Personal portfolio</h3>
+                            <p>Vanilla JS portfolio with CSP, PWA support, and live GitHub stats.</p>
                         </div>
-                    </article>
+                        <div class="project-links">
+                            <a href="https://phidelemmanuelochieng.vercel.app/">Visit</a>
+                            <a href="https://github.com/tariq926/my-portfolio" target="_blank" rel="noopener noreferrer">Code</a>
+                        </div>
+                    </li>
 
-                    <article class="featured-card featured-small reveal">
-                        <div class="featured-media">
-                            <picture>
-                                <source srcset="smart-life.webp" type="image/webp">
-                                <img src="smart-life.png" alt="Smart Life Manager application" width="360" height="220" loading="lazy">
-                            </picture>
-                            <span class="status-badge status-progress">In Progress</span>
-                        </div>
-                        <div class="featured-body">
-                            <h3>Smart-Life Manager</h3>
-                            <div class="case-study case-study-compact">
-                                <div class="case-block case-result"><span class="case-label">Result</span><p>Full-stack React + TypeScript app with MongoDB API for finance and task tracking.</p></div>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/tariq926/smart-life-manager" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="section-header reveal section-header-spaced">
-                    <span class="section-eyebrow">Full Portfolio</span>
-                    <h2 class="section-title">All Projects</h2>
-                </div>
-
-                <div class="project-filters reveal" role="group" aria-label="Filter projects">
-                    <button class="filter-btn active" data-filter="all"><i class="fas fa-border-all" aria-hidden="true"></i> All Projects</button>
-                    <button class="filter-btn" data-filter="live"><i class="fas fa-circle-check" aria-hidden="true"></i> Live</button>
-                    <button class="filter-btn" data-filter="web"><i class="fas fa-globe" aria-hidden="true"></i> Web Apps</button>
-                    <button class="filter-btn" data-filter="portfolio"><i class="fas fa-user" aria-hidden="true"></i> Portfolios</button>
-                    <button class="filter-btn" data-filter="in-progress"><i class="fas fa-spinner" aria-hidden="true"></i> In Progress</button>
-                </div>
-
-                <div class="projects-grid reveal-stagger">
-                    <article class="project-card reveal" data-category="portfolio live">
-                        <div class="project-image">
-                            <picture>
-                                <source srcset="portfolio-preview.webp" type="image/webp">
-                                <img src="portfolio-preview.png" alt="Phidel Portfolio Website preview" width="640" height="400" loading="lazy">
-                            </picture>
-                            <span class="status-badge status-live">Live</span>
-                        </div>
-                        <div class="project-info">
-                            <h3>Personal Portfolio (This Site)</h3>
-                            <div class="case-study case-study-compact">
-                                <div class="case-block"><span class="case-label">Problem</span><p>Present skills and projects professionally to recruiters and clients.</p></div>
-                                <div class="case-block"><span class="case-label">Solution</span><p>Vanilla JS portfolio with CSP, PWA, theme toggle, and live GitHub stats.</p></div>
-                                <div class="case-block case-result"><span class="case-label">Result</span><p>Installable PWA, security-hardened, performance-optimized for GitHub Pages.</p></div>
-                            </div>
-                            <div class="project-tags">
-                                <span>Vanilla JavaScript</span><span>CSS3</span><span>PWA</span><span>Security</span>
-                            </div>
-                            <div class="project-stats">
-                                <span><i class="fas fa-shield-halved" aria-hidden="true"></i> CSP + SRI</span>
-                                <span><i class="fas fa-gauge-high" aria-hidden="true"></i> Optimized</span>
-                                <span><i class="fas fa-calendar" aria-hidden="true"></i> 2025</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://tariq926.github.io/my-portfolio/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fas fa-globe" aria-hidden="true"></i> Live Site</a>
-                                <a href="https://github.com/tariq926/my-portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm"><i class="fab fa-github" aria-hidden="true"></i> View Code</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card reveal" data-category="portfolio live">
-                        <div class="project-image">
+                    <li class="project-row" data-category="portfolio live">
+                        <div class="project-thumb">
                             <picture>
                                 <source srcset="Project2.webp" type="image/webp">
-                                <img src="Project2.png" alt="Harriette Adhiambo Portfolio Website" loading="lazy">
+                                <img src="Project2.png" alt="Thumbnail of Harriette Adhiambo portfolio" width="320" height="200" loading="lazy" decoding="async">
                             </picture>
-                            <span class="status-badge status-live">Live</span>
                         </div>
-                        <div class="project-info">
+                        <div class="project-copy">
+                            <p class="meta">Live · Portfolio · 2024</p>
                             <h3>Okal Harriette Adhiambo Portfolio</h3>
-                            <div class="case-study case-study-compact">
-                                <div class="case-block"><span class="case-label">Problem</span><p>Client needed a polished portfolio to present credentials to employers.</p></div>
-                                <div class="case-block"><span class="case-label">Solution</span><p>Custom responsive site with animations, SEO, and performance tuning.</p></div>
-                                <div class="case-block case-result"><span class="case-label">Result</span><p>95+ PageSpeed, live deployment, professional brand presence.</p></div>
-                            </div>
-                            <div class="project-tags">
-                                <span>HTML/CSS</span><span>JavaScript</span><span>Responsive</span>
-                            </div>
-                            <div class="project-stats">
-                                <span><i class="fas fa-gauge-high" aria-hidden="true"></i> 95+ PageSpeed</span>
-                                <span><i class="fas fa-globe" aria-hidden="true"></i> Live</span>
-                                <span><i class="fas fa-calendar" aria-hidden="true"></i> 2024</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://tariq345-svg.github.io/harrietteadhiambo/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fas fa-globe" aria-hidden="true"></i> Live Demo</a>
-                                <a href="https://github.com/tariq345-svg/harrietteadhiambo" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm"><i class="fab fa-github" aria-hidden="true"></i> View Code</a>
-                            </div>
+                            <p>Client portfolio with responsive layout and 95+ PageSpeed score.</p>
                         </div>
-                    </article>
+                        <div class="project-links">
+                            <a href="https://tariq345-svg.github.io/harrietteadhiambo/" target="_blank" rel="noopener noreferrer">Visit</a>
+                            <a href="https://github.com/tariq345-svg/harrietteadhiambo" target="_blank" rel="noopener noreferrer">Code</a>
+                        </div>
+                    </li>
 
-                    <article class="project-card reveal" data-category="web in-progress">
-                        <div class="project-image">
+                    <li class="project-row" data-category="web in-progress">
+                        <div class="project-thumb">
                             <picture>
                                 <source srcset="store.webp" type="image/webp">
-                                <img src="store.png" alt="Online Store E-commerce Platform" loading="lazy">
+                                <img src="store.png" alt="Thumbnail of online fashion store interface" width="320" height="200" loading="lazy" decoding="async">
                             </picture>
-                            <span class="status-badge status-progress">In Progress</span>
                         </div>
-                        <div class="project-info">
-                            <h3>Online Store</h3>
-                            <div class="case-study case-study-compact">
-                                <div class="case-block"><span class="case-label">Problem</span><p>Fashion retailer needed an online storefront with catalog and checkout flow.</p></div>
-                                <div class="case-block"><span class="case-label">Solution</span><p>PHP/MySQL e-commerce app with auth, cart, search, and mobile-first UI.</p></div>
-                                <div class="case-block case-result"><span class="case-label">Result</span><p>50+ product catalog with secure sessions — deployment in progress.</p></div>
-                            </div>
-                            <div class="project-tags">
-                                <span>HTML/CSS</span><span>PHP</span><span>JavaScript</span><span>MySQL</span>
-                            </div>
-                            <div class="project-stats">
-                                <span><i class="fas fa-database" aria-hidden="true"></i> 50+ Products</span>
-                                <span><i class="fas fa-mobile-screen" aria-hidden="true"></i> Mobile-first</span>
-                                <span><i class="fas fa-calendar" aria-hidden="true"></i> 2024</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/tariq926/tariq_store" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm"><i class="fab fa-github" aria-hidden="true"></i> View Code</a>
-                            </div>
+                        <div class="project-copy">
+                            <p class="meta">In progress · Web app · 2024</p>
+                            <h3>Online store</h3>
+                            <p>PHP/MySQL storefront with auth, cart, search, and mobile-first UI.</p>
                         </div>
-                    </article>
+                        <div class="project-links">
+                            <a href="https://github.com/tariq926/tariq_store" target="_blank" rel="noopener noreferrer">Code</a>
+                        </div>
+                    </li>
 
-                    <article class="project-card reveal" data-category="web in-progress">
-                        <div class="project-image">
+                    <li class="project-row" data-category="web in-progress">
+                        <div class="project-thumb">
                             <picture>
                                 <source srcset="learning-platform.webp" type="image/webp">
-                                <img src="learning-platform.png" alt="Ethical hacking learning platform" loading="lazy">
+                                <img src="learning-platform.png" alt="Thumbnail of ethical hacking learning platform" width="320" height="200" loading="lazy" decoding="async">
                             </picture>
-                            <span class="status-badge status-progress">In Progress</span>
                         </div>
-                        <div class="project-info">
-                            <h3>Learning Platform</h3>
-                            <div class="case-study case-study-compact">
-                                <div class="case-block"><span class="case-label">Problem</span><p>Structured ethical-hacking study needed notes, videos, and quizzes in one place.</p></div>
-                                <div class="case-block case-result"><span class="case-label">Result</span><p>Topic-based learning flow with note-taking and embedded video links.</p></div>
-                            </div>
-                            <div class="project-tags">
-                                <span>HTML/CSS</span><span>JavaScript</span><span>Python</span>
-                            </div>
-                            <div class="project-stats">
-                                <span><i class="fas fa-layer-group" aria-hidden="true"></i> Full-Stack</span>
-                                <span><i class="fas fa-spinner" aria-hidden="true"></i> In Progress</span>
-                                <span><i class="fas fa-calendar" aria-hidden="true"></i> 2025</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/tariq926/flearning" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm"><i class="fab fa-github" aria-hidden="true"></i> View Code</a>
-                            </div>
+                        <div class="project-copy">
+                            <p class="meta">In progress · Web app · 2025</p>
+                            <h3>Learning platform</h3>
+                            <p>Topic-based notes, videos, and quizzes for structured security study.</p>
                         </div>
-                    </article>
+                        <div class="project-links">
+                            <a href="https://github.com/tariq926/flearning" target="_blank" rel="noopener noreferrer">Code</a>
+                        </div>
+                    </li>
 
-                    <article class="project-card reveal" data-category="web in-progress">
-                        <div class="project-image">
+                    <li class="project-row" data-category="web in-progress">
+                        <div class="project-thumb">
                             <picture>
                                 <source srcset="smart-life.webp" type="image/webp">
-                                <img src="smart-life.png" alt="Smart Life Manager application screenshot" loading="lazy">
+                                <img src="smart-life.png" alt="Thumbnail of Smart Life Manager application dashboard" width="320" height="200" loading="lazy" decoding="async">
                             </picture>
-                            <span class="status-badge status-progress">In Progress</span>
                         </div>
-                        <div class="project-info">
+                        <div class="project-copy">
+                            <p class="meta">In progress · Web app · 2025</p>
                             <h3>Smart-Life Manager</h3>
-                            <div class="case-study case-study-compact">
-                                <div class="case-block"><span class="case-label">Problem</span><p>Personal productivity and finance tracking scattered across tools.</p></div>
-                                <div class="case-block case-result"><span class="case-label">Result</span><p>React + TypeScript + Node.js app with MongoDB API and Redux state.</p></div>
-                            </div>
-                            <div class="project-tags">
-                                <span>React</span><span>TypeScript</span><span>Node.js</span><span>MongoDB</span>
-                            </div>
-                            <div class="project-stats">
-                                <span><i class="fas fa-layer-group" aria-hidden="true"></i> Full-Stack</span>
-                                <span><i class="fas fa-spinner" aria-hidden="true"></i> In Progress</span>
-                                <span><i class="fas fa-calendar" aria-hidden="true"></i> 2025</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/tariq926/smart-life-manager" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm"><i class="fab fa-github" aria-hidden="true"></i> View Code</a>
-                            </div>
+                            <p>React and TypeScript app for finance and task tracking with a MongoDB API.</p>
                         </div>
-                    </article>
-                </div>
+                        <div class="project-links">
+                            <a href="https://github.com/tariq926/smart-life-manager" target="_blank" rel="noopener noreferrer">Code</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
+        </section>
 
-        <!-- About Section -->
-        <section id="about" class="section about">
-            <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-eyebrow">Who I Am</span>
-                    <h2 class="section-title">About Me</h2>
+        <section class="section section-tone" id="about" aria-labelledby="about-heading">
+            <div class="shell about-layout">
+                <header class="section-intro">
+                    <p class="eyebrow">About</p>
+                    <h2 id="about-heading">A frontend developer with a security habit.</h2>
+                </header>
+                <div class="about-copy">
+                    <p>
+                        I am Phidel Emmanuel Ochieng, a frontend developer from Embu, Kenya.
+                        Since 2023 I have built responsive websites and web apps for clients,
+                        university projects, and training programs.
+                    </p>
+                    <p>
+                        I care about performance, accessibility, and maintainable code.
+                        I am also studying cybersecurity through Cisco Networking Academy
+                        and apply practical habits such as CSP, input validation, and HTTPS
+                        on work I ship.
+                    </p>
+                    <p class="availability-note">Available for junior frontend roles, freelance projects, and collaborations.</p>
                 </div>
-                <div class="about-grid">
-                    <div class="about-text reveal">
-                        <p class="about-lead">
-                            I'm Phidel Emmanuel Ochieng — a frontend developer from Embu, Kenya. Since 2023 I've built responsive websites and web apps for clients, university projects, and training programs, with a growing focus on security-aware development.
-                        </p>
-                        <div class="about-point">
-                            <div class="about-point-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
-                            <div>
-                                <h3>What I Do</h3>
-                                <p>I design and build responsive interfaces with HTML, CSS, and JavaScript — from client portfolios to e-commerce flows. I care about performance, accessibility, and writing code that's easy to maintain.</p>
-                            </div>
-                        </div>
-                        <div class="about-point">
-                            <div class="about-point-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
-                            <div>
-                                <h3>Security Mindset</h3>
-                                <p>I'm pursuing cybersecurity training through Cisco Networking Academy. I apply practical security habits — CSP, input validation, HTTPS — to every project I ship.</p>
-                            </div>
-                        </div>
-                        <div class="status-banner">
-                            <i class="fas fa-circle-check" aria-hidden="true"></i>
-                            <p><strong>Available</strong> for junior frontend roles, freelance projects, and collaborations · Learning React &amp; advanced security</p>
-                        </div>
+                <dl class="facts">
+                    <div><dt>Role</dt><dd>Frontend developer</dd></div>
+                    <div><dt>Location</dt><dd>Embu, Kenya</dd></div>
+                    <div><dt>Education</dt><dd>University of Embu, ICT diploma</dd></div>
+                    <div><dt>Active since</dt><dd>2023</dd></div>
+                    <div><dt>Core stack</dt><dd>HTML, CSS, JS, PHP, MySQL</dd></div>
+                    <div><dt>Learning</dt><dd>React, cybersecurity</dd></div>
+                </dl>
+                <div class="skill-columns">
+                    <div>
+                        <h3>Proficient</h3>
+                        <p>HTML5, CSS3, JavaScript, responsive design, UI design, PHP, MySQL</p>
                     </div>
-                    <div class="about-side">
-                        <div class="profile-card reveal">
-                            <h3 class="card-title"><i class="fas fa-id-card" aria-hidden="true"></i> At a Glance</h3>
-                            <ul class="profile-list">
-                                <li><span class="profile-label">Role</span><span class="profile-value">Frontend Developer</span></li>
-                                <li><span class="profile-label">Location</span><span class="profile-value">Embu, Kenya</span></li>
-                                <li><span class="profile-label">Education</span><span class="profile-value">University of Embu (ICT Diploma)</span></li>
-                                <li><span class="profile-label">Active Since</span><span class="profile-value">2023</span></li>
-                                <li><span class="profile-label">Core Stack</span><span class="profile-value">HTML, CSS, JS, PHP, MySQL</span></li>
-                                <li><span class="profile-label">Availability</span><span class="profile-value">Open to work</span></li>
-                            </ul>
-                        </div>
-                        <div class="skills-card reveal">
-                            <h3 class="card-title"><i class="fas fa-layer-group" aria-hidden="true"></i> Skills &amp; Tools</h3>
-                            <div class="skill-groups">
-                                <div class="skill-group">
-                                    <h4 class="skill-group-title">Proficient</h4>
-                                    <div class="skill-chips">
-                                        <span class="skill-chip">HTML5</span><span class="skill-chip">CSS3</span><span class="skill-chip">JavaScript</span><span class="skill-chip">Responsive Design</span><span class="skill-chip">UI/UX Design</span><span class="skill-chip">PHP</span><span class="skill-chip">MySQL</span>
-                                    </div>
-                                </div>
-                                <div class="skill-group">
-                                    <h4 class="skill-group-title">Working Knowledge</h4>
-                                    <div class="skill-chips">
-                                        <span class="skill-chip">React</span><span class="skill-chip">TypeScript</span><span class="skill-chip">Node.js</span><span class="skill-chip">MongoDB</span><span class="skill-chip">Git</span><span class="skill-chip">Linux</span><span class="skill-chip">Python</span>
-                                    </div>
-                                </div>
-                                <div class="skill-group">
-                                    <h4 class="skill-group-title">Currently Learning</h4>
-                                    <div class="skill-chips">
-                                        <span class="skill-chip skill-chip-learning">Cybersecurity</span><span class="skill-chip skill-chip-learning">Ethical Hacking</span><span class="skill-chip skill-chip-learning">Network Security</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div>
+                        <h3>Working knowledge</h3>
+                        <p>React, TypeScript, Node.js, MongoDB, Git, Linux, Python</p>
+                    </div>
+                    <div>
+                        <h3>Currently learning</h3>
+                        <p>Cybersecurity, ethical hacking, network security</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Work Experience Section -->
-        <section id="experience" class="section experience">
-            <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-eyebrow">Career</span>
-                    <h2 class="section-title">Work Experience</h2>
-                </div>
-                <div class="experience-grid reveal-stagger">
-                    <article class="experience-card reveal">
-                        <div class="experience-header">
-                            <div class="experience-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
-                            <div>
-                                <h3>Freelance Web Developer</h3>
-                                <p class="experience-company">Self-Employed</p>
-                                <p class="experience-date">2024 - Present</p>
-                            </div>
-                        </div>
-                        <ul class="experience-list">
-                            <li>Built custom websites for 5+ local businesses, increasing their online presence by 200%</li>
-                            <li>Specialized in responsive design &amp; Progressive Web Apps (PWAs)</li>
-                            <li>Technologies: HTML5, CSS3, JavaScript, PHP, MySQL</li>
-                            <li>Achieved 95+ PageSpeed scores on all delivered projects</li>
+        <section class="section" id="experience" aria-labelledby="experience-heading">
+            <div class="shell">
+                <header class="section-intro">
+                    <p class="eyebrow">Experience</p>
+                    <h2 id="experience-heading">Where I have been building.</h2>
+                </header>
+
+                <ol class="timeline-list">
+                    <li>
+                        <p class="meta">2024 to present</p>
+                        <h3>Freelance web developer</h3>
+                        <p class="place">Self-employed</p>
+                        <ul>
+                            <li>Built custom websites for local businesses and improved their online presence.</li>
+                            <li>Focused on responsive design and Progressive Web Apps.</li>
+                            <li>Delivered projects with strong PageSpeed scores using HTML, CSS, JavaScript, PHP, and MySQL.</li>
                         </ul>
-                    </article>
-                    <article class="experience-card reveal">
-                        <div class="experience-header">
-                            <div class="experience-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
-                            <div>
-                                <h3>Student Developer</h3>
-                                <p class="experience-company">University of Embu</p>
-                                <p class="experience-date">2023 - Present</p>
-                            </div>
-                        </div>
-                        <ul class="experience-list">
-                            <li>Pursuing Diploma in ICT with focus on web development</li>
-                            <li>Lead developer for student group projects</li>
-                            <li>Mentor junior students in HTML, CSS, and JavaScript fundamentals</li>
-                            <li>Maintaining 3.8+ GPA while building real-world projects</li>
+                    </li>
+                    <li>
+                        <p class="meta">2023 to present</p>
+                        <h3>Student developer</h3>
+                        <p class="place">University of Embu</p>
+                        <ul>
+                            <li>Pursuing a diploma in ICT with a focus on web development.</li>
+                            <li>Lead developer on student group projects.</li>
+                            <li>Mentors peers in HTML, CSS, and JavaScript fundamentals.</li>
                         </ul>
-                    </article>
-                    <article class="experience-card reveal">
-                        <div class="experience-header">
-                            <div class="experience-icon"><i class="fas fa-code-branch" aria-hidden="true"></i></div>
-                            <div>
-                                <h3>Software Development Trainee</h3>
-                                <p class="experience-company">PowerLearn Project Africa</p>
-                                <p class="experience-date">August - December 2024</p>
-                            </div>
-                        </div>
-                        <ul class="experience-list">
-                            <li>Completed intensive 16-week program covering full-stack development</li>
-                            <li>Built 10+ projects including e-commerce platforms and portfolio websites</li>
-                            <li>Mastered Python, Web Technologies, Database Management, and Software Engineering</li>
-                            <li>Graduated with distinction and specialization in Web Development</li>
+                    </li>
+                    <li>
+                        <p class="meta">August to December 2024</p>
+                        <h3>Software development trainee</h3>
+                        <p class="place">PowerLearn Project Africa</p>
+                        <ul>
+                            <li>Completed a 16-week full-stack program.</li>
+                            <li>Built multiple projects including e-commerce and portfolio sites.</li>
+                            <li>Graduated with distinction and a specialization in web development.</li>
                         </ul>
-                    </article>
-                </div>
+                    </li>
+                </ol>
             </div>
         </section>
 
-        <!-- Timeline Section -->
-        <section id="timeline" class="section timeline alt-bg">
-            <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-eyebrow">Milestones</span>
-                    <h2 class="section-title">My Journey</h2>
-                </div>
-                                <div class="timeline-container">
-                    <span class="timeline-progress" id="timelineProgress" aria-hidden="true"></span>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot" aria-hidden="true"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">November 2025 - Present</span>
+        <section class="section section-tone" id="journey" aria-labelledby="journey-heading">
+            <div class="shell split">
+                <div>
+                    <header class="section-intro">
+                        <p class="eyebrow">Journey</p>
+                        <h2 id="journey-heading">Training and education.</h2>
+                    </header>
+                    <ol class="plain-list">
+                        <li>
+                            <p class="meta">November 2025 to present</p>
                             <h3>Cisco Networking Academy</h3>
-                            <p>Learning Cyber Security.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot" aria-hidden="true"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">December 2025 - January 2026</span>
+                            <p>Cybersecurity coursework in progress.</p>
+                        </li>
+                        <li>
+                            <p class="meta">December 2025 to January 2026</p>
                             <h3>Udemy Academy</h3>
                             <p>Completed an Ethical Hacking Bootcamp.</p>
-                            <a href="udemy.png" target="_blank" rel="noopener noreferrer" class="text-link">View Certificate <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot" aria-hidden="true"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">20 May - 31 May 2025</span>
+                            <a href="udemy.png" target="_blank" rel="noopener noreferrer">View certificate</a>
+                        </li>
+                        <li>
+                            <p class="meta">20 May to 31 May 2025</p>
                             <h3>OPSWAT Academy</h3>
-                            <p>Completed a module on Introduction to Critical Infrastructure Protection.</p>
-                            <a href="opswat.png" target="_blank" rel="noopener noreferrer" class="text-link">View Certificate <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot" aria-hidden="true"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">August 2024 - December 2024</span>
-                            <h3>PowerLearn Project Africa - Software Development</h3>
-                            <p>Successfully completed a 16-week program in Software Development covering Python, Web Technologies, Database Management, Startup Building &amp; Employability and Software Engineering Essentials, with a specialization in Web Development.</p>
-                            <a href="phidel-certificate.pdf" target="_blank" rel="noopener noreferrer" class="text-link">View Certificate <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot" aria-hidden="true"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">2023 - Present</span>
+                            <p>Introduction to Critical Infrastructure Protection.</p>
+                            <a href="opswat.png" target="_blank" rel="noopener noreferrer">View certificate</a>
+                        </li>
+                        <li>
+                            <p class="meta">August to December 2024</p>
+                            <h3>PowerLearn Project Africa</h3>
+                            <p>16-week software development program with a web specialization.</p>
+                            <a href="phidel-certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
+                        </li>
+                        <li>
+                            <p class="meta">2023 to present</p>
                             <h3>University of Embu</h3>
-                            <p>Student at the University of Embu TVET Institute pursuing a Diploma in ICT.</p>
-                        </div>
-                    </div>
+                            <p>Diploma in ICT at the University of Embu TVET Institute.</p>
+                        </li>
+                    </ol>
+                </div>
+
+                <div id="certifications" aria-labelledby="certs-heading">
+                    <header class="section-intro">
+                        <p class="eyebrow">Credentials</p>
+                        <h2 id="certs-heading">Certifications</h2>
+                    </header>
+                    <ul class="plain-list">
+                        <li>
+                            <h3>PowerLearn Project Africa</h3>
+                            <p>Software Development · August to December 2024</p>
+                            <a href="phidel-certificate.pdf" target="_blank" rel="noopener noreferrer">View certificate</a>
+                        </li>
+                        <li>
+                            <h3>OPSWAT Academy</h3>
+                            <p>Critical Infrastructure Protection · May 2025</p>
+                            <a href="opswat.png" target="_blank" rel="noopener noreferrer">View certificate</a>
+                        </li>
+                        <li>
+                            <h3>Udemy Academy</h3>
+                            <p>Ethical Hacking Bootcamp · January 2026</p>
+                            <a href="udemy.png" target="_blank" rel="noopener noreferrer">View certificate</a>
+                        </li>
+                        <li>
+                            <h3>Cisco Networking Academy</h3>
+                            <p>Cybersecurity · In progress</p>
+                        </li>
+                        <li>
+                            <h3>University of Embu</h3>
+                            <p>Diploma in ICT · Ongoing</p>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Certifications Section -->
-        <section id="certifications" class="section certifications alt-bg">
-            <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-eyebrow">Credentials</span>
-                    <h2 class="section-title">Certifications</h2>
+        <section class="section" id="services" aria-labelledby="services-heading">
+            <div class="shell">
+                <header class="section-intro">
+                    <p class="eyebrow">Services</p>
+                    <h2 id="services-heading">How I can help.</h2>
+                </header>
+                <ul class="service-list">
+                    <li>
+                        <h3>Web development</h3>
+                        <p>Responsive websites and web apps: portfolios, landing pages, and e-commerce flows in HTML, CSS, and JavaScript.</p>
+                    </li>
+                    <li>
+                        <h3>UI and responsive design</h3>
+                        <p>Mobile-first layouts and accessible interfaces that hold up across devices and browsers.</p>
+                    </li>
+                    <li>
+                        <h3>Performance and security</h3>
+                        <p>PageSpeed work, HTTPS setup, CSP, and practical security checks before launch.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section section-tone" id="github" aria-labelledby="github-heading">
+            <div class="shell">
+                <header class="section-intro">
+                    <p class="eyebrow">GitHub</p>
+                    <h2 id="github-heading">Public work at a glance.</h2>
+                    <p class="section-note">Live stats from the GitHub API for <a href="https://github.com/tariq926" target="_blank" rel="noopener noreferrer">@tariq926</a>.</p>
+                </header>
+
+                <div class="github-stats" aria-live="polite">
+                    <div>
+                        <p class="stat-value" id="reposCount">-</p>
+                        <p class="stat-label">Repositories</p>
+                    </div>
+                    <div>
+                        <p class="stat-value" id="starsCount">-</p>
+                        <p class="stat-label">Stars</p>
+                    </div>
+                    <div>
+                        <p class="stat-value" id="forksCount">-</p>
+                        <p class="stat-label">Forks</p>
+                    </div>
                 </div>
-                <div class="certs-grid reveal-stagger">
-                    <article class="cert-card reveal">
-                        <div class="cert-icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
-                        <h3>PowerLearn Project Africa</h3>
-                        <p class="cert-title">Software Development</p>
-                        <p class="cert-date"><i class="fas fa-calendar-check" aria-hidden="true"></i> Issued August - December 2024</p>
-                        <p class="cert-desc">16-week intensive program covering Python, Web Technologies, Database Management, and Software Engineering Essentials.</p>
-                        <a href="phidel-certificate.pdf" target="_blank" rel="noopener noreferrer" class="text-link">View Certificate <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                    </article>
-                    <article class="cert-card reveal">
-                        <div class="cert-icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
-                        <h3>OPSWAT Academy</h3>
-                        <p class="cert-title">Introduction to Critical Infrastructure Protection</p>
-                        <p class="cert-date"><i class="fas fa-calendar-check" aria-hidden="true"></i> Issued May 2025</p>
-                        <p class="cert-desc">A week-long program on critical infrastructure protection fundamentals.</p>
-                        <a href="opswat.png" target="_blank" rel="noopener noreferrer" class="text-link">View Certificate <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                    </article>
-                    <article class="cert-card reveal">
-                        <div class="cert-icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
-                        <h3>Udemy Academy</h3>
-                        <p class="cert-title">Ethical Hacking Bootcamp</p>
-                        <p class="cert-date"><i class="fas fa-calendar-check" aria-hidden="true"></i> Issued January 2026</p>
-                        <p class="cert-desc">A 30-day bootcamp covering Ethical Hacking and Python programming.</p>
-                        <a href="udemy.png" target="_blank" rel="noopener noreferrer" class="text-link">View Certificate <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                    </article>
-                    <article class="cert-card reveal">
-                        <div class="cert-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
-                        <h3>Cisco Networking Academy</h3>
-                        <p class="cert-title">Cybersecurity</p>
-                        <p class="cert-date"><i class="fas fa-spinner" aria-hidden="true"></i> November 2025 - Present</p>
-                        <p class="cert-desc">Comprehensive cybersecurity training covering network security, threat detection, and security best practices.</p>
-                        <span class="cert-badge">In Progress</span>
-                    </article>
-                    <article class="cert-card reveal">
-                        <div class="cert-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
-                        <h3>University of Embu</h3>
-                        <p class="cert-title">Diploma in ICT</p>
-                        <p class="cert-date"><i class="fas fa-spinner" aria-hidden="true"></i> 2023 - Present</p>
-                        <p class="cert-desc">Pursuing Diploma in Information and Communication Technology at University of Embu TVET Institute.</p>
-                        <span class="cert-badge">Ongoing</span>
-                    </article>
+
+                <div class="repo-grid" id="pinnedRepos" aria-live="polite">
+                    <div class="skeleton" aria-hidden="true"></div>
+                    <div class="skeleton" aria-hidden="true"></div>
+                    <div class="skeleton" aria-hidden="true"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Services Section (compact) -->
-        <section id="services" class="section services">
-            <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-eyebrow">How I Can Help</span>
-                    <h2 class="section-title">Services</h2>
-                    <p class="section-subtitle">Focused offerings for clients and collaborators.</p>
-                </div>
-                <div class="services-compact reveal-stagger">
-                    <article class="service-card reveal">
-                        <div class="service-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
-                        <h3>Web Development</h3>
-                        <p class="service-desc">Responsive websites and web apps — portfolios, landing pages, and e-commerce flows built with modern HTML, CSS, and JavaScript.</p>
-                    </article>
-                    <article class="service-card reveal">
-                        <div class="service-icon"><i class="fas fa-palette" aria-hidden="true"></i></div>
-                        <h3>UI &amp; Responsive Design</h3>
-                        <p class="service-desc">Mobile-first layouts, accessible interfaces, and polished visual design that works across devices and browsers.</p>
-                    </article>
-                    <article class="service-card reveal">
-                        <div class="service-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
-                        <h3>Performance &amp; Security</h3>
-                        <p class="service-desc">PageSpeed optimization, HTTPS setup, CSP implementation, and security best practices for production sites.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
+        <section class="section" id="contact" aria-labelledby="contact-heading">
+            <div class="shell contact-layout">
+                <header class="section-intro">
+                    <p class="eyebrow">Contact</p>
+                    <h2 id="contact-heading">Let us work together.</h2>
+                    <p class="section-note">Open to junior frontend roles, freelance projects, and collaborations. Typical reply within 24 hours.</p>
+                </header>
 
-        </section>
+                <aside class="contact-aside">
+                    <p><span>Email</span> <a href="mailto:ochiengphidel1@gmail.com">ochiengphidel1@gmail.com</a></p>
+                    <p><span>Phone</span> <a href="tel:+254711524148">0711 524 148</a></p>
+                    <p><span>Location</span> Embu, Kenya</p>
+                    <div class="inline-links">
+                        <a href="phidel-cv.pdf" download>Download resume</a>
+                        <a href="resume.html">View resume</a>
+                        <a href="https://www.linkedin.com/in/phidel-ochieng-832593393" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://github.com/tariq926" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
+                </aside>
 
-        <!-- GitHub Stats Section -->
-        <section id="github" class="section github-stats alt-bg">
-            <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-eyebrow">Open Source</span>
-                    <h2 class="section-title">GitHub</h2>
-                    <p class="section-subtitle">Live stats and selected repositories from my professional work.</p>
-                </div>
-                <div class="github-card reveal">
-                    <div class="github-identity">
-                        <i class="fab fa-github github-icon" aria-hidden="true"></i>
-                        <div>
-                            <h3>@tariq926</h3>
-                            <p>Selected professional repositories — full profile on GitHub</p>
-                        </div>
+                <div class="contact-form-wrap">
+                    <div class="form-status is-success" id="successMessage" role="status" hidden>
+                        Message sent. I will get back to you within 24 hours.
                     </div>
-                    <div class="github-stats-grid">
-                        <div class="stat-item">
-                            <i class="fas fa-code-branch" aria-hidden="true"></i>
-                            <span class="stat-number" id="reposCount">15+</span>
-                            <span class="stat-label">Repositories</span>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <span class="stat-number" id="starsCount">25+</span>
-                            <span class="stat-label">Stars</span>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-code" aria-hidden="true"></i>
-                            <span class="stat-number" id="forksCount">0+</span>
-                            <span class="stat-label">Forks</span>
-                        </div>
+                    <div class="form-status is-error" id="errorMessage" role="alert" hidden>
+                        Something went wrong. Please try again or email me directly.
                     </div>
-                    <div class="pinned-repos-grid reveal-stagger" id="pinnedRepos" aria-live="polite">
-                        <p class="pinned-loading">Loading repositories…</p>
-                    </div>
-                    <a href="https://github.com/tariq926" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fab fa-github" aria-hidden="true"></i> View Full GitHub Profile</a>
-                </div>
-            </div>
-        </section>
+                    <form class="contact-form" id="contactForm" action="https://formsubmit.co/ochiengphidel1@gmail.com" method="POST" novalidate>
+                        <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="Portfolio contact from %name%">
+                        <input type="hidden" name="_autoresponse" value="Thanks for reaching out. I received your message and will reply soon. Phidel">
+                        <input type="hidden" name="_next" value="https://phidelemmanuelochieng.vercel.app/?sent=true#contact">
 
-        <!-- Testimonials Section -->
-        <section id="recommendations" class="section testimonials alt-bg">
-            <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-eyebrow">Social Proof</span>
-                    <p class="section-subtitle">Representative feedback from clients, instructors, and collaborators. Verified recommendations available on LinkedIn.</p>
-                    <h2 class="section-title">Recommendations</h2>
-                </div>
-                <div class="testimonials-grid reveal-stagger">
-                    <article class="testimonial-card reveal">
-                        <div class="testimonial-rating" aria-label="5 out of 5 stars">
-                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                        <div class="form-grid">
+                            <label>
+                                <span>Name</span>
+                                <input type="text" id="name" name="name" autocomplete="name" required maxlength="100">
+                            </label>
+                            <label>
+                                <span>Email</span>
+                                <input type="email" id="email" name="email" autocomplete="email" required maxlength="120">
+                            </label>
                         </div>
-                        <p class="testimonial-quote">"Phidel transformed my online store vision into reality. The website is beautiful, fast, and easy to manage. Sales increased significantly within the first month. His attention to detail made the process smooth."</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar"><i class="fas fa-user" aria-hidden="true"></i></div>
-                            <div>
-                                <h4>Freelance Client</h4>
-                                <p>E-commerce Website Project · <a href="https://www.linkedin.com/in/phidel-ochieng-832593393" target="_blank" rel="noopener noreferrer" class="text-link">Verify on LinkedIn</a></p>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="testimonial-card reveal">
-                        <div class="testimonial-rating" aria-label="5 out of 5 stars">
-                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-                        </div>
-                        <p class="testimonial-quote">"An exceptional student with strong technical abilities and genuine passion for software development. Phidel completed our 16-week program with distinction, consistently submitting high-quality projects ahead of deadlines."</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
-                            <div>
-                                <h4>PowerLearn Instructor</h4>
-                                <p>Software Development Program · <a href="https://www.linkedin.com/in/phidel-ochieng-832593393" target="_blank" rel="noopener noreferrer" class="text-link">Verify on LinkedIn</a></p>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="testimonial-card reveal">
-                        <div class="testimonial-rating" aria-label="5 out of 5 stars">
-                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-                        </div>
-                        <p class="testimonial-quote">"Working with Phidel on group projects has been eye-opening. He explains the 'why' behind every decision and helps teammates understand complex concepts. He's the go-to person when we're stuck."</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
-                            <div>
-                                <h4>University Collaborator</h4>
-                                <p>University of Embu ICT Program · <a href="https://www.linkedin.com/in/phidel-ochieng-832593393" target="_blank" rel="noopener noreferrer" class="text-link">Verify on LinkedIn</a></p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="recommendations-cta reveal">
-                    <p>Want to vouch for my work?</p>
-                    <a href="https://www.linkedin.com/in/phidel-ochieng-832593393" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fab fa-linkedin-in" aria-hidden="true"></i> View or Leave a Recommendation on LinkedIn</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section contact">
-            <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-eyebrow">Contact</span>
-                    <h2 class="section-title">Let's Work Together</h2>
-                    <p class="section-subtitle">Open to junior frontend roles, freelance projects, and collaborations. I typically reply within 24 hours.</p>
-                </div>
-                <div class="contact-cta-bar reveal">
-                    <a href="phidel-cv.pdf" download class="btn btn-outline btn-sm"><i class="fas fa-file-pdf" aria-hidden="true"></i> Download Resume</a>
-                    <a href="resume.html" class="btn btn-outline btn-sm"><i class="fas fa-file-lines" aria-hidden="true"></i> View Resume</a>
-                    <a href="https://www.linkedin.com/in/phidel-ochieng-832593393" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm"><i class="fab fa-linkedin-in" aria-hidden="true"></i> Message on LinkedIn</a>
-                </div>
-                <div class="contact-grid">
-                    <div class="contact-side reveal">
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
-                            <div>
-                                <h4>Email</h4>
-                                <a href="mailto:ochiengphidel1@gmail.com">ochiengphidel1@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
-                            <div>
-                                <h4>Phone</h4>
-                                <a href="tel:+254711524148">0711 524 148</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-location-dot" aria-hidden="true"></i></div>
-                            <div>
-                                <h4>Location</h4>
-                                <p>Embu, Kenya</p>
-                            </div>
-                        </div>
-                        <div class="contact-socials">
-                            <a href="https://github.com/tariq926" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
-                            <a href="https://www.linkedin.com/in/phidel-ochieng-832593393" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
-                            <a href="mailto:ochiengphidel1@gmail.com" aria-label="Send an email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    <div class="contact-form-panel reveal">
-                        <div class="success-message" id="successMessage" role="status">
-                            <i class="fas fa-circle-check" aria-hidden="true"></i> Your message has been sent successfully. I'll get back to you within 24 hours.
-                        </div>
-                        <div class="error-message" id="errorMessage" role="alert" hidden>
-                            <i class="fas fa-circle-exclamation" aria-hidden="true"></i> Something went wrong. Please try again or email me directly.
-                        </div>
-                        <form action="https://formsubmit.co/ochiengphidel1@gmail.com" method="POST" class="contact-form" id="contactForm">
-                            <!-- Spam protection: honeypot field -->
-                            <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-                            <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_subject" value="New portfolio contact from %name%">
-                            <input type="hidden" name="_autoresponse" value="Thanks for reaching out! I received your message and will get back to you as soon as possible. — Phidel">
-                            <input type="hidden" name="_next" value="https://tariq926.github.io/my-portfolio/?sent=true#contact">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" id="name" name="name" placeholder="Your Name" autocomplete="name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" id="email" name="email" placeholder="Your Email" autocomplete="email" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="subject" placeholder="Subject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="6" placeholder="Your Message" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block" id="submitBtn"><i class="fas fa-paper-plane" aria-hidden="true"></i> <span class="btn-label">Send Message</span></button>
-                            <p class="form-note"><i class="fas fa-clock" aria-hidden="true"></i> Typical response time: within 24 hours</p>
-                        </form>
-                    </div>
+                        <label>
+                            <span>Subject</span>
+                            <input type="text" id="subject" name="subject" required maxlength="140">
+                        </label>
+                        <label>
+                            <span>Message</span>
+                            <textarea id="message" name="message" rows="6" required maxlength="4000"></textarea>
+                        </label>
+                        <button type="submit" class="btn btn-solid" id="submitBtn">
+                            <span class="btn-label">Send message</span>
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
 
     <footer class="site-footer">
-        <div class="container footer-content">
-            <a href="#home" class="brand" aria-label="Phidel Ochieng - Back to top">
-                <span class="brand-mark">PO</span>
-                <span class="brand-text">Phidel<span class="brand-dot">.</span>Ochieng</span>
-            </a>
-            <p class="footer-tagline">Building secure, beautiful web experiences from Embu, Kenya.</p>
-            <nav class="footer-nav" aria-label="Footer navigation">
-                <a href="#projects">Work</a>
+        <div class="shell footer-inner">
+            <p class="brand-name">Phidel Ochieng</p>
+            <nav aria-label="Footer">
+                <a href="#work">Work</a>
                 <a href="#about">About</a>
                 <a href="#experience">Experience</a>
                 <a href="#contact">Contact</a>
                 <a href="resume.html">Resume</a>
+                <a href="terms.html">Terms</a>
+                <a href="privacy.html">Privacy</a>
             </nav>
-            <div class="footer-socials">
-                <a href="https://github.com/tariq926" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
-                <a href="https://www.linkedin.com/in/phidel-ochieng-832593393" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
-                <a href="mailto:ochiengphidel1@gmail.com" aria-label="Send an email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
-            </div>
-            <p class="footer-copy">&copy; <span id="currentYear">2025</span> Phidel Emmanuel Ochieng. All Rights Reserved.</p>
+            <p class="footer-copy">&copy; <span id="currentYear">2026</span> Phidel Emmanuel Ochieng. All rights reserved.</p>
         </div>
     </footer>
-
-    <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll back to top">
-        <i class="fas fa-arrow-up" aria-hidden="true"></i>
-    </button>
 
     <script src="script.js" defer></script>
 </body>
