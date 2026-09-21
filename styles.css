@@ -16,7 +16,7 @@
     --font-display: "Bricolage Grotesque", Georgia, serif;
     --font-body: "Figtree", "Segoe UI", sans-serif;
 
-    --radius: 2px;
+    --radius: 0;
     --shell: 1120px;
     --header-h: 64px;
     --space: clamp(1rem, 2.5vw, 2rem);
