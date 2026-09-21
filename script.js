@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             metaTheme.setAttribute('content', theme === 'dark' ? '#1A1917' : '#E7E5E1');
         }
         if (themeToggle) {
-            themeToggle.textContent = theme === 'dark' ? 'Light' : 'Theme';
+            themeToggle.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
         }
     }
 
