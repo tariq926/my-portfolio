@@ -137,19 +137,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const PROFESSIONAL_REPOS = [
         'my-portfolio',
         'harrietteadhiambo',
-        'smart-life-manager',
-        'tariq_store',
-        'online_store',
-        'marion'
+        'smart-life-manager'
     ];
 
     const REPO_BLURBS = {
         'my-portfolio': 'Personal portfolio on Vercel with CSP hardening and live GitHub stats.',
         'harrietteadhiambo': 'Client PhD portfolio for water resources, climate resilience, and geospatial work.',
-        'smart-life-manager': 'React + Express/MongoDB app for finance, tasks, and resource management.',
-        'tariq_store': 'PHP commerce system with cart, checkout, admin, and M-Pesa callbacks.',
-        'online_store': 'Fashion/sneakers storefront demo with product grid and cart UI.',
-        'marion': 'Personal HTML birthday tribute with memories page on GitHub Pages.'
+        'smart-life-manager': 'React + Express/MongoDB app for finance, tasks, and resource management.'
     };
 
     function renderPinnedRepos(repos) {
