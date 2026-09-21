@@ -140,18 +140,16 @@ document.addEventListener('DOMContentLoaded', () => {
         'smart-life-manager',
         'tariq_store',
         'online_store',
-        'marion',
-        'birthday'
+        'marion'
     ];
 
     const REPO_BLURBS = {
-        'my-portfolio': 'Personal portfolio site with security hardening and live GitHub stats.',
-        'harrietteadhiambo': 'Client research portfolio for water, climate, and geospatial work.',
-        'smart-life-manager': 'Full-stack app for finance, tasks, and resource tracking.',
-        'tariq_store': 'PHP e-commerce storefront with cart, checkout, and admin tools.',
-        'online_store': 'Related PHP storefront codebase for catalog and checkout flows.',
-        'marion': 'Personal HTML birthday site with memories and media pages.',
-        'birthday': 'Lightweight HTML birthday greeting page on GitHub Pages.'
+        'my-portfolio': 'Personal portfolio on Vercel with CSP hardening and live GitHub stats.',
+        'harrietteadhiambo': 'Client PhD portfolio for water resources, climate resilience, and geospatial work.',
+        'smart-life-manager': 'React + Express/MongoDB app for finance, tasks, and resource management.',
+        'tariq_store': 'PHP commerce system with cart, checkout, admin, and M-Pesa callbacks.',
+        'online_store': 'Fashion/sneakers storefront demo with product grid and cart UI.',
+        'marion': 'Personal HTML birthday tribute with memories page on GitHub Pages.'
     };
 
     function renderPinnedRepos(repos) {
