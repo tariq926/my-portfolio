@@ -136,11 +136,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const PROFESSIONAL_REPOS = [
         'my-portfolio',
+        'harrietteadhiambo',
         'smart-life-manager',
         'tariq_store',
-        'harrietteadhiambo',
-        'online_store'
+        'online_store',
+        'marion',
+        'birthday'
     ];
+
+    const REPO_BLURBS = {
+        'my-portfolio': 'Personal portfolio site with security hardening and live GitHub stats.',
+        'harrietteadhiambo': 'Client research portfolio for water, climate, and geospatial work.',
+        'smart-life-manager': 'Full-stack app for finance, tasks, and resource tracking.',
+        'tariq_store': 'PHP e-commerce storefront with cart, checkout, and admin tools.',
+        'online_store': 'Related PHP storefront codebase for catalog and checkout flows.',
+        'marion': 'Personal HTML birthday site with memories and media pages.',
+        'birthday': 'Lightweight HTML birthday greeting page on GitHub Pages.'
+    };
 
     function renderPinnedRepos(repos) {
         const container = document.getElementById('pinnedRepos');
@@ -167,7 +179,9 @@ document.addEventListener('DOMContentLoaded', () => {
             title.textContent = repo.name || 'Repository';
 
             const desc = document.createElement('p');
-            desc.textContent = repo.description || 'Professional web development project.';
+            desc.textContent = REPO_BLURBS[repo.name]
+                || repo.description
+                || 'Professional web development project.';
 
             const meta = document.createElement('p');
             meta.className = 'repo-meta';

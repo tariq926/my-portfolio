@@ -1,5 +1,5 @@
 // Service Worker for Phidel's Portfolio
-const CACHE_NAME = 'phidel-portfolio-v6';
+const CACHE_NAME = 'phidel-portfolio-v7';
 const urlsToCache = [
   './',
   './index.html',
@@ -12,6 +12,8 @@ const urlsToCache = [
   './favicon-192.png',
   './tariq2.webp',
   './portfolio-preview.webp',
+  './marion-preview.svg',
+  './birthday-preview.svg',
   './og-image.png',
   './robots.txt',
   './sitemap.xml'
